@@ -1,0 +1,30 @@
+class ӄօռʟӼ(object):
+    LOGGER = True
+    API_ID = 6372795  
+    API_HASH = "4b7731b0a6d8e15bef82863887feb293"
+    TOKEN = "1834680052:AAGSW9doYlAjCR4BcXG6pRuPLX_gpWWgXfY"  
+    OWNER_ID = 123456789  
+    OWNER_USERNAME = "@HypeVoidSoul"
+    SUPPORT_CHAT = "HypeVoids"  
+    JOIN_LOGGER = (-1001472203238) 
+    EVENT_LOGS = (-1001472203238) 
+    ALLOW_CHATS = True
+    SQLALCHEMY_DATABASE_URI = "postgresql://rgexqulhdlhbbd:315af5f6cc0e75a4fca59b92427279ca8391fe8cc1a4d69002a9e2c4865a9cd7@ec2-34-228-100-83.compute-1.amazonaws.com:5432/d17jfpbuvu01bs"  # needed for any database modules
+    LOAD = []
+    NO_LOAD = []
+    WEBHOOK = False
+    INFOPIC = True
+    URL = None
+    SPAMWATCH_API = "DSh5p7WBt9kO8ERqr~8xdPVt_ypszfSqDr_XjTHxu_cmoIzhYP_aLU_8JAz2MSCd" 
+    SPAMWATCH_SUPPORT_CHAT = "@HypeVoids"
+    KLAW_LINGS = [123456789]
+    DEV_USERS = [123456789]
+    DEL_CMDS = True  
+    STRICT_GBAN = True
+    WORKERS = (8)
+    BAN_STICKER = ""  
+    ALLOW_EXCL = True  
+    BL_CHATS = [] 
+    SPAMMERS = None
+class Faigo(ӄօռʟӼ):
+    LOGGER = True
