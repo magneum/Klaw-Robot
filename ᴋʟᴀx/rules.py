@@ -127,7 +127,7 @@ __help__ = f"""{ALKL}
  • `/clearrules`*:* clear the rules for this chat.
 """
 
-__mod_name__ = "Rules"
+__element__ = "Rules"
 
 GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.chat_type.groups, run_async=True)
 SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.chat_type.groups, run_async=True)

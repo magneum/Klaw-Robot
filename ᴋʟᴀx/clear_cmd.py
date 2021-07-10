@@ -14,37 +14,10 @@ def clearcmd(update: Update, context: CallbackContext):
     msg = ""
 
     commands = [
-    "afk",
-    "cash",
-    "checkfw",
-    "covid",
     "filters",
-    "fun",
-    "getfw",
-    "github",
-    "imdb",
-    "info",
-    "lyrics",
-    "magisk",
-    "miui",
     "notes",    
-    "orangefox",
-    "phh",
-    "ping",
     "purge",
-    "reverse",
-    "speedtest",
-    "time",
-    "tr",
-    "tts",
-    "twrp",
-    "ud",
-    "wall",
-    "weather",
     "welcome",
-    "wiki",
-    "youtube",
-    "zombies",
     ]
 
     if len(args) == 0:
@@ -121,6 +94,6 @@ CLEARCMD_HANDLER = CommandHandler("clearcmd", clearcmd, run_async=True)
 
 dispatcher.add_handler(CLEARCMD_HANDLER)
 
-__mod_name__ = "Clear Commands"
+__element__ = "Clear Commands"
 __command_list__ = ["clearcmd"]
 __handlers__ = [CLEARCMD_HANDLER]

@@ -5,12 +5,12 @@ from ᴋʟᴀx import ALL_MODULES
 
 for module_name in ALL_MODULES:
     imported_module = importlib.import_module("ᴋʟᴀx." + module_name)
-    if not hasattr(imported_module, "__mod_name__"):
-        imported_module.__mod_name__ = imported_module.__name__
-    if imported_module.__mod_name__.lower() not in IMPORTED:
-        IMPORTED[imported_module.__mod_name__.lower()] = imported_module
+    if not hasattr(imported_module, "__element__"):
+        imported_module.__element__ = imported_module.__name__
+    if imported_module.__element__.lower() not in IMPORTED:
+        IMPORTED[imported_module.__element__.lower()] = imported_module
     if hasattr(imported_module, "__help__") and imported_module.__help__:
-        HELPABLE[imported_module.__mod_name__.lower()] = imported_module
+        HELPABLE[imported_module.__element__.lower()] = imported_module
     if hasattr(imported_module, "__migrate__"):
         MIGRATEABLE.append(imported_module)
     if hasattr(imported_module, "__stats__"):
@@ -24,9 +24,9 @@ for module_name in ALL_MODULES:
     if hasattr(imported_module, "__export_data__"):
         DATA_EXPORT.append(imported_module)
     if hasattr(imported_module, "__chat_settings__"):
-        CHAT_SETTINGS[imported_module.__mod_name__.lower()] = imported_module
+        CHAT_SETTINGS[imported_module.__element__.lower()] = imported_module
     if hasattr(imported_module, "__user_settings__"):
-        USER_SETTINGS[imported_module.__mod_name__.lower()] = imported_module
+        USER_SETTINGS[imported_module.__element__.lower()] = imported_module
 
 
 def main():
