@@ -1,7 +1,7 @@
 🍟♪ｏﾟ♪ﾟ+ﾟ♪ﾟｏ♪ｏﾟ♪ﾟ+ﾟ♪ﾟｏ♪=====__Wê Ärê H¥þêVðïÐ§__=====♪ｏﾟ♪ﾟ+ﾟ♪ﾟｏ♪ｏﾟ♪ﾟ+ﾟ♪ﾟｏ♪🍟
 [![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 # 🧻⭐️『 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗞𝗹𝗮𝘄 𝗥𝗼𝗯𝗼𝘁 』⭐️🧻
-<img align="centre" src="https://telegra.ph/file/db6ac942f61ad65202405.mp4"/>
+<img align="centre" src="https://telegra.ph/file/f9a2845e68e553eff9cf2.jpg"/>
 <img align="left" src="https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg" alt="HypeVoidSoul"/>
 <img align="right" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"/>
 
