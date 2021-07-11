@@ -94,6 +94,6 @@ CLEARCMD_HANDLER = CommandHandler("clearcmd", clearcmd, run_async=True)
 
 dispatcher.add_handler(CLEARCMD_HANDLER)
 
-__element__ = "Clear Commands"
+__mod_name__ = "Clear Commands"
 __command_list__ = ["clearcmd"]
 __handlers__ = [CLEARCMD_HANDLER]

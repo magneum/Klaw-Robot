@@ -439,7 +439,7 @@ def __stats__():
     )
 
 
-__element__ = "Blacklists"
+__mod_name__ = "Blacklists"
 
 __help__ = f"""{ALKL}
 

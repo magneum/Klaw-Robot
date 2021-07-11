@@ -9,5 +9,5 @@ RUN git clone https://github.com/HypeVoidSoul/Klaw-Robot.git
 RUN cd Klaw-Robot
 
 WORKDIR /Klaw-Robot
-RUN pip install -r requirements.txt
+RUN pip install -r ӄʟǟաʀօɮօȶ.txt
 CMD python3 subprocesser.py

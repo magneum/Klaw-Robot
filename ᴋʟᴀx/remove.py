@@ -59,7 +59,7 @@ def purge(update: Update, context: CallbackContext):
 
 
 
-__element__ = "Purge"
+__mod_name__ = "Purge"
 
 PURGE_HANDLER = CommandHandler("purge", purge, filters=Filters.chat_type.groups, pass_args=True)
 dispatcher.add_handler(PURGE_HANDLER)

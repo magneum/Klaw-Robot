@@ -350,7 +350,7 @@ def get_chat(chat_id, chat_data):
         return {"status": False, "value": False}
 
 
-__element__ = "Backups"
+__mod_name__ = "Backups"
 
 __help__ = f"""{ALKL}
 *Only for group owner:*

@@ -390,7 +390,7 @@ will result in restricting that user.
  `1w` = 1 week
  """
 
-__element__ = "Anti-Flood"
+__mod_name__ = "Anti-Flood"
 
 FLOOD_BAN_HANDLER = MessageHandler(Filters.all & ~Filters.status_update & Filters.chat_type.groups, check_flood, run_async=True)
 SET_FLOOD_HANDLER = CommandHandler("setflood", set_flood, filters=Filters.chat_type.groups, run_async=True)
