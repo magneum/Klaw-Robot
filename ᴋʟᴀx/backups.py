@@ -13,7 +13,6 @@ from ᴋʟᴀx.connection import connected
 
 
 @user_admin
-@typing_action
 def import_data(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
@@ -43,15 +42,11 @@ def import_data(update: Update, context: CallbackContext):
             file_info.download(out=file)
             file.seek(0)
             data = json.load(file)
-
-        # only import one group
         if len(data) > 1 and str(chat.id) not in data:
             msg.reply_text(
                 f"{ALKL}There are more than one group in this file and the chat.id is not same! How am i supposed to import it?"
             )
             return
-
-        # Check if backup is this chat
         try:
             if data.get(str(chat.id)) is None:
                 if conn:
@@ -63,7 +58,6 @@ def import_data(update: Update, context: CallbackContext):
                 return msg.reply_text(text, parse_mode="markdown")
         except Exception:
             return msg.reply_text(f"{ALKL}There was a problem while importing the data!")
-        # Check if backup is from self
         try:
             if str(context.bot.id) != str(data[str(chat.id)]["bot"]):
                 return msg.reply_text(
@@ -71,7 +65,6 @@ def import_data(update: Update, context: CallbackContext):
                 )
         except Exception:
             pass
-        # Select data source
         if str(chat.id) in data:
             data = data[str(chat.id)]["hashes"]
         else:
@@ -91,9 +84,6 @@ def import_data(update: Update, context: CallbackContext):
                 str(chat.title),
             )
             return
-
-        # TODO: some of that link logic
-        # NOTE: consider default permissions stuff?
         if conn:
 
             text = "{}Backup fully restored on *{}*.".format(ALKL,chat_name)
@@ -105,8 +95,8 @@ def import_data(update: Update, context: CallbackContext):
 @user_admin
 def export_data(update: Update, context: CallbackContext):
     chat_data = context.chat_data
-    msg = update.effective_message  # type: Optional[Message]
-    user = update.effective_user  # type: Optional[User]
+    msg = update.effective_message 
+    user = update.effective_user  
     chat_id = update.effective_chat.id
     chat = update.effective_chat
     current_chat_id = update.effective_chat.id
@@ -114,15 +104,12 @@ def export_data(update: Update, context: CallbackContext):
     if conn:
         chat = dispatcher.bot.getChat(conn)
         chat_id = conn
-        # chat_name = dispatcher.bot.getChat(conn).title
     else:
         if update.effective_message.chat.type == "private":
             update.effective_message.reply_text(f"{ALKL}This is a group only command!")
             return ""
         chat = update.effective_chat
         chat_id = update.effective_chat.id
-        # chat_name = update.effective_message.chat.title
-
     jam = time.time()
     new_jam = jam + 10800
     checkchat = get_chat(chat_id, chat_data)
@@ -147,21 +134,17 @@ def export_data(update: Update, context: CallbackContext):
 
     note_list = sql.get_all_chat_notes(chat_id)
     backup = {}
-    # button = ""
     buttonlist = []
     namacat = ""
     isicat = ""
     rules = ""
     count = 0
     countbtn = 0
-    # Notes
     for note in note_list:
         count += 1
-        # getnote = sql.get_note(chat_id, note.name)
         namacat += "{}<###splitter###>".format(note.name)
         if note.msgtype == 1:
             tombol = sql.get_buttons(chat_id, note.name)
-            # keyb = []
             for btn in tombol:
                 countbtn += 1
                 if btn.same_line:
@@ -210,13 +193,9 @@ def export_data(update: Update, context: CallbackContext):
         )
         for x in range(count)
     }
-    # Rules
     rules = rulessql.get_rules(chat_id)
-    # Blacklist
     bl = list(blacklistsql.get_chat_blacklist(chat_id))
-    # Disabled command
     disabledcmd = list(disabledsql.get_all_disabled(chat_id))
-    # Filters (TODO)
     """
 	all_filters = list(filtersql.get_chat_triggers(chat_id))
 	export_filters = {}
@@ -249,9 +228,6 @@ def export_data(update: Update, context: CallbackContext):
 		export_filters[filters] = content
 	print(export_filters)
 	"""
-    # Welcome (TODO)
-    # welc = welcsql.get_welc_pref(chat_id)
-    # Locked
     curr_locks = locksql.get_locks(chat_id)
     curr_restr = locksql.get_restr(chat_id)
 
@@ -294,9 +270,7 @@ def export_data(update: Update, context: CallbackContext):
         locked_restr = {}
 
     locks = {"locks": locked_lock, "restrict": locked_restr}
-    # Warns (TODO)
-    # warns = warnssql.get_warns(chat_id)
-    # Backing up
+
     backup[chat_id] = {
         "bot": context.bot.id,
         "hashes": {

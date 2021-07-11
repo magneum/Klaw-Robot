@@ -17,7 +17,6 @@ BLACKLIST_GROUP = 11
 
 
 @user_admin
-@typing_action
 def blacklist(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
@@ -62,7 +61,6 @@ def blacklist(update: Update, context: CallbackContext):
 
 
 @user_admin
-@typing_action
 def add_blacklist(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
@@ -114,7 +112,6 @@ def add_blacklist(update: Update, context: CallbackContext):
 
 
 @user_admin
-@typing_action
 def unblacklist(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
@@ -191,7 +188,6 @@ def unblacklist(update: Update, context: CallbackContext):
 
 @loggable
 @user_admin
-@typing_action
 def blacklist_mode(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user

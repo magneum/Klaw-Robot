@@ -9,7 +9,6 @@ from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
 
 run_async
 @user_admin
-@typing_action
 def allow_connections(update, context) -> str:
 
     chat = update.effective_chat
@@ -57,7 +56,6 @@ def allow_connections(update, context) -> str:
 
 
 run_async
-@typing_action
 def connection_chat(update, context):
 
     chat = update.effective_chat
@@ -82,7 +80,6 @@ def connection_chat(update, context):
 
 
 run_async
-@typing_action
 def connect_chat(update, context):
 
     chat = update.effective_chat

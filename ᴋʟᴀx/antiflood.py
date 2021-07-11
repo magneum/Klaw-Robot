@@ -19,9 +19,9 @@ FLOOD_GROUP = 3
 
 @loggable
 def check_flood(update: Update, context: CallbackContext) -> str:
-    user = update.effective_user  # type: Optional[User]
-    chat = update.effective_chat  # type: Optional[Chat]
-    msg = update.effective_message  # type: Optional[Message]
+    user = update.effective_user 
+    chat = update.effective_chat  
+    msg = update.effective_message  
     if not user:  # ignore channels
         return ""
 

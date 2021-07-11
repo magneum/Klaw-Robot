@@ -133,7 +133,6 @@ def locktypes(update: Update, context: CallbackContext):
 
 @user_admin
 @loggable
-@typing_action
 def lock(update: Update, context: CallbackContext) -> str:
     args = context.args
     chat = update.effective_chat
@@ -240,7 +239,6 @@ def lock(update: Update, context: CallbackContext) -> str:
 
 @user_admin
 @loggable
-@typing_action
 def unlock(update: Update, context: CallbackContext) -> str:
     args = context.args
     chat = update.effective_chat
@@ -483,7 +481,6 @@ def build_lock_message(chat_id):
 
 
 @user_admin
-@typing_action
 def list_locks(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user

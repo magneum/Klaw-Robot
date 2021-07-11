@@ -36,7 +36,7 @@ ENUM_FUNC_MAP = {
 }
 
 
-@typing_action
+
 def list_handlers(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
@@ -84,7 +84,7 @@ def list_handlers(update: Update, context: CallbackContext):
 
 # NOT ASYNC BECAUSE DISPATCHER HANDLER RAISED
 @user_admin
-@typing_action
+
 def filters(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
@@ -197,9 +197,6 @@ def filters(update: Update, context: CallbackContext):
         return
 
     add = addnew_filter(update, chat_id, keyword, text, file_type, file_id, buttons)
-    # This is an old method
-    # sql.add_filter(chat_id, keyword, content, is_sticker, is_document, is_image, is_audio, is_voice, is_video, buttons)
-
     if add is True:
         deletion(update, context, send_message(
             update.effective_message,
@@ -209,9 +206,7 @@ def filters(update: Update, context: CallbackContext):
     raise DispatcherHandlerStop
 
 
-# NOT ASYNC BECAUSE DISPATCHER HANDLER RAISED
 @user_admin
-@typing_action
 def stop_filter(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
