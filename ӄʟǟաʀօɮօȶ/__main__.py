@@ -29,17 +29,13 @@ for module_name in ALL_MODULES:
         USER_SETTINGS[imported_module.__element__.lower()] = imported_module
 
 
-def main():
-    LOGS.info("—🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—")
-    LOGS.info("")
-    LOGS.info("🦀 Hell Yea.. ӄʟǟա ʀօɮօȶ IS FUCKING READY.🦀")
-    updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)   
-    updater.idle()
-
-
-if __name__ == "__main__":
-    LOGS.info("Successfully loaded modules: \n" + str(ALL_MODULES))
-    LOGS.info("")
-    LOGS.info("🔥==================================================🔥")
-    LOGS.info("—🔥••÷[  ӄʟǟա ʀօɮօȶ  ]÷••🔥—")
-    main()
+LOGS.info("—🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—")
+LOGS.info("")
+LOGS.info("🔥==================================================🔥")
+LOGS.info("🦀 Hell Yea.. ӄʟǟա ʀօɮօȶ IS FUCKING READY.🦀")
+updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)   
+LOGS.info("Successfully loaded modules: \n" + str(ALL_MODULES))
+LOGS.info("")
+LOGS.info("🔥==================================================🔥")
+LOGS.info("—🔥••÷[  ӄʟǟա ʀօɮօȶ  ]÷••🔥—")
+updater.idle()
