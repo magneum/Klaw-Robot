@@ -34,7 +34,7 @@ def clearcmd(update: Update, context: CallbackContext):
         if cmd == "list":
             msg = f"{ALKL}The commands available are:\n"
             for cmd in commands:
-                msg += f"• `{cmd}`\n"
+                msg += f"🦀 •{cmd}`\n"
         elif cmd == "restore":
             delcmd = sql.del_allclearcmd(chat.id)
             msg = f"{ALKL}Removed all commands from list"
@@ -77,17 +77,17 @@ def __migrate__(old_chat_id, new_chat_id):
 
 
 __help__ = f"""{ALKL}
-*Get module configuration:*
-• `/clearcmd`: provides all commands that has been set in current group with their deletion time
-• `/clearcmd list`: list all available commands for this module
-• `/clearcmd <command>`: get the deletion time for a specific `<command>`
+*Get module configuration*-\n
+🦀 •/clearcmd`: provides all commands that has been set in current group with their deletion time
+🦀 •/clearcmd list`: list all available commands for this module
+🦀 •/clearcmd <command>`: get the deletion time for a specific `<command>`
 
-*Set module configuration:*
-• `/clearcmd <command> <time>`: set a deletion `<time>` for a specific `<command>` in current group. All outputs of that command will be deleted in that group after time value in seconds. Time can be set between 5 and 300 seconds
+*Set module configuration*-\n
+🦀 •/clearcmd <command> <time>`: set a deletion `<time>` for a specific `<command>` in current group. All outputs of that command will be deleted in that group after time value in seconds. Time can be set between 5 and 300 seconds
 
-*Restore module configuration:*
-• `/clearcmd restore`: the deletion time set for ALL commands will be removed in current group
-• `/clearcmd <command> restore`: the deletion time set for a specific `<command>` will be removed in current group
+*Restore module configuration*-\n
+🦀 •/clearcmd restore`: the deletion time set for ALL commands will be removed in current group
+🦀 •/clearcmd <command> restore`: the deletion time set for a specific `<command>` will be removed in current group
 """
 
 CLEARCMD_HANDLER = CommandHandler("clearcmd", clearcmd, run_async=True)

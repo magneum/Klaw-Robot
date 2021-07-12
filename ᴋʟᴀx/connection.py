@@ -387,7 +387,7 @@ This allows you to connect to a chat's database, and add things to it without th
  • /connection: List connected chats
  • /disconnect: Disconnect from a chat
  • /helpconnect: List available commands that can be used remotely
-*Admin only:*
+*Admin only*-\n
  • /allowconnect <yes/no>: allow a user to connect to a chat
 """
 

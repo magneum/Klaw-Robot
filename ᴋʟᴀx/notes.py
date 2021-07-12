@@ -554,30 +554,30 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = f"""{ALKL}
- • `/get <notename>`*:* get the note with this notename
- • `#<notename>`*:* same as /get
- • `/notes` or `/saved`*:* list all saved notes in this chat
- • `/number` *:* Will pull the note of that number in the list
+🦀 •/get <notename>-\n get the note with this notename
+🦀 •#<notename>-\n same as /get
+🦀 •/notes or /saved-\n list all saved notes in this chat
+🦀 •/number*-\n Will pull the note of that number in the list
 If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
 be useful when updating a current note
 
-*Admins only:*
- • `/save <notename> <notedata>`*:* saves notedata as a note with name notename
+*Admins only*-\n
+🦀 •/save <notename> <notedata>-\n saves notedata as a note with name notename
 A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
 `buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check `/markdownhelp` for more info
- • `/save <notename>`*:* save the replied message as a note with name notename
+🦀 •/save <notename>-\n save the replied message as a note with name notename
  Separate diff replies by `%%%` to get random notes
- *Example:* 
+ *Example*-\n 
  `/save notename
  Reply 1
  %%%
  Reply 2
  %%%
- Reply 3`
- • `/clear <notename>`*:* clear note with this name
- • `/removeallnotes`*:* removes all notes from the group
- *Note:* Note names are case-insensitive, and they are automatically converted to lowercase before getting saved.
- • `/privatenotes <on/yes/1/off/no/0>`: enable or disable private notes in chat
+ Reply 3
+🦀 •/clear <notename>-\n clear note with this name
+🦀 •/removeallnotes-\n removes all notes from the group
+ *Note*-\n Note names are case-insensitive, and they are automatically converted to lowercase before getting saved.
+🦀 •/privatenotes <on/yes/1/off/no/0>: enable or disable private notes in chat
 """
 
 

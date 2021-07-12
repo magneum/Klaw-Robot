@@ -464,18 +464,18 @@ def adminlist(update: Update, context: CallbackContext):
 
 
 __help__ = f"""{ALKL}
- • `/admins`*:* list of admins in the chat
+🦀 •/admins-\n list of admins in the chat
 
-*Admins only:*
- • `/pin`*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
- • `/unpin`*:* unpins the currently pinned message
- • `/invitelink`*:* gets invitelink
- • `/link`*:* same as invitelink
- • `/promote`*:* promotes the user replied to
- • `/demote`*:* demotes the user replied to
- • `/title <title here>`*:* sets a custom title for an admin that the bot promoted
- • `/admincache`*:* force refresh the admins list
- • `/zombies`*:* scan and clean zombies
+*Admins only*-\n
+🦀 •/pin-\n silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
+🦀 •/unpin-\n unpins the currently pinned message
+🦀 •/invitelink-\n gets invitelink
+🦀 •/link-\n same as invitelink
+🦀 •/promote-\n promotes the user replied to
+🦀 •/demote-\n demotes the user replied to
+🦀 •/title <title here>-\n sets a custom title for an admin that the bot promoted
+🦀 •/admincache-\n force refresh the admins list
+🦀 •/zombies-\n scan and clean zombies
 """
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
