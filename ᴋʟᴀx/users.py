@@ -84,7 +84,7 @@ def broadcast(update: Update, context: CallbackContext):
                 except TelegramError:
                     failed_user += 1
         update.effective_message.reply_text(
-            f"Broadcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
+            f"{ALKL}Broadcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
         )
 
 
@@ -128,7 +128,7 @@ def chats(update: Update, context: CallbackContext):
         update.effective_message.reply_document(
             document=output,
             filename="groups_list.txt",
-            caption="Here be the list of groups in my database.",
+            caption=f"{ALKL}Here be the list of groups in my database.",
         )
 
 

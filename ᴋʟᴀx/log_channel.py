@@ -85,7 +85,7 @@ if is_module_loaded(FILENAME):
         except BadRequest as excp:
             if excp.message == "Chat not found":
                 bot.send_message(
-                    orig_chat_id, "This log channel has been deleted - unsetting."
+                    orig_chat_id, f"{ALKL}This log channel has been deleted - unsetting."
                 )
                 sql.stop_chat_logging(orig_chat_id)
             else:
@@ -96,7 +96,7 @@ if is_module_loaded(FILENAME):
                 bot.send_message(
                     log_chat_id,
                     result
-                    + "\n\nFormatting has been disabled due to an unexpected error.",
+                    + f"{ALKL}\n\nFormatting has been disabled due to an unexpected error.",
                 )
 
     @user_admin
@@ -109,13 +109,13 @@ if is_module_loaded(FILENAME):
         if log_channel:
             log_channel_info = bot.get_chat(log_channel)
             message.reply_text(
-                f"This group has all it's logs sent to:"
+                f"{ALKL}This group has all it's logs sent to:"
                 f" {escape_markdown(log_channel_info.title)} (`{log_channel}`)",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
         else:
-            message.reply_text("No log channel has been set for this group!")
+            message.reply_text(f"{ALKL}No log channel has been set for this group!")
 
     @user_admin
     def setlog(update: Update, context: CallbackContext):
@@ -124,7 +124,7 @@ if is_module_loaded(FILENAME):
         chat = update.effective_chat
         if chat.type == chat.CHANNEL:
             message.reply_text(
-                "Now, forward the /setlog to the group you want to tie this channel to!"
+                f"{ALKL}Now, forward the /setlog to the group you want to tie this channel to!"
             )
 
         elif message.forward_from_chat:
@@ -142,11 +142,11 @@ if is_module_loaded(FILENAME):
             try:
                 bot.send_message(
                     message.forward_from_chat.id,
-                    f"This channel has been set as the log channel for {chat.title or chat.first_name}.",
+                    f"{ALKL}This channel has been set as the log channel for {chat.title or chat.first_name}.",
                 )
             except Unauthorized as excp:
                 if excp.message == "Forbidden: bot is not a member of the channel chat":
-                    bot.send_message(chat.id, "Successfully set log channel!")
+                    bot.send_message(chat.id, f"{ALKL}Successfully set log channel!")
                 else:
                     LOGS.exception("ERROR in setting the log channel.")
 
@@ -154,7 +154,7 @@ if is_module_loaded(FILENAME):
 
         else:
             message.reply_text(
-                "The steps to set a log channel are:\n"
+                f"{ALKL}The steps to set a log channel are:\n"
                 " - add bot to the desired channel\n"
                 " - send /setlog to the channel\n"
                 " - forward the /setlog to the group\n"
@@ -169,15 +169,15 @@ if is_module_loaded(FILENAME):
         log_channel = sql.stop_chat_logging(chat.id)
         if log_channel:
             bot.send_message(
-                log_channel, f"Channel has been unlinked from {chat.title}"
+                log_channel, f"{ALKL}Channel has been unlinked from {chat.title}"
             )
-            message.reply_text("Log channel has been un-set.")
+            message.reply_text(f"{ALKL}Log channel has been un-set.")
 
         else:
-            message.reply_text("No log channel has been set yet!")
+            message.reply_text(f"{ALKL}No log channel has been set yet!")
 
     def __stats__():
-        return f"• {sql.num_logchannels()} log channels set."
+        return f"{ALKL}• {sql.num_logchannels()} log channels set."
 
     def __migrate__(old_chat_id, new_chat_id):
         sql.migrate_chat(old_chat_id, new_chat_id)
@@ -186,8 +186,8 @@ if is_module_loaded(FILENAME):
         log_channel = sql.get_chat_log_channel(chat_id)
         if log_channel:
             log_channel_info = dispatcher.bot.get_chat(log_channel)
-            return f"This group has all it's logs sent to: {escape_markdown(log_channel_info.title)} (`{log_channel}`)"
-        return "No log channel is set for this group!"
+            return f"{ALKL}This group has all it's logs sent to: {escape_markdown(log_channel_info.title)} (`{log_channel}`)"
+        return f"{ALKL}No log channel is set for this group!"
 
     __help__ = f"""{ALKL}
 *Admins only:*

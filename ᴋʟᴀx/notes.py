@@ -61,7 +61,7 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                 except BadRequest as excp:
                     if excp.message == "Message to forward not found":
                         message.reply_text(
-                            "This message seems to have been lost - I'll remove it "
+                            f"{ALKL}This message seems to have been lost - I'll remove it "
                             "from your notes list."
                         )
                         sql.rm_note(note_chat_id, notename)
@@ -75,7 +75,7 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                 except BadRequest as excp:
                     if excp.message == "Message to forward not found":
                         message.reply_text(
-                            "Looks like the original sender of this note has deleted "
+                            f"{ALKL}Looks like the original sender of this note has deleted "
                             "their message - sorry! Get your bot admin to start using a "
                             "message dump to avoid this. I'll remove this note from "
                             "your saved notes."
@@ -223,21 +223,21 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
             except BadRequest as excp:
                 if excp.message == "Entity_mention_user_invalid":
                     message.reply_text(
-                        "Looks like you tried to mention someone I've never seen before. If you really "
+                        f"{ALKL}Looks like you tried to mention someone I've never seen before. If you really "
                         "want to mention them, forward one of their messages to me, and I'll be able "
                         "to tag them!"
                     )
                 elif FILE_MATCHER.match(note.value):
                     message.reply_text(
-                        "This note was an incorrectly imported file from another bot - I can't use "
+                        f"{ALKL}This note was an incorrectly imported file from another bot - I can't use "
                         "it. If you really need it, you'll have to save it again. In "
                         "the meantime, I'll remove it from your notes list."
                     )
                     sql.rm_note(note_chat_id, notename)
                 else:
                     message.reply_text(
-                        "This note could not be sent, as it is incorrectly formatted. Ask in "
-                        f"@{SUPPORT_CHAT} if you can't figure out why!"
+                        f"{ALKL}This note could not be sent, as it is incorrectly formatted. Ask in "
+                        f"@hypevoids | @hypevoidsoul if you can't figure out why!"
                     )
                     LOGS.exception(
                         "Could not parse message #%s in chat %s",
@@ -247,7 +247,7 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                     LOGS.warning("Message was: %s", str(note.value))
         return
     elif show_none:
-        message.reply_text("This note doesn't exist")
+        message.reply_text(f"{ALKL}This note doesn't exist")
 
 
 @connection_status
@@ -280,7 +280,7 @@ def slash_get(update: Update, context: CallbackContext):
         note_name = str(noteid).strip(">").split()[1]
         get(update, context, note_name, show_none=False)
     except IndexError:
-        update.effective_message.reply_text("Wrong Note ID 😾")
+        update.effective_message.reply_text(f"{ALKL}Wrong Note ID 😾")
 
 
 @user_admin
@@ -292,7 +292,7 @@ def save(update: Update, context: CallbackContext):
     note_name, text, data_type, content, buttons = get_note_type(msg)
     note_name = note_name.lower()
     if data_type is None:
-        msg.reply_text("Dude, there's no note")
+        msg.reply_text(f"{ALKL}Dude, there's no note")
         return
 
     sql.add_note_to_db(
@@ -300,21 +300,21 @@ def save(update: Update, context: CallbackContext):
     )
 
     msg.reply_text(
-        f"Yas! Added `{note_name}`.\nGet it with /get `{note_name}`, or `#{note_name}`",
+        f"{ALKL}Yas! Added `{note_name}`.\nGet it with /get `{note_name}`, or `#{note_name}`",
         parse_mode=ParseMode.MARKDOWN,
     )
 
     if msg.reply_to_message and msg.reply_to_message.from_user.is_bot:
         if text:
             msg.reply_text(
-                "Seems like you're trying to save a message from a bot. Unfortunately, "
+                f"{ALKL}Seems like you're trying to save a message from a bot. Unfortunately, "
                 "bots can't forward bot messages, so I can't save the exact message. "
                 "\nI'll save all the text I can, but if you want more, you'll have to "
                 "forward the message yourself, and then save it."
             )
         else:
             msg.reply_text(
-                "Bots are kinda handicapped by telegram, making it hard for bots to "
+                f"{ALKL}Bots are kinda handicapped by telegram, making it hard for bots to "
                 "interact with other bots, so I can't save this message "
                 "like I usually would - do you mind forwarding it and "
                 "then saving that new message? Thanks!"
@@ -331,9 +331,9 @@ def clear(update: Update, context: CallbackContext):
         notename = args[0].lower()
 
         if sql.rm_note(chat_id, notename):
-            update.effective_message.reply_text("Successfully removed note.")
+            update.effective_message.reply_text(f"{ALKL}Successfully removed note.")
         else:
-            update.effective_message.reply_text("That's not a note in my database!")
+            update.effective_message.reply_text(f"{ALKL}That's not a note in my database!")
 
 
 def clearall(update: Update, context: CallbackContext):
@@ -342,7 +342,7 @@ def clearall(update: Update, context: CallbackContext):
     member = chat.get_member(user.id)
     if member.status != "creator" and user.id not in KLAW_LINGS:
         update.effective_message.reply_text(
-            "Only the chat owner can clear all notes at once."
+            f"{ALKL}Only the chat owner can clear all notes at once."
         )
     else:
         buttons = InlineKeyboardMarkup(
@@ -356,7 +356,7 @@ def clearall(update: Update, context: CallbackContext):
             ]
         )
         update.effective_message.reply_text(
-            f"Are you sure you would like to clear ALL notes in {chat.title}? This action cannot be undone.",
+            f"{ALKL}Are you sure you would like to clear ALL notes in {chat.title}? This action cannot be undone.",
             reply_markup=buttons,
             parse_mode=ParseMode.MARKDOWN,
         )
@@ -379,18 +379,18 @@ def clearall_btn(update: Update, context: CallbackContext):
                 return
 
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer(f"{ALKL}Only owner of the chat can do this.")
 
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer(f"{ALKL}You need to be admin to do this.")
     elif query.data == "notes_cancel":
         if member.status == "creator" or query.from_user.id in KLAW_LINGS:
-            message.edit_text("Clearing of all notes has been cancelled.")
+            message.edit_text(f"{ALKL}Clearing of all notes has been cancelled.")
             return
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer(f"{ALKL}Only owner of the chat can do this.")
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer(f"{ALKL}You need to be admin to do this.")
 
 
 @connection_status
@@ -400,8 +400,8 @@ def list_notes(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     note_list = sql.get_all_chat_notes(chat_id)
     notes = len(note_list) + 1
-    msg = "Get note by `/notenumber` or `#notename` \n\n  *ID*    *Note* \n"
-    msg_pm = f"*Notes from {update.effective_chat.title}* \nGet note by `/notenumber` or `#notename` in group \n\n  *ID*    *Note* \n"
+    msg = f"{ALKL}Get note by `/notenumber` or `#notename` \n\n  *ID*    *Note* \n"
+    msg_pm = f"{ALKL}*Notes from {update.effective_chat.title}* \nGet note by `/notenumber` or `#notename` in group \n\n  *ID*    *Note* \n"
     for note_id, note in zip(range(1, notes), note_list):
         if note_id < 10:
             note_name = f"{note_id:2}.  `{(note.name.lower())}`\n"
@@ -416,9 +416,9 @@ def list_notes(update: Update, context: CallbackContext):
 
     if not note_list:
         try:
-            update.effective_message.reply_text("No notes in this chat!")
+            update.effective_message.reply_text(f"{ALKL}No notes in this chat!")
         except BadRequest:
-            update.effective_message.reply_text("No notes in this chat!", quote=False)
+            update.effective_message.reply_text(f"{ALKL}No notes in this chat!", quote=False)
 
     elif len(msg) != 0:
         setting = getprivatenotes(chat_id)
@@ -541,7 +541,7 @@ def __import_data__(chat_id, data):
 
 
 def __stats__():
-    return f"• {sql.num_notes()} notes, across {sql.num_chats()} chats."
+    return f"{ALKL}• {sql.num_notes()} notes, across {sql.num_chats()} chats."
 
 
 def __migrate__(old_chat_id, new_chat_id):
@@ -550,7 +550,7 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     notes = sql.get_all_chat_notes(chat_id)
-    return f"There are `{len(notes)}` notes in this chat."
+    return f"{ALKL}There are `{len(notes)}` notes in this chat."
 
 
 __help__ = f"""{ALKL}
