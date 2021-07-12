@@ -19,6 +19,8 @@ from ᴋʟᴀx.log_channel import loggable
 from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message
 
 
+__mod_name__ = "🛡 ᴀᴅᴍɪɴꜱ"
+
 @connection_status
 @bot_admin
 @can_promote
@@ -500,7 +502,7 @@ dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
 
-__mod_name__ = "Admin"
+
 __command_list__ = [
     "adminlist",
     "admins",

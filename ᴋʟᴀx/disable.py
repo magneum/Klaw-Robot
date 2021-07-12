@@ -4,9 +4,10 @@ from ӄʟǟաʀօɮօȶ import dispatcher
 from ꜰᴜɴᴄᴘᴏᴅ.handlers import CMD_STARTERS, SpamChecker
 from ꜰᴜɴᴄᴘᴏᴅ.misc import is_module_loaded
 
+__mod_name__ = "❌ ᴅɪꜱᴀʙʟᴇ ᴍᴏᴅᴜʟᴇ"
+
 
 FILENAME = __name__.rsplit(".", 1)[-1]
-
 # If module is due to be loaded, then setup all the magical handlers
 if is_module_loaded(FILENAME):
 
@@ -332,7 +333,7 @@ if is_module_loaded(FILENAME):
     • `/listcmds`*:* list all possible toggleable commands
     """
 
-    __mod_name__ = "Disable Module"
+    
 
 else:
     DisableAbleCommandHandler = CommandHandler

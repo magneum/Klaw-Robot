@@ -6,7 +6,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin
 from ꜰᴜɴᴄᴘᴏᴅ.string_handling import markdown_parser
 
 
-
+__mod_name__ = "📠 ʀᴜʟᴇꜱ"
 
 def get_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
@@ -127,7 +127,7 @@ __help__ = f"""{ALKL}
  • `/clearrules`*:* clear the rules for this chat.
 """
 
-__mod_name__ = "Rules"
+
 
 GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.chat_type.groups, run_async=True)
 SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.chat_type.groups, run_async=True)

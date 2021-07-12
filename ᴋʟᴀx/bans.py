@@ -24,6 +24,8 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import extract_time
 from ᴋʟᴀx.log_channel import gloggable, loggable
 
 
+__mod_name__ = "🚩 ʙᴀɴꜱ"
+
 @connection_status
 @bot_admin
 @can_restrict
@@ -400,7 +402,7 @@ dispatcher.add_handler(UNBAN_HANDLER)
 dispatcher.add_handler(ROAR_HANDLER)
 dispatcher.add_handler(PUNCHME_HANDLER)
 
-__mod_name__ = "Bans"
+
 __handlers__ = [
     BAN_HANDLER,
     TEMPBAN_HANDLER,

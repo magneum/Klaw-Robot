@@ -5,11 +5,11 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin, user_not_admin
 from ᴋʟᴀx.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ import reporting_sql as sql
 
+__mod_name__ = "⚔️ ʀᴇᴘᴏʀᴛꜱ"
+
 
 REPORT_GROUP = 12
 REPORT_IMMUNE_USERS = KLAW_LINGS
-
-
 @user_admin
 def report_setting(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -273,7 +273,7 @@ dispatcher.add_handler(SETTING_HANDLER)
 dispatcher.add_handler(REPORT_HANDLER, REPORT_GROUP)
 dispatcher.add_handler(ADMIN_REPORT_HANDLER, REPORT_GROUP)
 
-__mod_name__ = "Reporting"
+
 __handlers__ = [
     (REPORT_HANDLER, REPORT_GROUP),
     (ADMIN_REPORT_HANDLER, REPORT_GROUP),

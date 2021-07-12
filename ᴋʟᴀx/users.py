@@ -5,11 +5,11 @@ from ӄʟǟաʀօɮօȶ import DEV_USERS, LOGS, OWNER_ID, dispatcher
 from ꜰᴜɴᴄᴘᴏᴅ.chat_status import dev_plus, sudo_plus
 from ᴋʟᴀx_ʙᴀꜱᴇ.users_sql import get_all_users
 
+__mod_name__ = "👨‍👨‍👦 ᴜꜱᴇʀꜱ"
+
 USERS_GROUP = 4
 CHAT_GROUP = 5
 DEV_AND_MORE = DEV_USERS.append(int(OWNER_ID))
-
-
 def get_user_id(username):
     # ensure valid userid
     if len(username) <= 5:
@@ -176,5 +176,5 @@ dispatcher.add_handler(BROADCAST_HANDLER)
 dispatcher.add_handler(CHATLIST_HANDLER)
 dispatcher.add_handler(CHAT_CHECKER_HANDLER, CHAT_GROUP)
 
-__mod_name__ = "Users"
+
 __handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER, CHATLIST_HANDLER]

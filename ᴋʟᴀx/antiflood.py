@@ -14,9 +14,9 @@ from ᴋʟᴀx.connection import connected
 from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
 
+__mod_name__ = "🌡 ᴀɴᴛɪꜰʟᴏᴏᴅ"
+
 FLOOD_GROUP = 3
-
-
 @loggable
 def check_flood(update: Update, context: CallbackContext) -> str:
     user = update.effective_user 
@@ -390,7 +390,7 @@ will result in restricting that user.
  `1w` = 1 week
  """
 
-__mod_name__ = "Anti-Flood"
+
 
 FLOOD_BAN_HANDLER = MessageHandler(Filters.all & ~Filters.status_update & Filters.chat_type.groups, check_flood, run_async=True)
 SET_FLOOD_HANDLER = CommandHandler("setflood", set_flood, filters=Filters.chat_type.groups, run_async=True)

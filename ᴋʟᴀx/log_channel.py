@@ -2,8 +2,9 @@ from Import import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
 from ꜰᴜɴᴄᴘᴏᴅ.misc import is_module_loaded
 
-FILENAME = __name__.rsplit(".", 1)[-1]
+__mod_name__ = "📓ʟᴏɢ ᴄʜᴀɴɴᴇʟ"
 
+FILENAME = __name__.rsplit(".", 1)[-1]
 if is_module_loaded(FILENAME):
     from telegram import ParseMode, Update
     from telegram.error import BadRequest, Unauthorized
@@ -200,7 +201,7 @@ Setting the log channel is done by:
 • forwarding the `/setlog` to the group
 """
 
-    __mod_name__ = "Log Channels"
+    
 
     LOG_HANDLER = CommandHandler("logchannel", logging, run_async=True)
     SET_LOG_HANDLER = CommandHandler("setlog", setlog, run_async=True)

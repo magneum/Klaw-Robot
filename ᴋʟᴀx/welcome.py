@@ -9,9 +9,10 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import escape_invalid_curly_brackets,m
 from ᴋʟᴀx.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ.global_bans_sql import is_user_gbanned
 
+__mod_name__ = "📟 ᴡᴇʟᴄᴏᴍᴇ"
+
 
 VALID_WELCOME_FORMATTERS = ["first","last","fullname","username","id","count","chatname","mention",]
-
 ENUM_FUNC_MAP = {
     sql.Types.TEXT.value: dispatcher.bot.send_message,
     sql.Types.BUTTON_TEXT.value: dispatcher.bot.send_message,
@@ -22,10 +23,7 @@ ENUM_FUNC_MAP = {
     sql.Types.VOICE.value: dispatcher.bot.send_voice,
     sql.Types.VIDEO.value: dispatcher.bot.send_video,
 }
-
 VERIFIED_USER_WAITLIST = {}
-
-
 def send(update, message, keyboard, backup_message):
     chat = update.effective_chat
     cleanserv = sql.clean_service(chat.id)
@@ -1036,7 +1034,7 @@ dispatcher.add_handler(CLEAN_SERVICE_HANDLER)
 dispatcher.add_handler(BUTTON_VERIFY_HANDLER)
 dispatcher.add_handler(WELCOME_MUTE_HELP)
 
-__mod_name__ = "Welcome"
+
 __command_list__ = []
 __handlers__ = [NEW_MEM_HANDLER,LEFT_MEM_HANDLER,WELC_PREF_HANDLER,GOODBYE_PREF_HANDLER,SET_WELCOME,SET_GOODBYE,RESET_WELCOME,
 RESET_GOODBYE,CLEAN_WELCOME,WELCOME_HELP,WELCOMEMUTE_HANDLER,CLEAN_SERVICE_HANDLER,BUTTON_VERIFY_HANDLER,WELCOME_MUTE_HELP]

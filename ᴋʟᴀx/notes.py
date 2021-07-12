@@ -14,6 +14,9 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import (
 from ᴋʟᴀx.private_notes import getprivatenotes
 
 
+__mod_name__ = "📜 ɴᴏᴛᴇꜱ"
+
+
 FILE_MATCHER = re.compile(r"^###file_id(!photo)?###:(.*?)(?:\s|$)")
 STICKER_MATCHER = re.compile(r"^###sticker(!photo)?###:")
 BUTTON_MATCHER = re.compile(r"^###button(!photo)?###:(.*?)(?:\s|$)")
@@ -23,7 +26,6 @@ MYAUDIO_MATCHER = re.compile(r"^###audio(!photo)?###:")
 MYVOICE_MATCHER = re.compile(r"^###voice(!photo)?###:")
 MYVIDEO_MATCHER = re.compile(r"^###video(!photo)?###:")
 MYVIDEONOTE_MATCHER = re.compile(r"^###video_note(!photo)?###:")
-
 ENUM_FUNC_MAP = {
     sql.Types.TEXT.value: dispatcher.bot.send_message,
     sql.Types.BUTTON_TEXT.value: dispatcher.bot.send_message,
@@ -34,9 +36,6 @@ ENUM_FUNC_MAP = {
     sql.Types.VOICE.value: dispatcher.bot.send_voice,
     sql.Types.VIDEO.value: dispatcher.bot.send_video,
 }
-
-
-# Do not async
 def get(update: Update, context: CallbackContext, notename, show_none=True, no_format=False):
     bot = context.bot
     user = update.effective_user
@@ -581,7 +580,7 @@ A button can be added to a note by using standard markdown link syntax - the lin
  • `/privatenotes <on/yes/1/off/no/0>`: enable or disable private notes in chat
 """
 
-__mod_name__ = "Notes"
+
 
 GET_HANDLER = CommandHandler("get", cmd_get, run_async=True)
 HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get, run_async=True)

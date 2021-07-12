@@ -7,7 +7,7 @@ import ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql as sql
 from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin
 from ᴋʟᴀx.log_channel import loggable
 
-
+__mod_name__ = "🔑 ᴀᴘᴘʀᴏᴠᴀʟꜱ"
 
 @loggable
 @user_admin
@@ -217,6 +217,6 @@ dispatcher.add_handler(APPROVAL)
 dispatcher.add_handler(UNAPPROVEALL)
 dispatcher.add_handler(UNAPPROVEALL_BTN)
 
-__mod_name__ = "Approvals"
+
 __command_list__ = ["approve", "unapprove", "approved", "approval"]
 __handlers__ = [APPROVE, DISAPPROVE, APPROVED, APPROVAL]

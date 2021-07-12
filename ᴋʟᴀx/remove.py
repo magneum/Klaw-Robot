@@ -4,6 +4,8 @@ from Import import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+__mod_name__ = "🧴 ᴘᴜʀɢᴇ"
+
 run_async
 @user_admin
 def purge(update: Update, context: CallbackContext):
@@ -59,7 +61,7 @@ def purge(update: Update, context: CallbackContext):
 
 
 
-__mod_name__ = "Purge"
+
 
 PURGE_HANDLER = CommandHandler("purge", purge, filters=Filters.chat_type.groups, pass_args=True)
 dispatcher.add_handler(PURGE_HANDLER)

@@ -15,7 +15,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.extraction import (
 from ꜰᴜɴᴄᴘᴏᴅ.string_handling import extract_time
 from ᴋʟᴀx.log_channel import loggable
 
-
+__mod_name__ = "🔇 ᴍᴜᴛɪɴɢ"
 
 def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
     if not user_id:
@@ -253,5 +253,5 @@ dispatcher.add_handler(MUTE_HANDLER)
 dispatcher.add_handler(UNMUTE_HANDLER)
 dispatcher.add_handler(TEMPMUTE_HANDLER)
 
-__mod_name__ = "Muting"
+
 __handlers__ = [MUTE_HANDLER, UNMUTE_HANDLER, TEMPMUTE_HANDLER]

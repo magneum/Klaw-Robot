@@ -5,7 +5,7 @@ from ӄʟǟաʀօɮօȶ import dispatcher, KLAW_LINGS, DEV_USERS
 from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin
 from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
 
-
+__mod_name__ = "🌏 ᴄᴏɴɴᴇᴄᴛ"
 
 run_async
 @user_admin
@@ -378,7 +378,7 @@ def connect_button(update, context):
         connect_chat(update, context)
 
 
-__mod_name__ = "Connection"
+
 
 __help__ = f"""{ALKL}
 Sometimes, you just want to add some notes and filters to a group chat, but you don't want everyone to see; This is where connections come in...

@@ -13,9 +13,9 @@ from ᴋʟᴀx.connection import connected
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
 from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
 
+__mod_name__ = "🏴‍☠️ ʙʟᴀᴄᴋʟɪꜱᴛꜱ"
+
 BLACKLIST_GROUP = 11
-
-
 @user_admin
 def blacklist(update: Update, context: CallbackContext):
     chat = update.effective_chat
@@ -435,7 +435,7 @@ def __stats__():
     )
 
 
-__mod_name__ = "Blacklists"
+
 
 __help__ = f"""{ALKL}
 
@@ -471,7 +471,7 @@ BLACKLISTMODE_HANDLER = CommandHandler("blacklistmode", blacklist_mode, run_asyn
 BLACKLIST_DEL_HANDLER = MessageHandler(
     (Filters.text | Filters.command | Filters.sticker | Filters.photo) & Filters.chat_type.groups,
     del_blacklist,
-    #allow_edit=True,
+    allow_edit=True,
     run_async=True,
 )
 

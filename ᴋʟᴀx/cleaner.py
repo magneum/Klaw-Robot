@@ -10,8 +10,9 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
 )
 from ᴋʟᴀx_ʙᴀꜱᴇ import cleaner_sql as sql
 
+__mod_name__ = "⌨️ ʙʟᴜᴇᴛᴇxᴛ"
 
-CMD_STARTERS = ("/", "!") if ALLOW_EXCL else "/"
+CMD_STARTERS = ("/") 
 BLUE_TEXT_CLEAN_GROUP = 13
 CommandHandlerList = (CommandHandler, CustomCommandHandler, DisableAbleCommandHandler)
 command_list = [
@@ -240,7 +241,7 @@ dispatcher.add_handler(REMOVE_CLEAN_BLUE_TEXT_GLOBAL_HANDLER)
 dispatcher.add_handler(LIST_CLEAN_BLUE_TEXT_HANDLER)
 dispatcher.add_handler(CLEAN_BLUE_TEXT_HANDLER, BLUE_TEXT_CLEAN_GROUP)
 
-__mod_name__ = "Bluetext Cleaning"
+
 __handlers__ = [
     SET_CLEAN_BLUE_TEXT_HANDLER,
     ADD_CLEAN_BLUE_TEXT_HANDLER,

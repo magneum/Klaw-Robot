@@ -11,6 +11,7 @@ from ᴋʟᴀx_ʙᴀꜱᴇ import disable_sql as disabledsql
 import ᴋʟᴀx_ʙᴀꜱᴇ.locks_sql as locksql
 from ᴋʟᴀx.connection import connected
 
+__mod_name__ = "✉️ ʙᴀᴄᴋᴜᴘꜱ"
 
 @user_admin
 def import_data(update: Update, context: CallbackContext):
@@ -324,7 +325,7 @@ def get_chat(chat_id, chat_data):
         return {"status": False, "value": False}
 
 
-__mod_name__ = "Backups"
+
 
 __help__ = f"""{ALKL}
 *Only for group owner:*

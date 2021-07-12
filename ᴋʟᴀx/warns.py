@@ -22,11 +22,11 @@ from ᴋʟᴀx.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ import warns_sql as sql
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
 
+__mod_name__ = "🗯 ᴡᴀʀɴɪɴɢꜱ"
+
+
 WARN_HANDLER_GROUP = 9
 CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
-
-
-# Not async
 def warn(
     user: User, chat: Chat, reason: str, message: Message, warner: User = None
 ) -> str:
@@ -465,7 +465,7 @@ be a sentence, encompass it with quotes, as such: `/addwarn "very angry" This is
  • `/strongwarn <on/yes/off/no>`*:* If set to on, exceeding the warn limit will result in a ban. Else, will just punch.
 """
 
-__mod_name__ = "Warnings"
+
 
 WARN_HANDLER = CommandHandler(["warn", "dwarn"], warn_user, filters=Filters.chat_type.groups, run_async=True)
 RESET_WARN_HANDLER = CommandHandler(

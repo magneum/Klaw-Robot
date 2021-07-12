@@ -4,7 +4,7 @@ from ᴋʟᴀx.disable import DisableAbleCommandHandler
 from ӄʟǟաʀօɮօȶ import dispatcher
 from ꜰᴜɴᴄᴘᴏᴅ.extraction import extract_user
 
-
+__mod_name__ = "🖍 ᴍᴀʀᴋᴅᴏᴡɴ"
 
 
 MARKDOWN_HELP = f"""{ALKL}
@@ -89,6 +89,6 @@ dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 
 
-__mod_name__ = "ID"
+
 __command_list__ = ["id", "markdownhelp"]
 __handlers__ = [ID_HANDLER,  MD_HELP_HANDLER]

@@ -16,13 +16,14 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import (
 )
 from ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql import get_clearcmd
 from ᴋʟᴀx_ʙᴀꜱᴇ import cust_filters_sql as sql
-
 from ᴋʟᴀx.connection import connected
-
 from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
 
-HANDLER_GROUP = 10
 
+__mod_name__ = "♨️ ꜰɪʟᴛᴇʀ"
+
+
+HANDLER_GROUP = 10
 ENUM_FUNC_MAP = {
     sql.Types.TEXT.value: dispatcher.bot.send_message,
     sql.Types.BUTTON_TEXT.value: dispatcher.bot.send_message,
@@ -34,9 +35,6 @@ ENUM_FUNC_MAP = {
     sql.Types.VIDEO.value: dispatcher.bot.send_video,
     # sql.Types.VIDEO_NOTE.value: dispatcher.bot.send_video_note
 }
-
-
-
 def list_handlers(update: Update, context: CallbackContext):
     chat = update.effective_chat
     user = update.effective_user
@@ -589,7 +587,7 @@ Check `/markdownhelp` to know more!
 
 """
 
-__mod_name__ = "Filters"
+
 
 FILTER_HANDLER = CommandHandler("filter", filters)
 STOP_HANDLER = CommandHandler("stop", stop_filter)
