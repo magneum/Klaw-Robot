@@ -15,7 +15,7 @@ KLAW_MORE = """—🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—
 Here Are All the information buttons you will ever need.
  
  🦞DΣV MΣПƬIӨП:
-💻 @hypevoidsoul | @hypevoidbot  
+💻 @Krakinz | @KrakinzBot  
 —🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—"""
 ӄʟǟաʀօɮօȶ_IMG = "https://telegra.ph/file/db6ac942f61ad65202405.mp4"
 DEF_COUNT = 1
@@ -26,7 +26,7 @@ INSERTION_FLOOD_SETTINGS_LOCK = threading.RLock()
 CHAT_FLOOD = {}
 IMPORTED = {}
 MIGRATEABLE = []
-PSYCO = "@hypevoidsoul | @hypevoidbot"
+PSYCO = "@Krakinz | @KrakinzBot"
 HELPABLE = {}
 STATS = []
 USER_INFO = []

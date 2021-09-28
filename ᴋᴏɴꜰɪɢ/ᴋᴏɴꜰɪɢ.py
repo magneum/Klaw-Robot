@@ -15,7 +15,7 @@ class ӄօռʟӼ(object):
     SQLALCHEMY_DATABASE_URI=os.environ.get("SQLALCHEMY_DATABASE_URI", None)
     LOGGER=True
     OWNER_ID=1836310130  
-    OWNER_USERNAME="@HypeVoidSoul"
+    OWNER_USERNAME="@Krakinz"
     SUPPORT_CHAT = "HypeVoids"  
     ALLOW_CHATS = True
     DEV_USERS = [1836310130]
