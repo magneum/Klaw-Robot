@@ -77,7 +77,7 @@ def start(update: Update, context: CallbackContext):
                     url=f"https://t.me/Krakns",),
         InlineKeyboardButton(
                     text="💻 ΉYPΣ VӨID LΛB",
-                    url=f"https://t.me/hypevoidlab",),]]))
+                    url=f"https://t.me/KrakinzLab",),]]))
     else:
         update.effective_message.reply_animation(ӄʟǟաʀօɮօȶ_IMG)
         update.effective_message.reply_text(IGNIT_KLAW.format(uptime),
