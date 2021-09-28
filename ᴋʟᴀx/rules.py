@@ -8,15 +8,16 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import markdown_parser
 
 __mod_name__ = "📠 ʀᴜʟᴇꜱ"
 
+
 def get_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     send_rules(update, chat_id)
 
 
-# Do not async - not from a handler
+
 def send_rules(update, chat_id, from_pm=False):
     bot = dispatcher.bot
-    user = update.effective_user  # type: Optional[User]
+    user = update.effective_user 
     reply_msg = update.message.reply_to_message
     try:
         chat = bot.get_chat(chat_id)
@@ -82,16 +83,19 @@ def set_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     msg = update.effective_message  # type: Optional[Message]
     raw_text = msg.text
-    args = raw_text.split(None, 1)  # use python's maxsplit to separate cmd and args
+    # use python's maxsplit to separate cmd and args
+    args = raw_text.split(None, 1)
     if len(args) == 2:
         txt = args[1]
-        offset = len(txt) - len(raw_text)  # set correct offset relative to command
+        # set correct offset relative to command
+        offset = len(txt) - len(raw_text)
         markdown_rules = markdown_parser(
             txt, entities=msg.parse_entities(), offset=offset
         )
 
         sql.set_rules(chat_id, markdown_rules)
-        update.effective_message.reply_text(f"{ALKL}Successfully set rules for this group.")
+        update.effective_message.reply_text(
+            f"{ALKL}Successfully set rules for this group.")
 
 
 @user_admin
@@ -128,10 +132,12 @@ __help__ = f"""{ALKL}
 """
 
 
-
-GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.chat_type.groups, run_async=True)
-SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.chat_type.groups, run_async=True)
-RESET_RULES_HANDLER = CommandHandler("clearrules", clear_rules, filters=Filters.chat_type.groups, run_async=True)
+GET_RULES_HANDLER = CommandHandler(
+    "rules", get_rules, filters=Filters.chat_type.groups, run_async=True)
+SET_RULES_HANDLER = CommandHandler(
+    "setrules", set_rules, filters=Filters.chat_type.groups, run_async=True)
+RESET_RULES_HANDLER = CommandHandler(
+    "clearrules", clear_rules, filters=Filters.chat_type.groups, run_async=True)
 
 dispatcher.add_handler(GET_RULES_HANDLER)
 dispatcher.add_handler(SET_RULES_HANDLER)

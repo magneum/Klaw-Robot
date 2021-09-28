@@ -78,13 +78,12 @@ class FedSubs(BASE):
     def __repr__(self):
         return "<Fed {} subscribes for {}>".format(self.fed_id, self.fed_subs)
 
+
 Federations.__table__.create(checkfirst=True)
 ChatF.__table__.create(checkfirst=True)
 BansF.__table__.create(checkfirst=True)
 FedsUserSettings.__table__.create(checkfirst=True)
 FedSubs.__table__.create(checkfirst=True)
-
-
 
 
 def get_fed_info(fed_id):
@@ -279,7 +278,8 @@ def chat_join_fed(fed_id, chat_name, chat_id):
         global FEDERATION_CHATS, FEDERATION_CHATS_BYID
         r = ChatF(chat_id, chat_name, fed_id)
         SESSION.add(r)
-        FEDERATION_CHATS[str(chat_id)] = {"chat_name": chat_name, "fid": fed_id}
+        FEDERATION_CHATS[str(chat_id)] = {
+            "chat_name": chat_name, "fid": fed_id}
         checkid = FEDERATION_CHATS_BYID.get(fed_id)
         if checkid is None:
             FEDERATION_CHATS_BYID[fed_id] = []
@@ -317,7 +317,8 @@ def user_demote_fed(fed_id, user_id):
         fed_log = getfed["flog"]
         # Temp set
         try:
-            members = ast.literal_eval(ast.literal_eval(getfed["fusers"])["members"])
+            members = ast.literal_eval(
+                ast.literal_eval(getfed["fusers"])["members"])
         except ValueError:
             return False
         members.remove(user_id)
@@ -367,7 +368,8 @@ def user_join_fed(fed_id, user_id):
         fed_rules = getfed["frules"]
         fed_log = getfed["flog"]
         # Temp set
-        members = ast.literal_eval(ast.literal_eval(getfed["fusers"])["members"])
+        members = ast.literal_eval(
+            ast.literal_eval(getfed["fusers"])["members"])
         members.append(user_id)
         # Set user
         FEDERATION_BYOWNER[str(owner_id)]["fusers"] = str(
@@ -428,8 +430,10 @@ def all_fed_users(fed_id):
         getfed = FEDERATION_BYFEDID.get(str(fed_id))
         if getfed is None:
             return False
-        fed_owner = ast.literal_eval(ast.literal_eval(getfed["fusers"])["owner"])
-        fed_admins = ast.literal_eval(ast.literal_eval(getfed["fusers"])["members"])
+        fed_owner = ast.literal_eval(
+            ast.literal_eval(getfed["fusers"])["owner"])
+        fed_admins = ast.literal_eval(
+            ast.literal_eval(getfed["fusers"])["members"])
         fed_admins.append(fed_owner)
         return fed_admins
 
@@ -437,7 +441,8 @@ def all_fed_users(fed_id):
 def all_fed_members(fed_id):
     with FEDS_LOCK:
         getfed = FEDERATION_BYFEDID.get(str(fed_id))
-        fed_admins = ast.literal_eval(ast.literal_eval(getfed["fusers"])["members"])
+        fed_admins = ast.literal_eval(
+            ast.literal_eval(getfed["fusers"])["members"])
         return fed_admins
 
 
@@ -457,7 +462,8 @@ def set_frules(fed_id, rules):
         FEDERATION_BYNAME[fed_name]["frules"] = fed_rules
         # Set on database
         fed = Federations(
-            str(owner_id), fed_name, str(fed_id), fed_rules, fed_log, str(fed_members)
+            str(owner_id), fed_name, str(
+                fed_id), fed_rules, fed_log, str(fed_members)
         )
         SESSION.merge(fed)
         SESSION.commit()
@@ -686,7 +692,8 @@ def set_fed_log(fed_id, chat_id):
         FEDERATION_BYNAME[fed_name]["flog"] = fed_log
         # Set on database
         fed = Federations(
-            str(owner_id), fed_name, str(fed_id), fed_rules, fed_log, str(fed_members)
+            str(owner_id), fed_name, str(
+                fed_id), fed_rules, fed_log, str(fed_members)
         )
         SESSION.merge(fed)
         SESSION.commit()
@@ -704,7 +711,7 @@ def subs_fed(fed_id, my_fed):
         SESSION.merge(subsfed)  # merge to avoid duplicate key issues
         SESSION.commit()
         global FEDS_SUBSCRIBER, MYFEDS_SUBSCRIBER
-        #Temporary Data For Subbed Feds
+        # Temporary Data For Subbed Feds
         if FEDS_SUBSCRIBER.get(fed_id, set()) == set():
             FEDS_SUBSCRIBER[fed_id] = {my_fed}
         else:
@@ -806,7 +813,8 @@ def __load_all_feds_chats():
             check = FEDERATION_CHATS.get(x.chat_id)
             if check is None:
                 FEDERATION_CHATS[x.chat_id] = {}
-            FEDERATION_CHATS[x.chat_id] = {"chat_name": x.chat_name, "fid": x.fed_id}
+            FEDERATION_CHATS[x.chat_id] = {
+                "chat_name": x.chat_name, "fid": x.fed_id}
             # Federation Chats By ID
             check = FEDERATION_CHATS_BYID.get(x.fed_id)
             if check is None:

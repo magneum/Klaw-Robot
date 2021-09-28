@@ -1,6 +1,7 @@
 from Import import *
 from ӄʟǟաʀօɮօȶ import dispatcher, DEV_USERS, OWNER_ID
 
+
 class ErrorsDict(dict):
     "A custom dict to store errors and their count"
 
@@ -10,7 +11,8 @@ class ErrorsDict(dict):
 
     def __contains__(self, error):
         self.raw.append(error)
-        error.identifier = "".join(random.choices("ABCDEFGHIJKLMNOPQRSTUVWXYZ", k=5))
+        error.identifier = "".join(random.choices(
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ", k=5))
         for e in self:
             if type(e) is type(error) and e.args == error.args:
                 self[e] += 1
@@ -82,7 +84,8 @@ def error_callback(update: Update, context: CallbackContext):
     context.bot.send_message(
         OWNER_ID,
         text=f"#{context.error.identifier}\n<b>An unknown error occured:</b>\n<code>{e}</code>",
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Nekobin", url=url)]]),
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Nekobin", url=url)]]),
         parse_mode="html",
     )
 

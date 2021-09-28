@@ -2,8 +2,7 @@ from Import import *
 from ꜰᴜɴᴄᴘᴏᴅ.msg_types import Types
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
 from ᴍᴇᴍᴏɪʀᴇ import *
-from ꜱᴀʏᴏɴᴀʀᴀ import * 
-
+from ꜱᴀʏᴏɴᴀʀᴀ import *
 
 
 class Welcome(BASE):
@@ -18,7 +17,8 @@ class Welcome(BASE):
     )
     welcome_type = Column(Integer, default=Types.TEXT.value)
 
-    custom_leave = Column(UnicodeText, default=random.choice(DEFAULT_GOODBYE_MESSAGES))
+    custom_leave = Column(
+        UnicodeText, default=random.choice(DEFAULT_GOODBYE_MESSAGES))
     leave_type = Column(Integer, default=Types.TEXT.value)
 
     clean_welcome = Column(BigInteger)
@@ -106,8 +106,6 @@ WelcomeMuteUsers.__table__.create(checkfirst=True)
 CleanServiceSetting.__table__.create(checkfirst=True)
 
 
-
-
 def welcome_mutes(chat_id):
     try:
         welcomemutes = SESSION.query(WelcomeMute).get(str(chat_id))
@@ -130,7 +128,8 @@ def set_welcome_mutes(chat_id, welcomemutes):
 
 def set_human_checks(user_id, chat_id):
     with INSERTION_LOCK:
-        human_check = SESSION.query(WelcomeMuteUsers).get((user_id, str(chat_id)))
+        human_check = SESSION.query(
+            WelcomeMuteUsers).get((user_id, str(chat_id)))
         if not human_check:
             human_check = WelcomeMuteUsers(user_id, str(chat_id), True)
 
@@ -145,7 +144,8 @@ def set_human_checks(user_id, chat_id):
 
 def get_human_checks(user_id, chat_id):
     try:
-        human_check = SESSION.query(WelcomeMuteUsers).get((user_id, str(chat_id)))
+        human_check = SESSION.query(
+            WelcomeMuteUsers).get((user_id, str(chat_id)))
         if not human_check:
             return None
         human_check = human_check.human_check

@@ -115,7 +115,8 @@ if is_module_loaded(FILENAME):
             )
 
         else:
-            message.reply_text(f"{ALKL}No log channel has been set for this group!")
+            message.reply_text(
+                f"{ALKL}No log channel has been set for this group!")
 
     @user_admin
     def setlog(update: Update, context: CallbackContext):
@@ -146,7 +147,8 @@ if is_module_loaded(FILENAME):
                 )
             except Unauthorized as excp:
                 if excp.message == "Forbidden: bot is not a member of the channel chat":
-                    bot.send_message(chat.id, f"{ALKL}Successfully set log channel!")
+                    bot.send_message(
+                        chat.id, f"{ALKL}Successfully set log channel!")
                 else:
                     LOGS.exception("ERROR in setting the log channel.")
 
@@ -200,8 +202,6 @@ Setting the log channel is done by:
 🦀 •sending `/setlog` in the channel
 🦀 •forwarding the `/setlog` to the group
 """
-
-    
 
     LOG_HANDLER = CommandHandler("logchannel", logging, run_async=True)
     SET_LOG_HANDLER = CommandHandler("setlog", setlog, run_async=True)

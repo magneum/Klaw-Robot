@@ -10,8 +10,9 @@ __mod_name__ = "👨‍👨‍👦 ᴜꜱᴇʀꜱ"
 USERS_GROUP = 4
 CHAT_GROUP = 5
 DEV_AND_MORE = DEV_USERS.append(int(OWNER_ID))
+
+
 def get_user_id(username):
-    # ensure valid userid
     if len(username) <= 5:
         return None
 
@@ -92,7 +93,8 @@ def log_user(update: Update, context: CallbackContext):
     chat = update.effective_chat
     msg = update.effective_message
 
-    sql.update_user(msg.from_user.id, msg.from_user.username, chat.id, chat.title)
+    sql.update_user(msg.from_user.id, msg.from_user.username,
+                    chat.id, chat.title)
 
     if msg.reply_to_message:
         sql.update_user(
@@ -167,9 +169,12 @@ __help__ = ""  # no help string
 BROADCAST_HANDLER = CommandHandler(
     ["broadcastall", "broadcastusers", "broadcastgroups"], broadcast, run_async=True
 )
-USER_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, log_user, run_async=True)
-CHAT_CHECKER_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, chat_checker, run_async=True)
-CHATLIST_HANDLER = CommandHandler(["groups", "chatlist"], chats, run_async=True)
+USER_HANDLER = MessageHandler(
+    Filters.all & Filters.chat_type.groups, log_user, run_async=True)
+CHAT_CHECKER_HANDLER = MessageHandler(
+    Filters.all & Filters.chat_type.groups, chat_checker, run_async=True)
+CHATLIST_HANDLER = CommandHandler(
+    ["groups", "chatlist"], chats, run_async=True)
 
 dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
 dispatcher.add_handler(BROADCAST_HANDLER)
@@ -177,4 +182,5 @@ dispatcher.add_handler(CHATLIST_HANDLER)
 dispatcher.add_handler(CHAT_CHECKER_HANDLER, CHAT_GROUP)
 
 
-__handlers__ = [(USER_HANDLER, USERS_GROUP), BROADCAST_HANDLER, CHATLIST_HANDLER]
+__handlers__ = [(USER_HANDLER, USERS_GROUP),
+                BROADCAST_HANDLER, CHATLIST_HANDLER]

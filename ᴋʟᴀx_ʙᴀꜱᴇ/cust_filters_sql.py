@@ -3,6 +3,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.msg_types import Types
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+
 class CustomFilters(BASE):
     __tablename__ = "cust_filters"
     chat_id = Column(String(14), primary_key=True)
@@ -108,8 +109,6 @@ class Buttons(BASE):
 
 CustomFilters.__table__.create(checkfirst=True)
 Buttons.__table__.create(checkfirst=True)
-
-
 
 
 def get_all_filters():
@@ -379,7 +378,8 @@ def migrate_chat(old_chat_id, new_chat_id):
 
         with BUTTON_LOCK:
             chat_buttons = (
-                SESSION.query(Buttons).filter(Buttons.chat_id == str(old_chat_id)).all()
+                SESSION.query(Buttons).filter(
+                    Buttons.chat_id == str(old_chat_id)).all()
             )
             for btn in chat_buttons:
                 btn.chat_id = str(new_chat_id)

@@ -27,17 +27,18 @@ def privatenotes(update: Update, context: CallbackContext):
         elif val in ["on", "yes", "1", "enable", "true"]:
             setprivatenotes(chat.id, True)
             msg = f"Private notes has been enabled in *{chat.title}*"
-        else: 
+        else:
             msg = "Sorry, wrong value"
 
     message.reply_text(
-        text = msg,
-        parse_mode = ParseMode.MARKDOWN
+        text=msg,
+        parse_mode=ParseMode.MARKDOWN
     )
+
 
 def setprivatenotes(chat_id, setting):
     sql.set_private_notes(chat_id, setting)
-            
+
 
 def getprivatenotes(chat_id):
     setting = sql.get_private_notes(chat_id)
@@ -48,6 +49,7 @@ def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
 
-PRIVATENOTES_HANDLER = CommandHandler("privatenotes", privatenotes, run_async=True)
+PRIVATENOTES_HANDLER = CommandHandler(
+    "privatenotes", privatenotes, run_async=True)
 
 dispatcher.add_handler(PRIVATENOTES_HANDLER)

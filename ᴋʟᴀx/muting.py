@@ -17,6 +17,7 @@ from ᴋʟᴀx.log_channel import loggable
 
 __mod_name__ = "🔇 ᴍᴜᴛɪɴɢ"
 
+
 def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
     if not user_id:
         reply = f"{ALKL}You don't seem to be referring to a user or the ID specified is incorrect.."
@@ -118,7 +119,8 @@ def unmute(update: Update, context: CallbackContext) -> str:
             and member.can_send_other_messages
             and member.can_add_web_page_previews
         ):
-            message.reply_text(f"{ALKL}This user already has the right to speak.")
+            message.reply_text(
+                f"{ALKL}This user already has the right to speak.")
         else:
             chat_permissions = ChatPermissions(
                 can_send_messages=True,
@@ -131,7 +133,8 @@ def unmute(update: Update, context: CallbackContext) -> str:
                 can_add_web_page_previews=True,
             )
             try:
-                bot.restrict_chat_member(chat.id, int(user_id), chat_permissions)
+                bot.restrict_chat_member(
+                    chat.id, int(user_id), chat_permissions)
             except BadRequest:
                 pass
             bot.sendMessage(
@@ -175,7 +178,8 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
     member = chat.get_member(user_id)
 
     if not reason:
-        message.reply_text(f"{ALKL}You haven't specified a time to mute this user for!")
+        message.reply_text(
+            f"{ALKL}You haven't specified a time to mute this user for!")
         return ""
 
     split_reason = reason.split(None, 1)
@@ -247,7 +251,8 @@ __help__ = f"""{ALKL}
 
 MUTE_HANDLER = CommandHandler("mute", mute, run_async=True)
 UNMUTE_HANDLER = CommandHandler("unmute", unmute, run_async=True)
-TEMPMUTE_HANDLER = CommandHandler(["tmute", "tempmute"], temp_mute, run_async=True)
+TEMPMUTE_HANDLER = CommandHandler(
+    ["tmute", "tempmute"], temp_mute, run_async=True)
 
 dispatcher.add_handler(MUTE_HANDLER)
 dispatcher.add_handler(UNMUTE_HANDLER)

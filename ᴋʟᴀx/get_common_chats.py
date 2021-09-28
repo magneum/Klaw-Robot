@@ -5,7 +5,6 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import dev_plus
 from ᴋʟᴀx_ʙᴀꜱᴇ.users_sql import get_user_com_chats
 
 
-
 @dev_plus
 def get_user_common_chats(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args

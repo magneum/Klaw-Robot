@@ -36,6 +36,8 @@ ENUM_FUNC_MAP = {
     sql.Types.VOICE.value: dispatcher.bot.send_voice,
     sql.Types.VIDEO.value: dispatcher.bot.send_video,
 }
+
+
 def get(update: Update, context: CallbackContext, notename, show_none=True, no_format=False):
     bot = context.bot
     user = update.effective_user
@@ -115,7 +117,8 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                     ),
                     fullname=escape_markdown(
                         " ".join(
-                            [message.from_user.first_name, message.from_user.last_name]
+                            [message.from_user.first_name,
+                                message.from_user.last_name]
                             if message.from_user.last_name
                             else [message.from_user.first_name]
                         )
@@ -173,7 +176,8 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                         cleartime = get_clearcmd(chat_id, "notes")
 
                         if cleartime:
-                            context.dispatcher.run_async(delete, delmsg, cleartime.time)
+                            context.dispatcher.run_async(
+                                delete, delmsg, cleartime.time)
 
                 elif note.msgtype in (sql.Types.STICKER, sql.Types.STICKER):
                     if setting:
@@ -194,7 +198,8 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                         cleartime = get_clearcmd(chat_id, "notes")
 
                         if cleartime:
-                            context.dispatcher.run_async(delete, delmsg, cleartime.time)
+                            context.dispatcher.run_async(
+                                delete, delmsg, cleartime.time)
                 else:
                     if setting:
                         ENUM_FUNC_MAP[note.msgtype](
@@ -218,7 +223,8 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                         cleartime = get_clearcmd(chat_id, "notes")
 
                         if cleartime:
-                            context.dispatcher.run_async(delete, delmsg, cleartime.time)
+                            context.dispatcher.run_async(
+                                delete, delmsg, cleartime.time)
 
             except BadRequest as excp:
                 if excp.message == "Entity_mention_user_invalid":
@@ -331,9 +337,11 @@ def clear(update: Update, context: CallbackContext):
         notename = args[0].lower()
 
         if sql.rm_note(chat_id, notename):
-            update.effective_message.reply_text(f"{ALKL}Successfully removed note.")
+            update.effective_message.reply_text(
+                f"{ALKL}Successfully removed note.")
         else:
-            update.effective_message.reply_text(f"{ALKL}That's not a note in my database!")
+            update.effective_message.reply_text(
+                f"{ALKL}That's not a note in my database!")
 
 
 def clearall(update: Update, context: CallbackContext):
@@ -352,7 +360,8 @@ def clearall(update: Update, context: CallbackContext):
                         text="Delete all notes", callback_data="notes_rmall"
                     )
                 ],
-                [InlineKeyboardButton(text="Cancel", callback_data="notes_cancel")],
+                [InlineKeyboardButton(
+                    text="Cancel", callback_data="notes_cancel")],
             ]
         )
         update.effective_message.reply_text(
@@ -385,7 +394,8 @@ def clearall_btn(update: Update, context: CallbackContext):
             query.answer(f"{ALKL}You need to be admin to do this.")
     elif query.data == "notes_cancel":
         if member.status == "creator" or query.from_user.id in KLAW_LINGS:
-            message.edit_text(f"{ALKL}Clearing of all notes has been cancelled.")
+            message.edit_text(
+                f"{ALKL}Clearing of all notes has been cancelled.")
             return
         if member.status == "administrator":
             query.answer(f"{ALKL}Only owner of the chat can do this.")
@@ -408,7 +418,8 @@ def list_notes(update: Update, context: CallbackContext):
         else:
             note_name = f"{note_id}.  `{(note.name.lower())}`\n"
         if len(msg) + len(note_name) > MAX_MESSAGE_LENGTH:
-            update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
+            update.effective_message.reply_text(
+                msg, parse_mode=ParseMode.MARKDOWN)
             msg = ""
             msg_pm = ""
         msg += note_name
@@ -416,16 +427,19 @@ def list_notes(update: Update, context: CallbackContext):
 
     if not note_list:
         try:
-            update.effective_message.reply_text(f"{ALKL}No notes in this chat!")
+            update.effective_message.reply_text(
+                f"{ALKL}No notes in this chat!")
         except BadRequest:
-            update.effective_message.reply_text(f"{ALKL}No notes in this chat!", quote=False)
+            update.effective_message.reply_text(
+                f"{ALKL}No notes in this chat!", quote=False)
 
     elif len(msg) != 0:
         setting = getprivatenotes(chat_id)
         if setting == True:
             bot.send_message(user.id, msg_pm, parse_mode=ParseMode.MARKDOWN)
         else:
-            delmsg = update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
+            delmsg = update.effective_message.reply_text(
+                msg, parse_mode=ParseMode.MARKDOWN)
 
             cleartime = get_clearcmd(chat_id, "notes")
 
@@ -448,17 +462,18 @@ def __import_data__(chat_id, data):
 
         if match:
             failures.append(notename)
-            notedata = notedata[match.end() :].strip()
+            notedata = notedata[match.end():].strip()
             if notedata:
-                sql.add_note_to_db(chat_id, notename[1:], notedata, sql.Types.TEXT)
+                sql.add_note_to_db(
+                    chat_id, notename[1:], notedata, sql.Types.TEXT)
         elif matchsticker:
-            content = notedata[matchsticker.end() :].strip()
+            content = notedata[matchsticker.end():].strip()
             if content:
                 sql.add_note_to_db(
                     chat_id, notename[1:], notedata, sql.Types.STICKER, file=content
                 )
         elif matchbtn:
-            parse = notedata[matchbtn.end() :].strip()
+            parse = notedata[matchbtn.end():].strip()
             notedata = parse.split("<###button###>")[0]
             buttons = parse.split("<###button###>")[1]
             buttons = ast.literal_eval(buttons)
@@ -471,7 +486,7 @@ def __import_data__(chat_id, data):
                     buttons=buttons,
                 )
         elif matchfile:
-            file = notedata[matchfile.end() :].strip()
+            file = notedata[matchfile.end():].strip()
             file = file.split("<###TYPESPLIT###>")
             notedata = file[1]
             content = file[0]
@@ -480,7 +495,7 @@ def __import_data__(chat_id, data):
                     chat_id, notename[1:], notedata, sql.Types.DOCUMENT, file=content
                 )
         elif matchphoto:
-            photo = notedata[matchphoto.end() :].strip()
+            photo = notedata[matchphoto.end():].strip()
             photo = photo.split("<###TYPESPLIT###>")
             notedata = photo[1]
             content = photo[0]
@@ -489,7 +504,7 @@ def __import_data__(chat_id, data):
                     chat_id, notename[1:], notedata, sql.Types.PHOTO, file=content
                 )
         elif matchaudio:
-            audio = notedata[matchaudio.end() :].strip()
+            audio = notedata[matchaudio.end():].strip()
             audio = audio.split("<###TYPESPLIT###>")
             notedata = audio[1]
             content = audio[0]
@@ -498,7 +513,7 @@ def __import_data__(chat_id, data):
                     chat_id, notename[1:], notedata, sql.Types.AUDIO, file=content
                 )
         elif matchvoice:
-            voice = notedata[matchvoice.end() :].strip()
+            voice = notedata[matchvoice.end():].strip()
             voice = voice.split("<###TYPESPLIT###>")
             notedata = voice[1]
             content = voice[0]
@@ -507,7 +522,7 @@ def __import_data__(chat_id, data):
                     chat_id, notename[1:], notedata, sql.Types.VOICE, file=content
                 )
         elif matchvideo:
-            video = notedata[matchvideo.end() :].strip()
+            video = notedata[matchvideo.end():].strip()
             video = video.split("<###TYPESPLIT###>")
             notedata = video[1]
             content = video[0]
@@ -516,7 +531,7 @@ def __import_data__(chat_id, data):
                     chat_id, notename[1:], notedata, sql.Types.VIDEO, file=content
                 )
         elif matchvn:
-            video_note = notedata[matchvn.end() :].strip()
+            video_note = notedata[matchvn.end():].strip()
             video_note = video_note.split("<###TYPESPLIT###>")
             notedata = video_note[1]
             content = video_note[0]
@@ -581,17 +596,21 @@ A button can be added to a note by using standard markdown link syntax - the lin
 """
 
 
-
 GET_HANDLER = CommandHandler("get", cmd_get, run_async=True)
-HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get, run_async=True)
-SLASH_GET_HANDLER = MessageHandler(Filters.regex(r"^/\d+$"), slash_get, run_async=True)
+HASH_GET_HANDLER = MessageHandler(
+    Filters.regex(r"^#[^\s]+"), hash_get, run_async=True)
+SLASH_GET_HANDLER = MessageHandler(
+    Filters.regex(r"^/\d+$"), slash_get, run_async=True)
 SAVE_HANDLER = CommandHandler("save", save, run_async=True)
 DELETE_HANDLER = CommandHandler("clear", clear, run_async=True)
 
-LIST_HANDLER = DisableAbleCommandHandler(["notes", "saved"], list_notes, admin_ok=True, run_async=True)
+LIST_HANDLER = DisableAbleCommandHandler(
+    ["notes", "saved"], list_notes, admin_ok=True, run_async=True)
 
-CLEARALL = DisableAbleCommandHandler("removeallnotes", clearall, run_async=True)
-CLEARALL_BTN = CallbackQueryHandler(clearall_btn, pattern=r"notes_.*", run_async=True)
+CLEARALL = DisableAbleCommandHandler(
+    "removeallnotes", clearall, run_async=True)
+CLEARALL_BTN = CallbackQueryHandler(
+    clearall_btn, pattern=r"notes_.*", run_async=True)
 
 dispatcher.add_handler(GET_HANDLER)
 dispatcher.add_handler(SAVE_HANDLER)

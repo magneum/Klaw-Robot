@@ -3,7 +3,6 @@ from ᴋʟᴀx_ʙᴀꜱᴇ import SESSION, BASE
 from ᴍᴇᴍᴏɪʀᴇ import *
 
 
-
 class FloodControl(BASE):
     __tablename__ = "antiflood"
     chat_id = Column(String(14), primary_key=True)
@@ -114,7 +113,8 @@ def migrate_chat(old_chat_id, new_chat_id):
     with INSERTION_FLOOD_LOCK:
         flood = SESSION.query(FloodControl).get(str(old_chat_id))
         if flood:
-            CHAT_FLOOD[str(new_chat_id)] = CHAT_FLOOD.get(str(old_chat_id), DEF_OBJ)
+            CHAT_FLOOD[str(new_chat_id)] = CHAT_FLOOD.get(
+                str(old_chat_id), DEF_OBJ)
             flood.chat_id = str(new_chat_id)
             SESSION.commit()
 
@@ -125,7 +125,8 @@ def __load_flood_settings():
     global CHAT_FLOOD
     try:
         all_chats = SESSION.query(FloodControl).all()
-        CHAT_FLOOD = {chat.chat_id: (None, DEF_COUNT, chat.limit) for chat in all_chats}
+        CHAT_FLOOD = {chat.chat_id: (None, DEF_COUNT, chat.limit)
+                      for chat in all_chats}
     finally:
         SESSION.close()
 

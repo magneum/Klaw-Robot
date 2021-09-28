@@ -1,9 +1,10 @@
 from Import import *
 from ᴍᴇᴍᴏɪʀᴇ import *
-from ӄʟǟաʀօɮօȶ import LOGS,dispatcher
+from ӄʟǟաʀօɮօȶ import LOGS, dispatcher
+
 
 def migrate_chats(update: Update, context: CallbackContext):
-    msg = update.effective_message  
+    msg = update.effective_message
     if msg.migrate_to_chat_id:
         old_chat = update.effective_chat.id
         new_chat = msg.migrate_to_chat_id
@@ -19,6 +20,7 @@ def migrate_chats(update: Update, context: CallbackContext):
 
     LOGS.info("Successfully migrated!")
     raise DispatcherHandlerStop
+
 
 migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 dispatcher.add_handler(migrate_handler)

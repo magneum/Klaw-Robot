@@ -37,6 +37,7 @@ class GbanSettings(BASE):
 GloballyBannedUsers.__table__.create(checkfirst=True)
 GbanSettings.__table__.create(checkfirst=True)
 
+
 def gban_user(user_id, name, reason=None):
     with GBANNED_USERS_LOCK:
         user = SESSION.query(GloballyBannedUsers).get(user_id)
@@ -129,7 +130,8 @@ def num_gbanned_users():
 def __load_gbanned_userid_list():
     global GBANNED_LIST
     try:
-        GBANNED_LIST = {x.user_id for x in SESSION.query(GloballyBannedUsers).all()}
+        GBANNED_LIST = {x.user_id for x in SESSION.query(
+            GloballyBannedUsers).all()}
     finally:
         SESSION.close()
 

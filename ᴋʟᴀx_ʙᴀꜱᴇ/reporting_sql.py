@@ -31,8 +31,6 @@ ReportingUserSettings.__table__.create(checkfirst=True)
 ReportingChatSettings.__table__.create(checkfirst=True)
 
 
-
-
 def chat_should_report(chat_id: Union[str, int]) -> bool:
     try:
         chat_setting = SESSION.query(ReportingChatSettings).get(str(chat_id))
