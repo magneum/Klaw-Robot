@@ -9,5 +9,5 @@ RUN git clone https://github.com/Krakinz/Klaw-Robot.git
 RUN cd Klaw-Robot
 
 WORKDIR /Klaw-Robot
-RUN pip install -r ӄʟǟաʀօɮօȶ.txt
-CMD python3 hypefile.py
+RUN pip install -r KrakinzFile.txt
+CMD python3 KrakinzFile.py
