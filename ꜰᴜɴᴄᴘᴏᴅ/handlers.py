@@ -1,13 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.blacklistusers_sql as sql
 from ӄʟǟաʀօɮօȶ import ALLOW_EXCL
 from ӄʟǟաʀօɮօȶ import DEV_USERS, KLAW_LINGS
@@ -23,7 +13,7 @@ class AntiSpam:
     def __init__(self):
         self.whitelist = (
             (DEV_USERS or []) + (KLAW_LINGS or [])
-        )
+            )
         Duration.CUSTOM = 15  # Custom duration, 15 seconds
         self.sec_limit = RequestRate(6, Duration.CUSTOM)  # 6 / Per 15 Seconds
         self.min_limit = RequestRate(20, Duration.MINUTE)  # 20 / Per minute
@@ -105,21 +95,17 @@ class CustomCommandHandler(CommandHandler):
     def handle_update(self, update, dispatcher, check_result, context=None):
         run_async = self.run_async
         if context:
-            self.collect_additional_context(
-                context, update, dispatcher, check_result)
+            self.collect_additional_context(context, update, dispatcher, check_result)
             if run_async:
                 return dispatcher.run_async(self.callback, update, context, update=update)
             return self.callback(update, context)
 
-        optional_args = self.collect_optional_args(
-            dispatcher, update, check_result)
+        optional_args = self.collect_optional_args(dispatcher, update, check_result)
         if run_async:
             return dispatcher.run_async(
                 self.callback, dispatcher.bot, update, update=update, **optional_args
             )
-        # type: ignore
-        return self.callback(dispatcher.bot, update, **optional_args)
-
+        return self.callback(dispatcher.bot, update, **optional_args)  # type: ignore
     def collect_additional_context(self, context, update, dispatcher, check_result):
         if isinstance(check_result, bool):
             context.args = update.effective_message.text.split()[1:]

@@ -1,13 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
 from ӄʟǟաʀօɮօȶ import (
@@ -35,7 +25,6 @@ from ᴋʟᴀx.log_channel import gloggable, loggable
 
 
 __mod_name__ = "🚩 ʙᴀɴꜱ"
-
 
 @connection_status
 @bot_admin
@@ -165,8 +154,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
         return log_message
 
     if not reason:
-        message.reply_text(
-            "You haven't specified a time to ban this user for!")
+        message.reply_text("You haven't specified a time to ban this user for!")
         return log_message
 
     split_reason = reason.split(None, 1)
@@ -262,7 +250,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         if reason:
             reply += f"{ALKL}<code> </code><b>•  Reason:</b> {html.escape(reason)}"
         bot.sendMessage(chat.id, reply, parse_mode=ParseMode.HTML
-                        )
+        )
         log = (
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"#KICKED\n"
@@ -285,15 +273,12 @@ def punch(update: Update, context: CallbackContext) -> str:
 def punchme(update: Update, context: CallbackContext):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text(
-            f"{ALKL}I wish I could... but you're an admin.")
+        update.effective_message.reply_text(f"{ALKL}I wish I could... but you're an admin.")
         return
 
-    res = update.effective_chat.unban_member(
-        user_id)  # unban on current user = kick
+    res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
-        update.effective_message.reply_text(
-            f"{ALKL}Kicks you out of the group")
+        update.effective_message.reply_text(f"{ALKL}Kicks you out of the group")
     else:
         update.effective_message.reply_text(f"{ALKL}Huh? I can't :/")
 
@@ -405,12 +390,10 @@ __help__ = f"""{ALKL}
 
 BAN_HANDLER = DisableAbleCommandHandler(["ban", "sban"], ban, run_async=True)
 TEMPBAN_HANDLER = DisableAbleCommandHandler("tban", temp_ban, run_async=True)
-PUNCH_HANDLER = DisableAbleCommandHandler(
-    ["punch", "kick"], punch, run_async=True)
+PUNCH_HANDLER = DisableAbleCommandHandler(["punch", "kick"], punch, run_async=True)
 UNBAN_HANDLER = DisableAbleCommandHandler("unban", unban, run_async=True)
 ROAR_HANDLER = DisableAbleCommandHandler("roar", selfunban, run_async=True)
-PUNCHME_HANDLER = DisableAbleCommandHandler(
-    ["punchme", "kickme"], punchme, filters=Filters.chat_type.groups, run_async=True)
+PUNCHME_HANDLER = DisableAbleCommandHandler(["punchme", "kickme"], punchme, filters=Filters.chat_type.groups, run_async=True)
 
 dispatcher.add_handler(BAN_HANDLER)
 dispatcher.add_handler(TEMPBAN_HANDLER)

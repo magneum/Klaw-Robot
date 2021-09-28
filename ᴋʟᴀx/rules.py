@@ -1,13 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.rules_sql as sql
@@ -18,16 +8,15 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import markdown_parser
 
 __mod_name__ = "📠 ʀᴜʟᴇꜱ"
 
-
 def get_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     send_rules(update, chat_id)
 
 
-
+# Do not async - not from a handler
 def send_rules(update, chat_id, from_pm=False):
     bot = dispatcher.bot
-    user = update.effective_user 
+    user = update.effective_user  # type: Optional[User]
     reply_msg = update.message.reply_to_message
     try:
         chat = bot.get_chat(chat_id)
@@ -93,19 +82,16 @@ def set_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     msg = update.effective_message  # type: Optional[Message]
     raw_text = msg.text
-    # use python's maxsplit to separate cmd and args
-    args = raw_text.split(None, 1)
+    args = raw_text.split(None, 1)  # use python's maxsplit to separate cmd and args
     if len(args) == 2:
         txt = args[1]
-        # set correct offset relative to command
-        offset = len(txt) - len(raw_text)
+        offset = len(txt) - len(raw_text)  # set correct offset relative to command
         markdown_rules = markdown_parser(
             txt, entities=msg.parse_entities(), offset=offset
         )
 
         sql.set_rules(chat_id, markdown_rules)
-        update.effective_message.reply_text(
-            f"{ALKL}Successfully set rules for this group.")
+        update.effective_message.reply_text(f"{ALKL}Successfully set rules for this group.")
 
 
 @user_admin
@@ -142,12 +128,10 @@ __help__ = f"""{ALKL}
 """
 
 
-GET_RULES_HANDLER = CommandHandler(
-    "rules", get_rules, filters=Filters.chat_type.groups, run_async=True)
-SET_RULES_HANDLER = CommandHandler(
-    "setrules", set_rules, filters=Filters.chat_type.groups, run_async=True)
-RESET_RULES_HANDLER = CommandHandler(
-    "clearrules", clear_rules, filters=Filters.chat_type.groups, run_async=True)
+
+GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.chat_type.groups, run_async=True)
+SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.chat_type.groups, run_async=True)
+RESET_RULES_HANDLER = CommandHandler("clearrules", clear_rules, filters=Filters.chat_type.groups, run_async=True)
 
 dispatcher.add_handler(GET_RULES_HANDLER)
 dispatcher.add_handler(SET_RULES_HANDLER)

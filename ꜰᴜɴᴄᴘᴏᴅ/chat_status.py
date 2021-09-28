@@ -1,14 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
-from ᴋʟᴀx import connection
 from ӄʟǟաʀօɮօȶ import (
     DEL_CMDS,
     OWNER_ID,
@@ -85,7 +74,7 @@ def is_user_ban_protected(chat: Chat, user_id: int, member: ChatMember = None) -
         or user_id in DEV_USERS
         or chat.all_members_are_administrators
         or user_id in [777000, 1087968824]
-    ):
+    ):  
         return True
 
     if not member:
@@ -285,8 +274,7 @@ def bot_admin(func):
         if is_bot_admin(chat, bot.id):
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(
-                not_admin, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(not_admin, parse_mode=ParseMode.HTML)
 
     return is_admin
 
@@ -307,8 +295,7 @@ def bot_can_delete(func):
         if can_delete(chat, bot.id):
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(
-                cant_delete, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(cant_delete, parse_mode=ParseMode.HTML)
 
     return delete_rights
 
@@ -331,8 +318,7 @@ def can_pin(func):
         if chat.get_member(bot.id).can_pin_messages:
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(
-                cant_pin, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(cant_pin, parse_mode=ParseMode.HTML)
 
     return pin_rights
 
@@ -356,8 +342,7 @@ def can_promote(func):
         if chat.get_member(bot.id).can_promote_members:
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(
-                cant_promote, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(cant_promote, parse_mode=ParseMode.HTML)
 
     return promote_rights
 
@@ -433,5 +418,6 @@ def connection_status(func):
 
 
 # Workaround for circular import with connection.py
+from ᴋʟᴀx import connection
 
 connected = connection.connected

@@ -1,13 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
@@ -37,8 +27,6 @@ This will create two buttons on a single line, instead of one button per line.
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
 """
 run_async
-
-
 def get_id(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
@@ -75,18 +63,17 @@ def get_id(update: Update, context: CallbackContext):
             msg.reply_text(f"{ALKL}This group's id is <code>{chat.id}</code>.",
                            parse_mode=ParseMode.HTML)
 
-
 run_async
-
-
 def markdown_help(bot: Bot, update: Update):
-    update.effective_message.reply_text(
-        MARKDOWN_HELP, parse_mode=ParseMode.HTML)
-    update.effective_message.reply_text(
-        f"{ALKL}Try forwarding the following message to me, and you'll see!")
+    update.effective_message.reply_text(MARKDOWN_HELP, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_text(f"{ALKL}Try forwarding the following message to me, and you'll see!")
     update.effective_message.reply_text("/save test This is a markdown test. _italics_, *bold*, `code`, "
                                         "[URL](example.com) [button](buttonurl:github.com) "
                                         "[button2](buttonurl://google.com:same)")
+
+
+
+
 
 
 __help__ = f"""{ALKL}
@@ -95,12 +82,12 @@ __help__ = f"""{ALKL}
 """
 
 ID_HANDLER = DisableAbleCommandHandler("id", get_id, pass_args=True)
-MD_HELP_HANDLER = CommandHandler(
-    "markdownhelp", markdown_help, filters=Filters.private)
+MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help, filters=Filters.private)
 
 
 dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
+
 
 
 __command_list__ = ["id", "markdownhelp"]

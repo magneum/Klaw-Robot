@@ -1,13 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 
 
@@ -21,8 +11,7 @@ MATCH_MD = re.compile(
 
 # regex to find []() links -> hyperlinks/buttons
 LINK_REGEX = re.compile(r"(?<!\\)\[.+?\]\((.*?)\)")
-BTN_URL_REGEX = re.compile(
-    r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
+BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\(buttonurl:(?:/{0,2})(.+?)(:same)?\))")
 
 
 def _selective_escape(to_parse: str) -> str:
@@ -37,8 +26,7 @@ def _selective_escape(to_parse: str) -> str:
         if match.group("esc"):
             ent_start = match.start()
             to_parse = (
-                to_parse[: ent_start + offset] +
-                "\\" + to_parse[ent_start + offset:]
+                to_parse[: ent_start + offset] + "\\" + to_parse[ent_start + offset :]
             )
             offset += 1
     return to_parse
@@ -109,8 +97,7 @@ def markdown_parser(
 
             # code handling
             elif ent.type == "code":
-                res += _selective_escape(txt[prev:start]) + \
-                    "`" + ent_text + "`"
+                res += _selective_escape(txt[prev:start]) + "`" + ent_text + "`"
 
             # handle markdown/html links
             elif ent.type == "text_link":
@@ -148,9 +135,8 @@ def button_markdown_parser(
         # if even, not escaped -> create button
         if n_escapes % 2 == 0:
             # create a thruple with button label, url, and newline status
-            buttons.append(
-                (match.group(2), match.group(3), bool(match.group(4))))
-            note_data += markdown_note[prev: match.start(1)]
+            buttons.append((match.group(2), match.group(3), bool(match.group(4))))
+            note_data += markdown_note[prev : match.start(1)]
             prev = match.end(1)
         # if odd, escaped -> move along
         else:
@@ -178,7 +164,7 @@ def escape_invalid_curly_brackets(text: str, valids: List[str]) -> str:
                         success = True
                         break
                 if success:
-                    new_text += text[idx: idx + len(v) + 2]
+                    new_text += text[idx : idx + len(v) + 2]
                     idx += len(v) + 2
                     continue
                 else:
@@ -222,7 +208,7 @@ def split_quotes(text: str) -> List:
     # 1 to avoid starting quote, and counter is exclusive so avoids ending
     key = remove_escapes(text[1:counter].strip())
     # index will be in range, or `else` would have been executed and returned
-    rest = text[counter + 1:].strip()
+    rest = text[counter + 1 :].strip()
     if not key:
         key = text[0] + text[0]
     return list(filter(None, [key, rest]))

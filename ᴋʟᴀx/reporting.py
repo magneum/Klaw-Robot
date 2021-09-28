@@ -1,13 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
 from ӄʟǟաʀօɮօȶ import LOGS, KLAW_LINGS, dispatcher
@@ -20,8 +10,6 @@ __mod_name__ = "⚔️ ʀᴇᴘᴏʀᴛꜱ"
 
 REPORT_GROUP = 12
 REPORT_IMMUNE_USERS = KLAW_LINGS
-
-
 @user_admin
 def report_setting(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -38,8 +26,7 @@ def report_setting(update: Update, context: CallbackContext):
 
             elif args[0] in ("no", "off"):
                 sql.set_user_setting(chat.id, False)
-                msg.reply_text(
-                    f"{ALKL}Turned off reporting! You wont get any reports.")
+                msg.reply_text(f"{ALKL}Turned off reporting! You wont get any reports.")
         else:
             msg.reply_text(
                 f"{ALKL}Your current report preference is: `{sql.user_should_report(chat.id)}`",
@@ -215,9 +202,9 @@ def __chat_settings__(chat_id, _):
 
 def __user_settings__(user_id):
     if sql.user_should_report(user_id) is True:
-        text = f"{ALKL}You will receive reports from chats you're admin."
+        text =f"{ALKL}You will receive reports from chats you're admin."
     else:
-        text = f"{ALKL}You will *not* receive reports from chats you're admin."
+        text =f"{ALKL}You will *not* receive reports from chats you're admin."
     return text
 
 
@@ -276,8 +263,7 @@ __help__ = f"""{ALKL}
 """
 
 SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
-REPORT_HANDLER = CommandHandler(
-    "report", report, filters=Filters.chat_type.groups, run_async=True)
+REPORT_HANDLER = CommandHandler("report", report, filters=Filters.chat_type.groups, run_async=True)
 ADMIN_REPORT_HANDLER = MessageHandler(Filters.regex(r"(?i)@admin(s)?"), report)
 
 REPORT_BUTTON_USER_HANDLER = CallbackQueryHandler(buttons, pattern=r"report_")

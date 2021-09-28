@@ -1,20 +1,9 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 from ᴍᴇᴍᴏɪʀᴇ import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
-from ӄʟǟաʀօɮօȶ import LOGS, dispatcher, StartTime, updater
+from ӄʟǟաʀօɮօȶ import LOGS,dispatcher,StartTime,updater
 from ꜰᴜɴᴄᴘᴏᴅ.chat_status import is_user_admin
 from ꜰᴜɴᴄᴘᴏᴅ.misc import paginate_modules
-
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -24,8 +13,7 @@ def get_readable_time(seconds: int) -> str:
 
     while count < 4:
         count += 1
-        remainder, result = divmod(
-            seconds, 60) if count < 3 else divmod(seconds, 24)
+        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         time_list.append(int(result))
@@ -39,7 +27,6 @@ def get_readable_time(seconds: int) -> str:
     time_list.reverse()
     ping_time += ":".join(time_list)
     return ping_time
-
 
 def start(update: Update, context: CallbackContext):
     args = context.args
@@ -56,8 +43,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(
-                            text="Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
                     ),
                 )
             elif args[0].lower() == "markdownhelp":
@@ -69,43 +55,40 @@ def start(update: Update, context: CallbackContext):
                 chat = dispatcher.bot.getChat(match.group(1))
 
                 if is_user_admin(chat, update.effective_user.id):
-                    send_settings(match.group(
-                        1), update.effective_user.id, False)
+                    send_settings(match.group(1), update.effective_user.id, False)
                 else:
-                    send_settings(match.group(
-                        1), update.effective_user.id, True)
+                    send_settings(match.group(1), update.effective_user.id, True)
 
             elif args[0][1:].isdigit() and "rules" in IMPORTED:
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
-                KLAWNESS.format(first_name, PSYCO))
+            update.effective_message.reply_text(KLAWNESS.format(first_name, PSYCO))
             update.effective_message.reply_animation(
-                ӄʟǟաʀօɮօȶ_IMG,
+                ӄʟǟաʀօɮօȶ_IMG,                
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup([[
-                    InlineKeyboardButton(
-                        text="ɢɛȶ ӄʟǟա🦀ʀօɮօȶ քօաɛʀֆ ռօա",
-                        url="t.me/{}?startgroup=true".format(context.bot.username),)], [
-                    InlineKeyboardButton(
-                        text="🔥 DΣV GЯӨЦP",
-                        url=f"https://t.me/Krakns",),
-                    InlineKeyboardButton(
-                        text="💻 ΉYPΣ VӨID LΛB",
-                        url=f"https://t.me/KrakinzLab",), ]]))
+        InlineKeyboardButton(
+                    text="ɢɛȶ ӄʟǟա🦀ʀօɮօȶ քօաɛʀֆ ռօա",
+                    url="t.me/{}?startgroup=true".format(context.bot.username),)],[
+        InlineKeyboardButton(
+                    text="🔥 DΣV GЯӨЦP",
+                    url=f"https://t.me/hypevoids",),
+        InlineKeyboardButton(
+                    text="💻 ΉYPΣ VӨID LΛB",
+                    url=f"https://t.me/hypevoidlab",),]]))
     else:
         update.effective_message.reply_animation(ӄʟǟաʀօɮօȶ_IMG)
         update.effective_message.reply_text(IGNIT_KLAW.format(uptime),
-                                            parse_mode=ParseMode.HTML)
-
-
+        parse_mode=ParseMode.HTML)
+        
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
-    dispatcher.bot.send_message(chat_id=chat_id, text=text, parse_mode=ParseMode.MARKDOWN,
-                                disable_web_page_preview=True, reply_markup=keyboard,)
+    dispatcher.bot.send_message(chat_id=chat_id,text=text,parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=True,reply_markup=keyboard,)
+
 
 
 def help_button(update: Update, context: CallbackContext):
@@ -131,8 +114,7 @@ def help_button(update: Update, context: CallbackContext):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(
-                        text="Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
                 ),
             )
 
@@ -170,7 +152,7 @@ def help_button(update: Update, context: CallbackContext):
 
 
 def get_help(update: Update, context: CallbackContext):
-    chat = update.effective_chat
+    chat = update.effective_chat  
     args = update.effective_message.text.split(None, 1)
     if chat.type != chat.PRIVATE:
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
@@ -198,8 +180,7 @@ def get_help(update: Update, context: CallbackContext):
                     [
                         InlineKeyboardButton(
                             text="Help",
-                            url="t.me/{}?start=help".format(
-                                context.bot.username),
+                            url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
                 ]
@@ -218,20 +199,17 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(
-                    text="Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
             ),
         )
     else:
         send_help(chat.id, KLAW_MORE)
 
-
 def send_settings(chat_id, user_id, user=False):
     if user:
         if USER_SETTINGS:
             settings = "\n\n".join(
-                "*{}*:\n{}".format(mod.__mod_name__,
-                                   mod.__user_settings__(user_id))
+                "*{}*:\n{}".format(mod.__mod_name__, mod.__user_settings__(user_id))
                 for mod in USER_SETTINGS.values()
             )
             dispatcher.bot.send_message(
@@ -347,8 +325,7 @@ def settings_button(update: Update, context: CallbackContext):
             "Query_id_invalid",
             "Message can't be deleted",
         ]:
-            LOGS.exception("Exception in settings buttons. %s",
-                           str(query.data))
+            LOGS.exception("Exception in settings buttons. %s", str(query.data))
 
 
 def get_settings(update: Update, context: CallbackContext):
@@ -380,17 +357,14 @@ def get_settings(update: Update, context: CallbackContext):
 
     else:
         send_settings(chat.id, user.id, True)
-
-
+        
 start_handler = CommandHandler("start", start, run_async=True)
 help_handler = CommandHandler("help", get_help, run_async=True)
-help_callback_handler = CallbackQueryHandler(
-    help_button, pattern=r"help_.*", run_async=True)
+help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*", run_async=True)
 settings_handler = CommandHandler("settings", get_settings, run_async=True)
-settings_callback_handler = CallbackQueryHandler(
-    settings_button, pattern=r"stngs_", run_async=True)
-
-
+settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_", run_async=True)
+    
+    
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(settings_handler)

@@ -1,18 +1,7 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 from ꜰᴜɴᴄᴘᴏᴅ.msg_types import Types
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
 from ᴍᴇᴍᴏɪʀᴇ import *
-
 
 class Notes(BASE):
     __tablename__ = "notes"
@@ -56,6 +45,8 @@ Notes.__table__.create(checkfirst=True)
 Buttons.__table__.create(checkfirst=True)
 
 
+
+
 def add_note_to_db(chat_id, note_name, note_data, msgtype, buttons=None, file=None):
     if not buttons:
         buttons = []
@@ -67,8 +58,7 @@ def add_note_to_db(chat_id, note_name, note_data, msgtype, buttons=None, file=No
                 prev_buttons = (
                     SESSION.query(Buttons)
                     .filter(
-                        Buttons.chat_id == str(
-                            chat_id), Buttons.note_name == note_name
+                        Buttons.chat_id == str(chat_id), Buttons.note_name == note_name
                     )
                     .all()
                 )
@@ -108,8 +98,7 @@ def rm_note(chat_id, note_name):
                 buttons = (
                     SESSION.query(Buttons)
                     .filter(
-                        Buttons.chat_id == str(
-                            chat_id), Buttons.note_name == note_name
+                        Buttons.chat_id == str(chat_id), Buttons.note_name == note_name
                     )
                     .all()
                 )
@@ -173,16 +162,14 @@ def num_chats():
 def migrate_chat(old_chat_id, new_chat_id):
     with NOTES_INSERTION_LOCK:
         chat_notes = (
-            SESSION.query(Notes).filter(
-                Notes.chat_id == str(old_chat_id)).all()
+            SESSION.query(Notes).filter(Notes.chat_id == str(old_chat_id)).all()
         )
         for note in chat_notes:
             note.chat_id = str(new_chat_id)
 
         with BUTTONS_INSERTION_LOCK:
             chat_buttons = (
-                SESSION.query(Buttons).filter(
-                    Buttons.chat_id == str(old_chat_id)).all()
+                SESSION.query(Buttons).filter(Buttons.chat_id == str(old_chat_id)).all()
             )
             for btn in chat_buttons:
                 btn.chat_id = str(new_chat_id)

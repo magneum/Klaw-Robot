@@ -1,13 +1,3 @@
-"""•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
-                                                       GNU GENERAL PUBLIC LICENSE
-                                                         Version 3, 29 June 2007
-                                                Copyright (C) 2007 Free Software Foundation
-                                            Everyone is permitted to 𝗰𝗼𝗽𝘆 𝗮𝗻𝗱 𝗱𝗶𝘀𝘁𝗿𝗶𝗯𝘂𝘁𝗲 verbatim copies
-                                                of this license document, 𝗯𝘂𝘁 𝗰𝗵𝗮𝗻𝗴𝗶𝗻𝗴 𝗶𝘁 𝗶𝘀 𝗻𝗼𝘁 𝗮𝗹𝗹𝗼𝘄𝗲𝗱.
-                                                has been licensed under GNU General Public License
-                                                𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
-•=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•"""
-from ʀօɮօȶ import *
 from Import import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql as sql
@@ -24,10 +14,10 @@ def clearcmd(update: Update, context: CallbackContext):
     msg = ""
 
     commands = [
-        "filters",
-        "notes",
-        "purge",
-        "welcome",
+    "filters",
+    "notes",    
+    "purge",
+    "welcome",
     ]
 
     if len(args) == 0:
@@ -35,7 +25,7 @@ def clearcmd(update: Update, context: CallbackContext):
         if commands:
             msg += "*Command - Time*\n"
             for cmd in commands:
-                msg += f"`{cmd.cmd} - {cmd.time} secs`\n"
+                msg += f"`{cmd.cmd} - {cmd.time} secs`\n"  
         else:
             msg = f"{ALKL}No deletion time has been set for any command in *{chat.title}*"
 
@@ -69,16 +59,16 @@ def clearcmd(update: Update, context: CallbackContext):
                 sql.set_clearcmd(chat.id, cmd, time)
                 msg = f"{ALKL}`{cmd}` output will be deleted after *{time}* seconds in *{chat.title}*"
             else:
-                msg = f"{ALKL}Time must be between 5 and 300 seconds"
+               msg = f"{ALKL}Time must be between 5 and 300 seconds"
         else:
             msg = f"{ALKL}Specify a valid command. Use `/clearcmd list` to see available commands"
-
+                
     else:
         msg = f"{ALKL}I don't understand what are you trying to do. Check module help for more details"
 
     message.reply_text(
-        text=msg,
-        parse_mode=ParseMode.MARKDOWN
+        text = msg,
+        parse_mode = ParseMode.MARKDOWN
     )
 
 
