@@ -21,6 +21,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message
 
 __mod_name__ = "🛡 ᴀᴅᴍɪɴꜱ"
 
+
 @connection_status
 @bot_admin
 @can_promote
@@ -40,7 +41,8 @@ def promote(update: Update, context: CallbackContext) -> str:
         not (promoter.can_promote_members or promoter.status == "creator")
         and user.id not in KLAW_LINGS
     ):
-        message.reply_text(f"{ALKL}You don't have the necessary rights to do that!")
+        message.reply_text(
+            f"{ALKL}You don't have the necessary rights to do that!")
         return
 
     user_id = extract_user(message, args)
@@ -57,11 +59,13 @@ def promote(update: Update, context: CallbackContext) -> str:
         return
 
     if user_member.status == "administrator" or user_member.status == "creator":
-        message.reply_text(f"{ALKL}How am I meant to promote someone that's already an admin?")
+        message.reply_text(
+            f"{ALKL}How am I meant to promote someone that's already an admin?")
         return
 
     if user_id == bot.id:
-        message.reply_text(f"{ALKL}I can't promote myself! Get an admin to do it for me.")
+        message.reply_text(
+            f"{ALKL}I can't promote myself! Get an admin to do it for me.")
         return
 
     # set same perms as bot - bot can't assign higher perms than itself!
@@ -82,7 +86,8 @@ def promote(update: Update, context: CallbackContext) -> str:
         )
     except BadRequest as err:
         if err.message == "User_not_mutual_contact":
-            message.reply_text(f"{ALKL}I can't promote someone who isn't in the group.")
+            message.reply_text(
+                f"{ALKL}I can't promote someone who isn't in the group.")
         else:
             message.reply_text(f"{ALKL}An error occured while promoting.")
         return
@@ -122,7 +127,8 @@ def demote(update: Update, context: CallbackContext) -> str:
         not (demoter.can_promote_members or demoter.status == "creator")
         and user.id not in KLAW_LINGS
     ):
-        message.reply_text(f"{ALKL}You don't have the necessary rights to do that!")
+        message.reply_text(
+            f"{ALKL}You don't have the necessary rights to do that!")
         return
 
     user_id = extract_user(message, args)
@@ -138,7 +144,8 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
     if user_member.status == "creator":
-        message.reply_text(f"{ALKL}This person CREATED the chat, how would I demote them?")
+        message.reply_text(
+            f"{ALKL}This person CREATED the chat, how would I demote them?")
         return
 
     if not user_member.status == "administrator":
@@ -146,7 +153,8 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
     if user_id == bot.id:
-        message.reply_text(f"{ALKL}I can't demote myself! Get an admin to do it for me.")
+        message.reply_text(
+            f"{ALKL}I can't demote myself! Get an admin to do it for me.")
         return
 
     try:
@@ -248,7 +256,8 @@ def set_title(update: Update, context: CallbackContext):
     try:
         bot.setChatAdministratorCustomTitle(chat.id, user_id, title)
     except BadRequest:
-        message.reply_text(f"{ALKL}Either they aren't promoted by me or you set a title text that is impossible to set.")
+        message.reply_text(
+            f"{ALKL}Either they aren't promoted by me or you set a title text that is impossible to set.")
         return
 
     bot.sendMessage(
@@ -358,7 +367,8 @@ def adminlist(update: Update, context: CallbackContext):
     bot = context.bot
 
     if update.effective_message.chat.type == "private":
-        send_message(update.effective_message, f"{ALKL}This command only works in Groups.")
+        send_message(update.effective_message,
+                     f"{ALKL}This command only works in Groups.")
         return
 
     chat = update.effective_chat
@@ -375,7 +385,8 @@ def adminlist(update: Update, context: CallbackContext):
         )
 
     administrators = bot.getChatAdministrators(chat_id)
-    text = "{}Admins in <b>{}</b>:".format(html.escape(update.effective_chat.title), ALKL)
+    text = "{}Admins in <b>{}</b>:".format(
+        html.escape(update.effective_chat.title), ALKL)
 
     bot_admin_list = []
 
@@ -389,7 +400,8 @@ def adminlist(update: Update, context: CallbackContext):
         else:
             name = "{}".format(
                 mention_html(
-                    user.id, html.escape(user.first_name + " " + (user.last_name or ""))
+                    user.id, html.escape(
+                        user.first_name + " " + (user.last_name or ""))
                 )
             )
 
@@ -422,7 +434,8 @@ def adminlist(update: Update, context: CallbackContext):
         else:
             name = "{}".format(
                 mention_html(
-                    user.id, html.escape(user.first_name + " " + (user.last_name or ""))
+                    user.id, html.escape(
+                        user.first_name + " " + (user.last_name or ""))
                 )
             )
         # if user.username:
@@ -478,12 +491,16 @@ __help__ = f"""{ALKL}
 🦀 •/zombies-\n scan and clean zombies
 """
 
-ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
+ADMINLIST_HANDLER = DisableAbleCommandHandler(
+    "admins", adminlist, run_async=True)
 
-PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.chat_type.groups, run_async=True)
-UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
+PIN_HANDLER = CommandHandler(
+    "pin", pin, filters=Filters.chat_type.groups, run_async=True)
+UNPIN_HANDLER = CommandHandler(
+    "unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
 
-INVITE_HANDLER = DisableAbleCommandHandler(["invitelink", "link"], invite, run_async=True)
+INVITE_HANDLER = DisableAbleCommandHandler(
+    ["invitelink", "link"], invite, run_async=True)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote, run_async=True)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote, run_async=True)

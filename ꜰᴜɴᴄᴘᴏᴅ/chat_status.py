@@ -1,3 +1,4 @@
+from ᴋʟᴀx import connection
 from ӄʟǟաʀօɮօȶ import (
     DEL_CMDS,
     OWNER_ID,
@@ -74,7 +75,7 @@ def is_user_ban_protected(chat: Chat, user_id: int, member: ChatMember = None) -
         or user_id in DEV_USERS
         or chat.all_members_are_administrators
         or user_id in [777000, 1087968824]
-    ):  
+    ):
         return True
 
     if not member:
@@ -274,7 +275,8 @@ def bot_admin(func):
         if is_bot_admin(chat, bot.id):
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(not_admin, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(
+                not_admin, parse_mode=ParseMode.HTML)
 
     return is_admin
 
@@ -295,7 +297,8 @@ def bot_can_delete(func):
         if can_delete(chat, bot.id):
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(cant_delete, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(
+                cant_delete, parse_mode=ParseMode.HTML)
 
     return delete_rights
 
@@ -318,7 +321,8 @@ def can_pin(func):
         if chat.get_member(bot.id).can_pin_messages:
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(cant_pin, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(
+                cant_pin, parse_mode=ParseMode.HTML)
 
     return pin_rights
 
@@ -342,7 +346,8 @@ def can_promote(func):
         if chat.get_member(bot.id).can_promote_members:
             return func(update, context, *args, **kwargs)
         else:
-            update.effective_message.reply_text(cant_promote, parse_mode=ParseMode.HTML)
+            update.effective_message.reply_text(
+                cant_promote, parse_mode=ParseMode.HTML)
 
     return promote_rights
 
@@ -418,6 +423,5 @@ def connection_status(func):
 
 
 # Workaround for circular import with connection.py
-from ᴋʟᴀx import connection
 
 connected = connection.connected

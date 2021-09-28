@@ -13,6 +13,7 @@ from ᴋʟᴀx.connection import connected
 
 __mod_name__ = "✉️ ʙᴀᴄᴋᴜᴘꜱ"
 
+
 @user_admin
 def import_data(update: Update, context: CallbackContext):
     msg = update.effective_message
@@ -24,7 +25,8 @@ def import_data(update: Update, context: CallbackContext):
         chat_name = dispatcher.bot.getChat(conn).title
     else:
         if update.effective_message.chat.type == "private":
-            update.effective_message.reply_text(f"{ALKL}This is a group only command!")
+            update.effective_message.reply_text(
+                f"{ALKL}This is a group only command!")
             return ""
 
         chat = update.effective_chat
@@ -32,7 +34,8 @@ def import_data(update: Update, context: CallbackContext):
 
     if msg.reply_to_message and msg.reply_to_message.document:
         try:
-            file_info = context.bot.get_file(msg.reply_to_message.document.file_id)
+            file_info = context.bot.get_file(
+                msg.reply_to_message.document.file_id)
         except BadRequest:
             msg.reply_text(
                 f"{ALKL}Try downloading and uploading the file yourself again, This one seem broken to me!"
@@ -52,8 +55,8 @@ def import_data(update: Update, context: CallbackContext):
             if data.get(str(chat.id)) is None:
                 if conn:
                     text = "{}Backup comes from another chat, I can't return another chat to chat *{}*".format(ALKL,
-                        chat_name
-                    )
+                                                                                                               chat_name
+                                                                                                               )
                 else:
                     text = f"{ALKL}Backup comes from another chat, I can't return another chat to this chat"
                 return msg.reply_text(text, parse_mode="markdown")
@@ -87,7 +90,7 @@ def import_data(update: Update, context: CallbackContext):
             return
         if conn:
 
-            text = "{}Backup fully restored on *{}*.".format(ALKL,chat_name)
+            text = "{}Backup fully restored on *{}*.".format(ALKL, chat_name)
         else:
             text = f"{ALKL}Backup fully restored"
         msg.reply_text(text, parse_mode="markdown")
@@ -96,8 +99,8 @@ def import_data(update: Update, context: CallbackContext):
 @user_admin
 def export_data(update: Update, context: CallbackContext):
     chat_data = context.chat_data
-    msg = update.effective_message 
-    user = update.effective_user  
+    msg = update.effective_message
+    user = update.effective_user
     chat_id = update.effective_chat.id
     chat = update.effective_chat
     current_chat_id = update.effective_chat.id
@@ -107,7 +110,8 @@ def export_data(update: Update, context: CallbackContext):
         chat_id = conn
     else:
         if update.effective_message.chat.type == "private":
-            update.effective_message.reply_text(f"{ALKL}This is a group only command!")
+            update.effective_message.reply_text(
+                f"{ALKL}This is a group only command!")
             return ""
         chat = update.effective_chat
         chat_id = update.effective_chat.id
@@ -121,8 +125,8 @@ def export_data(update: Update, context: CallbackContext):
             )
             update.effective_message.reply_text(
                 "{}You can only backup once a day!\nYou can backup again in about `{}`".format(ALKL,
-                    timeformatt
-                ),
+                                                                                               timeformatt
+                                                                                               ),
                 parse_mode=ParseMode.MARKDOWN,
             )
             return
@@ -291,8 +295,8 @@ def export_data(update: Update, context: CallbackContext):
         context.bot.sendMessage(
             JOIN_LOGGER,
             "{}*Successfully imported backup:*\nChat: `{}`\nChat ID: `{}`\nOn: `{}`".format(ALKL,
-                chat.title, chat_id, tgl
-            ),
+                                                                                            chat.title, chat_id, tgl
+                                                                                            ),
             parse_mode=ParseMode.MARKDOWN,
         )
     except BadRequest:
@@ -301,8 +305,8 @@ def export_data(update: Update, context: CallbackContext):
         current_chat_id,
         document=open("ӄʟǟա🦀ʀօɮօȶ{}.backup".format(chat_id), "rb"),
         caption="{}*Successfully Exported backup:*\nChat: `{}`\nChat ID: `{}`\nOn: `{}`\n\nNote: This `ӄʟǟա🦀ʀօɮօȶ-Backup` was specially made for notes.".format(ALKL,
-            chat.title, chat_id, tgl
-        ),
+                                                                                                                                                                chat.title, chat_id, tgl
+                                                                                                                                                                ),
         timeout=360,
         reply_to_message_id=msg.message_id,
         parse_mode=ParseMode.MARKDOWN,
@@ -325,8 +329,6 @@ def get_chat(chat_id, chat_data):
         return {"status": False, "value": False}
 
 
-
-
 __help__ = f"""{ALKL}
 *Only for group owner*-\n
 
@@ -338,7 +340,8 @@ __help__ = f"""{ALKL}
 """
 
 IMPORT_HANDLER = CommandHandler("import", import_data, run_async=True)
-EXPORT_HANDLER = CommandHandler("export", export_data, pass_chat_data=True, run_async=True)
+EXPORT_HANDLER = CommandHandler(
+    "export", export_data, pass_chat_data=True, run_async=True)
 
 dispatcher.add_handler(IMPORT_HANDLER)
 dispatcher.add_handler(EXPORT_HANDLER)

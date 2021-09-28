@@ -13,7 +13,7 @@ class AntiSpam:
     def __init__(self):
         self.whitelist = (
             (DEV_USERS or []) + (KLAW_LINGS or [])
-            )
+        )
         Duration.CUSTOM = 15  # Custom duration, 15 seconds
         self.sec_limit = RequestRate(6, Duration.CUSTOM)  # 6 / Per 15 Seconds
         self.min_limit = RequestRate(20, Duration.MINUTE)  # 20 / Per minute
@@ -95,17 +95,21 @@ class CustomCommandHandler(CommandHandler):
     def handle_update(self, update, dispatcher, check_result, context=None):
         run_async = self.run_async
         if context:
-            self.collect_additional_context(context, update, dispatcher, check_result)
+            self.collect_additional_context(
+                context, update, dispatcher, check_result)
             if run_async:
                 return dispatcher.run_async(self.callback, update, context, update=update)
             return self.callback(update, context)
 
-        optional_args = self.collect_optional_args(dispatcher, update, check_result)
+        optional_args = self.collect_optional_args(
+            dispatcher, update, check_result)
         if run_async:
             return dispatcher.run_async(
                 self.callback, dispatcher.bot, update, update=update, **optional_args
             )
-        return self.callback(dispatcher.bot, update, **optional_args)  # type: ignore
+        # type: ignore
+        return self.callback(dispatcher.bot, update, **optional_args)
+
     def collect_additional_context(self, context, update, dispatcher, check_result):
         if isinstance(check_result, bool):
             context.args = update.effective_message.text.split()[1:]

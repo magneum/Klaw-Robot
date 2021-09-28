@@ -1,5 +1,6 @@
 from Import import *
 
+
 def regex_searcher(regex_string, string):
     try:
         search = regex.search(regex_string, string, timeout=6)
