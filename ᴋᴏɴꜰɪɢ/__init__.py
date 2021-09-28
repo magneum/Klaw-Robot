@@ -1,1 +1,0 @@
-from .ᴋᴏɴꜰɪɢ import Faigo as ӄօռʟӼ
