@@ -95,4 +95,4 @@ WELC_BTN_LOCK = threading.RLock()
 LEAVE_BTN_LOCK = threading.RLock()
 WM_LOCK = threading.RLock()
 CS_LOCK = threading.RLock()
-IGNIT_KLAW = "—🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—\n\nThis Group has now been added as a verified @HypeVoids ӄʟǟա🦀ʀօɮօȶ fueled group.<b>Haven't slept since:</b> <code>{}</code>\n\n—🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—"
+IGNIT_KLAW = "—🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—\n\nThis Group has now been added as a verified @Krakns ӄʟǟա🦀ʀօɮօȶ fueled group.<b>Haven't slept since:</b> <code>{}</code>\n\n—🔥••÷[  ӄʟǟա🦀ʀօɮօȶ  ]÷••🔥—"

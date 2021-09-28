@@ -237,7 +237,7 @@ def get(update: Update, context: CallbackContext, notename, show_none=True, no_f
                 else:
                     message.reply_text(
                         f"{ALKL}This note could not be sent, as it is incorrectly formatted. Ask in "
-                        f"@hypevoids | @Krakinz if you can't figure out why!"
+                        f"@Krakns | @Krakinz if you can't figure out why!"
                     )
                     LOGS.exception(
                         "Could not parse message #%s in chat %s",

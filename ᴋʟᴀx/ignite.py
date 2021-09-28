@@ -74,7 +74,7 @@ def start(update: Update, context: CallbackContext):
                     url="t.me/{}?startgroup=true".format(context.bot.username),)],[
         InlineKeyboardButton(
                     text="🔥 DΣV GЯӨЦP",
-                    url=f"https://t.me/hypevoids",),
+                    url=f"https://t.me/Krakns",),
         InlineKeyboardButton(
                     text="💻 ΉYPΣ VӨID LΛB",
                     url=f"https://t.me/hypevoidlab",),]]))

@@ -16,7 +16,7 @@ class ӄօռʟӼ(object):
     LOGGER=True
     OWNER_ID=1836310130  
     OWNER_USERNAME="@Krakinz"
-    SUPPORT_CHAT = "HypeVoids"  
+    SUPPORT_CHAT = "Krakns"  
     ALLOW_CHATS = True
     DEV_USERS = [1836310130]
     KLAW_LINGS = []
