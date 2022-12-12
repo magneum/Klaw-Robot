@@ -17,7 +17,7 @@ from ӄʟǟաʀօɮօȶ import (
     dispatcher,
 )
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+from Function.chat_status import (
     bot_admin,
     can_restrict,
     connection_status,
@@ -28,8 +28,8 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
     user_can_ban,
     can_delete,
 )
-from ꜰᴜɴᴄᴘᴏᴅ.extraction import extract_user_and_text
-from ꜰᴜɴᴄᴘᴏᴅ.string_handling import extract_time
+from Function.extraction import extract_user_and_text
+from Function.string_handling import extract_time
 from ᴋʟᴀx.log_channel import gloggable, loggable
 
 

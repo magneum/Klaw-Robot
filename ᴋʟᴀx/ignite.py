@@ -8,11 +8,11 @@
 #                                                 𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
-from ᴍᴇᴍᴏɪʀᴇ import *
+from TMemory import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import LOGS, dispatcher, StartTime, updater
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import is_user_admin
-from ꜰᴜɴᴄᴘᴏᴅ.misc import paginate_modules
+from Function.chat_status import is_user_admin
+from Function.misc import paginate_modules
 
 
 def get_readable_time(seconds: int) -> str:

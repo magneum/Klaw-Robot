@@ -11,7 +11,7 @@ from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import KLAW_LINGS, dispatcher
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+from Function.chat_status import (
     bot_admin,
     can_pin,
     can_promote,
@@ -20,12 +20,12 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
     ADMIN_CACHE,
 )
 
-from ꜰᴜɴᴄᴘᴏᴅ.extraction import (
+from Function.extraction import (
     extract_user,
     extract_user_and_text,
 )
 from ᴋʟᴀx.log_channel import loggable
-from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message
+from Function.alternate import send_message
 
 
 __mod_name__ = "🛡 ᴀᴅᴍɪɴꜱ"

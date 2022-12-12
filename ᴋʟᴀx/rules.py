@@ -11,8 +11,8 @@ from Import import *
 from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.rules_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin
-from ꜰᴜɴᴄᴘᴏᴅ.string_handling import markdown_parser
+from Function.chat_status import user_admin
+from Function.string_handling import markdown_parser
 
 
 __mod_name__ = "📠 ʀᴜʟᴇꜱ"

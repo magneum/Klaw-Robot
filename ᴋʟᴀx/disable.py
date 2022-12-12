@@ -10,8 +10,8 @@
 from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import dispatcher
-from ꜰᴜɴᴄᴘᴏᴅ.handlers import CMD_STARTERS, SpamChecker
-from ꜰᴜɴᴄᴘᴏᴅ.misc import is_module_loaded
+from Function.handlers import CMD_STARTERS, SpamChecker
+from Function.misc import is_module_loaded
 
 __mod_name__ = "❌ ᴅɪꜱᴀʙʟᴇ ᴍᴏᴅᴜʟᴇ"
 
@@ -20,7 +20,7 @@ FILENAME = __name__.rsplit(".", 1)[-1]
 # If module is due to be loaded, then setup all the magical handlers
 if is_module_loaded(FILENAME):
 
-    from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+    from Function.chat_status import (
         connection_status,
         is_user_admin,
         user_admin,

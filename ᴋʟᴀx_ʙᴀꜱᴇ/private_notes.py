@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from ᴋʟᴀx_ʙᴀꜱᴇ import SESSION, BASE
-from ᴍᴇᴍᴏɪʀᴇ import *
+from TMemory import *
 
 
 class PrivateNotes(BASE):

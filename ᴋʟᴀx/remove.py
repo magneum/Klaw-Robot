@@ -1,5 +1,5 @@
 from ӄʟǟաʀօɮօȶ import dispatcher, LOGS
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin, can_delete
+from Function.chat_status import user_admin, can_delete
 
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 #                                                        GNU GENERAL PUBLIC LICENSE

@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Speech import *
-from ꜰᴜɴᴄᴘᴏᴅ.misc import is_module_loaded
+from Function.misc import is_module_loaded
 
 __mod_name__ = "📓ʟᴏɢ ᴄʜᴀɴɴᴇʟ"
 
@@ -21,7 +21,7 @@ if is_module_loaded(FILENAME):
     from telegram.utils.helpers import escape_markdown
 
     from ӄʟǟաʀօɮօȶ import EVENT_LOGS, LOGS, dispatcher
-    from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin
+    from Function.chat_status import user_admin
     from ᴋʟᴀx_ʙᴀꜱᴇ import log_channel_sql as sql
 
     def loggable(func):

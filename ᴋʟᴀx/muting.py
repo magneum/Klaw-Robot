@@ -10,18 +10,18 @@
 from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import LOGS, dispatcher
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+from Function.chat_status import (
     bot_admin,
     can_restrict,
     connection_status,
     is_user_admin,
     user_admin,
 )
-from ꜰᴜɴᴄᴘᴏᴅ.extraction import (
+from Function.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from ꜰᴜɴᴄᴘᴏᴅ.string_handling import extract_time
+from Function.string_handling import extract_time
 from ᴋʟᴀx.log_channel import loggable
 
 __mod_name__ = "🔇 ᴍᴜᴛɪɴɢ"

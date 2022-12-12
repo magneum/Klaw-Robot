@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
-from ᴍᴇᴍᴏɪʀᴇ import *
+from TMemory import *
 
 
 class CleanerBlueTextChatSettings(BASE):

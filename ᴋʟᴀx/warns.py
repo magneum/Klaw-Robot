@@ -11,7 +11,7 @@ from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import dispatcher
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+from Function.chat_status import (
     bot_admin,
     can_restrict,
     is_user_admin,
@@ -19,14 +19,14 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
     user_admin_no_reply,
     can_delete,
 )
-from ꜰᴜɴᴄᴘᴏᴅ.extraction import (
+from Function.extraction import (
     extract_text,
     extract_user,
     extract_user_and_text,
 )
-from ꜰᴜɴᴄᴘᴏᴅ.filters import CustomFilters
-from ꜰᴜɴᴄᴘᴏᴅ.misc import split_message
-from ꜰᴜɴᴄᴘᴏᴅ.string_handling import split_quotes
+from Function.filters import CustomFilters
+from Function.misc import split_message
+from Function.string_handling import split_quotes
 from ᴋʟᴀx.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ import warns_sql as sql
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved

@@ -11,7 +11,7 @@ from Import import *
 from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.users_sql as sql
 from ӄʟǟաʀօɮօȶ import DEV_USERS, LOGS, OWNER_ID, dispatcher
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import dev_plus, sudo_plus
+from Function.chat_status import dev_plus, sudo_plus
 from ᴋʟᴀx_ʙᴀꜱᴇ.users_sql import get_all_users
 
 __mod_name__ = "👨‍👨‍👦 ᴜꜱᴇʀꜱ"

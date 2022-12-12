@@ -11,13 +11,13 @@ from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import dispatcher, LOGS, KLAW_LINGS
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
-from ꜰᴜɴᴄᴘᴏᴅ.handlers import MessageHandlerChecker
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin
-from ꜰᴜɴᴄᴘᴏᴅ.extraction import extract_text
-from ꜰᴜɴᴄᴘᴏᴅ.filters import CustomFilters
-from ꜰᴜɴᴄᴘᴏᴅ.misc import build_keyboard_parser, delete
-from ꜰᴜɴᴄᴘᴏᴅ.msg_types import get_filter_type
-from ꜰᴜɴᴄᴘᴏᴅ.string_handling import (
+from Function.handlers import MessageHandlerChecker
+from Function.chat_status import user_admin
+from Function.extraction import extract_text
+from Function.filters import CustomFilters
+from Function.misc import build_keyboard_parser, delete
+from Function.msg_types import get_filter_type
+from Function.string_handling import (
     split_quotes,
     button_markdown_parser,
     escape_invalid_curly_brackets,
@@ -26,7 +26,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import (
 from ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql import get_clearcmd
 from ᴋʟᴀx_ʙᴀꜱᴇ import cust_filters_sql as sql
 from ᴋʟᴀx.connection import connected
-from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
+from Function.alternate import send_message, typing_action
 
 
 __mod_name__ = "♨️ ꜰɪʟᴛᴇʀ"

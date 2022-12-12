@@ -11,7 +11,7 @@ from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import ALLOW_EXCL, CustomCommandHandler, dispatcher
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+from Function.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,

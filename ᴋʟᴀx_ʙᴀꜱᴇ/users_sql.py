@@ -10,7 +10,7 @@
 from Import import *
 from ӄʟǟաʀօɮօȶ import dispatcher
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
-from ᴍᴇᴍᴏɪʀᴇ import *
+from TMemory import *
 
 
 class Users(BASE):

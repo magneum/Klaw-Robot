@@ -11,8 +11,8 @@ from Import import *
 from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.connection_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher, KLAW_LINGS, DEV_USERS
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin
-from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
+from Function.chat_status import user_admin
+from Function.alternate import send_message, typing_action
 
 __mod_name__ = "🌏 ᴄᴏɴɴᴇᴄᴛ"
 

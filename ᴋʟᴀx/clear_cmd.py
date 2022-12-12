@@ -11,7 +11,7 @@ from Import import *
 from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin, connection_status
+from Function.chat_status import user_admin, connection_status
 
 
 @user_admin

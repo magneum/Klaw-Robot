@@ -11,7 +11,7 @@ from Import import *
 from Speech import *
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
 from ӄʟǟաʀօɮօȶ import dispatcher
-from ꜰᴜɴᴄᴘᴏᴅ.extraction import extract_user
+from Function.extraction import extract_user
 
 __mod_name__ = "🖍 ᴍᴀʀᴋᴅᴏᴡɴ"
 

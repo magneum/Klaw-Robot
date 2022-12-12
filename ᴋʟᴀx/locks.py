@@ -12,7 +12,7 @@ from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.locks_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher, KLAW_LINGS, LOGS
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+from Function.chat_status import (
     can_delete,
     is_user_admin,
     user_not_admin,
@@ -22,7 +22,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
 from ᴋʟᴀx.log_channel import loggable
 from ᴋʟᴀx.connection import connected
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
-from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
+from Function.alternate import send_message, typing_action
 
 __mod_name__ = "🔐 ʟᴏᴄᴋꜱ"
 

@@ -12,15 +12,15 @@ from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.blacklist_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher, LOGS
 from ᴋʟᴀx.disable import DisableAbleCommandHandler
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import user_admin, user_not_admin
-from ꜰᴜɴᴄᴘᴏᴅ.extraction import extract_text
-from ꜰᴜɴᴄᴘᴏᴅ.misc import split_message
+from Function.chat_status import user_admin, user_not_admin
+from Function.extraction import extract_text
+from Function.misc import split_message
 from ᴋʟᴀx.log_channel import loggable
 from ᴋʟᴀx.warns import warn
-from ꜰᴜɴᴄᴘᴏᴅ.string_handling import extract_time
+from Function.string_handling import extract_time
 from ᴋʟᴀx.connection import connected
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
-from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
+from Function.alternate import send_message, typing_action
 
 __mod_name__ = "🏴‍☠️ ʙʟᴀᴄᴋʟɪꜱᴛꜱ"
 

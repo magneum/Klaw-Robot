@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from logging import INFO, basicConfig, getLogger
-from ᴍᴇᴍᴏɪʀᴇ.ᴍᴇᴍᴏɪʀᴇ import *
+from TMemory.TMemory import *
 
 basicConfig(format="%(levelname)s - %(message)s", level=INFO)
 LOGS = getLogger(__name__)
@@ -66,7 +66,7 @@ updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 dispatcher = updater.dispatcher
 
 
-from ꜰᴜɴᴄᴘᴏᴅ.handlers import (
+from Function.handlers import (
     CustomCommandHandler,
     CustomMessageHandler,
     CustomRegexHandler,

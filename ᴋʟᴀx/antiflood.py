@@ -10,7 +10,7 @@
 from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import dispatcher
-from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
+from Function.chat_status import (
     bot_admin,
     is_user_admin,
     user_admin,
@@ -18,9 +18,9 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import (
 )
 from ᴋʟᴀx.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ import antiflood_sql as sql
-from ꜰᴜɴᴄᴘᴏᴅ.string_handling import extract_time
+from Function.string_handling import extract_time
 from ᴋʟᴀx.connection import connected
-from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message
+from Function.alternate import send_message
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
 
 __mod_name__ = "🌡 ᴀɴᴛɪꜰʟᴏᴏᴅ"
