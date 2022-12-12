@@ -9,8 +9,8 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Speech import *
-import ᴋʟᴀx_ʙᴀꜱᴇ.notes_sql as sql
-from ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql import get_clearcmd
+import Sqlbase.notes_sql as sql
+from Sqlbase.clear_cmd_sql import get_clearcmd
 from ӄʟǟաʀօɮօȶ import LOGS, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, KLAW_LINGS
 from Brain.disable import DisableAbleCommandHandler
 from Function.handlers import MessageHandlerChecker

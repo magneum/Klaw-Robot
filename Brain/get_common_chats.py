@@ -11,7 +11,7 @@ from Import import *
 from ӄʟǟաʀօɮօȶ import OWNER_ID, dispatcher
 from Function.extraction import extract_user
 from Function.chat_status import dev_plus
-from ᴋʟᴀx_ʙᴀꜱᴇ.users_sql import get_user_com_chats
+from Sqlbase.users_sql import get_user_com_chats
 
 
 @dev_plus

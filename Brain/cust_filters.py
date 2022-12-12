@@ -23,8 +23,8 @@ from Function.string_handling import (
     escape_invalid_curly_brackets,
     markdown_to_html,
 )
-from ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql import get_clearcmd
-from ᴋʟᴀx_ʙᴀꜱᴇ import cust_filters_sql as sql
+from Sqlbase.clear_cmd_sql import get_clearcmd
+from Sqlbase import cust_filters_sql as sql
 from Brain.connection import connected
 from Function.alternate import send_message, typing_action
 

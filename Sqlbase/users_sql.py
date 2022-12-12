@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from ӄʟǟաʀօɮօȶ import dispatcher
-from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
+from Sqlbase import BASE, SESSION
 from TMemory import *
 
 

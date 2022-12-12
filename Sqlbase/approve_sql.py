@@ -8,79 +8,59 @@
 #                                                 𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
-from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
+from Sqlbase import BASE, SESSION
 from TMemory import *
 
 
-class GroupLogs(BASE):
-    __tablename__ = "log_channels"
+class Approvals(BASE):
+    __tablename__ = "approval"
     chat_id = Column(String(14), primary_key=True)
-    log_channel = Column(String(14), nullable=False)
+    user_id = Column(Integer, primary_key=True)
 
-    def __init__(self, chat_id, log_channel):
-        self.chat_id = str(chat_id)
-        self.log_channel = str(log_channel)
+    def __init__(self, chat_id, user_id):
+        self.chat_id = str(chat_id)  # ensure string
+        self.user_id = user_id
+
+    def __repr__(self):
+        return "<Approve %s>" % self.user_id
 
 
-GroupLogs.__table__.create(checkfirst=True)
+Approvals.__table__.create(checkfirst=True)
 
 
-def set_chat_log_channel(chat_id, log_channel):
-    with LOGS_INSERTION_LOCK:
-        res = SESSION.query(GroupLogs).get(str(chat_id))
-        if res:
-            res.log_channel = log_channel
-        else:
-            res = GroupLogs(chat_id, log_channel)
-            SESSION.add(res)
-
-        CHANNELS[str(chat_id)] = log_channel
+def approve(chat_id, user_id):
+    with APPROVE_INSERTION_LOCK:
+        approve_user = Approvals(str(chat_id), user_id)
+        SESSION.add(approve_user)
         SESSION.commit()
 
 
-def get_chat_log_channel(chat_id):
-    return CHANNELS.get(str(chat_id))
+def is_approved(chat_id, user_id):
+    try:
+        return SESSION.query(Approvals).get((str(chat_id), user_id))
+    finally:
+        SESSION.close()
 
 
-def stop_chat_logging(chat_id):
-    with LOGS_INSERTION_LOCK:
-        res = SESSION.query(GroupLogs).get(str(chat_id))
-        if res:
-            if str(chat_id) in CHANNELS:
-                del CHANNELS[str(chat_id)]
-
-            log_channel = res.log_channel
-            SESSION.delete(res)
+def disapprove(chat_id, user_id):
+    with APPROVE_INSERTION_LOCK:
+        disapprove_user = SESSION.query(Approvals).get((str(chat_id), user_id))
+        if disapprove_user:
+            SESSION.delete(disapprove_user)
             SESSION.commit()
-            return log_channel
+            return True
+        else:
+            SESSION.close()
+            return False
 
 
-def num_logchannels():
+def list_approved(chat_id):
     try:
-        return SESSION.query(func.count(distinct(GroupLogs.chat_id))).scalar()
+        return (
+            SESSION.query(Approvals)
+            .filter(Approvals.chat_id == str(chat_id))
+            .order_by(Approvals.user_id.asc())
+            .all()
+        )
     finally:
         SESSION.close()
-
-
-def migrate_chat(old_chat_id, new_chat_id):
-    with LOGS_INSERTION_LOCK:
-        chat = SESSION.query(GroupLogs).get(str(old_chat_id))
-        if chat:
-            chat.chat_id = str(new_chat_id)
-            SESSION.add(chat)
-            if str(old_chat_id) in CHANNELS:
-                CHANNELS[str(new_chat_id)] = CHANNELS.get(str(old_chat_id))
-
-        SESSION.commit()
-
-
-def __load_log_channels():
-    global CHANNELS
-    try:
-        all_chats = SESSION.query(GroupLogs).all()
-        CHANNELS = {chat.chat_id: chat.log_channel for chat in all_chats}
-    finally:
-        SESSION.close()
-
-
-__load_log_channels()

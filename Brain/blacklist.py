@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Speech import *
-import ᴋʟᴀx_ʙᴀꜱᴇ.blacklist_sql as sql
+import Sqlbase.blacklist_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher, LOGS
 from Brain.disable import DisableAbleCommandHandler
 from Function.chat_status import user_admin, user_not_admin
@@ -19,7 +19,7 @@ from Brain.log_channel import loggable
 from Brain.warns import warn
 from Function.string_handling import extract_time
 from Brain.connection import connected
-from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
+from Sqlbase.approve_sql import is_approved
 from Function.alternate import send_message, typing_action
 
 __mod_name__ = "🏴‍☠️ ʙʟᴀᴄᴋʟɪꜱᴛꜱ"

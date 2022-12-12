@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Speech import *
-import ᴋʟᴀx_ʙᴀꜱᴇ.private_notes as sql
+import Sqlbase.private_notes as sql
 from ӄʟǟաʀօɮօȶ import dispatcher
 from Function.chat_status import user_admin
 

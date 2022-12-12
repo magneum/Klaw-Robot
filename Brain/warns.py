@@ -28,8 +28,8 @@ from Function.filters import CustomFilters
 from Function.misc import split_message
 from Function.string_handling import split_quotes
 from Brain.log_channel import loggable
-from ᴋʟᴀx_ʙᴀꜱᴇ import warns_sql as sql
-from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
+from Sqlbase import warns_sql as sql
+from Sqlbase.approve_sql import is_approved
 
 __mod_name__ = "🗯 ᴡᴀʀɴɪɴɢꜱ"
 

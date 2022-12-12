@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Function.msg_types import Types
-from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
+from Sqlbase import BASE, SESSION
 from TMemory import *
 from Speech import *
 

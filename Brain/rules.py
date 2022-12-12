@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Speech import *
-import ᴋʟᴀx_ʙᴀꜱᴇ.rules_sql as sql
+import Sqlbase.rules_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher
 from Function.chat_status import user_admin
 from Function.string_handling import markdown_parser

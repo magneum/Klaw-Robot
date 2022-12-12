@@ -22,7 +22,7 @@ if is_module_loaded(FILENAME):
 
     from ӄʟǟաʀօɮօȶ import EVENT_LOGS, LOGS, dispatcher
     from Function.chat_status import user_admin
-    from ᴋʟᴀx_ʙᴀꜱᴇ import log_channel_sql as sql
+    from Sqlbase import log_channel_sql as sql
 
     def loggable(func):
         @wraps(func)

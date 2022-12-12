@@ -8,56 +8,66 @@
 #                                                 𝐂𝐨𝐩𝐲𝐫𝐢𝐠𝐡𝐭 (𝐂) 𝟐𝟎𝟐𝟏 𝗞𝗿𝗮𝗸𝗶𝗻𝘇 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗟𝗮𝗯 | 𝗞𝗿𝗮𝗸𝗶𝗻𝘇𝗕𝗼𝘁
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
-from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
+from Sqlbase import BASE, SESSION
 from TMemory import *
 
 
-class Rules(BASE):
-    __tablename__ = "rules"
-    chat_id = Column(String(14), primary_key=True)
-    rules = Column(UnicodeText, default="")
+class BlacklistUsers(BASE):
+    __tablename__ = "blacklistusers"
+    user_id = Column(String(14), primary_key=True)
+    reason = Column(UnicodeText)
 
-    def __init__(self, chat_id):
-        self.chat_id = chat_id
-
-    def __repr__(self):
-        return "<Chat {} rules: {}>".format(self.chat_id, self.rules)
+    def __init__(self, user_id, reason=None):
+        self.user_id = user_id
+        self.reason = reason
 
 
-Rules.__table__.create(checkfirst=True)
+BlacklistUsers.__table__.create(checkfirst=True)
 
 
-def set_rules(chat_id, rules_text):
-    with INSERTION_LOCK:
-        rules = SESSION.query(Rules).get(str(chat_id))
-        if not rules:
-            rules = Rules(str(chat_id))
-        rules.rules = rules_text
+def blacklist_user(user_id, reason=None):
+    with BLACKLIST_LOCK:
+        user = SESSION.query(BlacklistUsers).get(str(user_id))
+        if not user:
+            user = BlacklistUsers(str(user_id), reason)
+        else:
+            user.reason = reason
 
-        SESSION.add(rules)
+        SESSION.add(user)
         SESSION.commit()
+        __load_blacklist_userid_list()
 
 
-def get_rules(chat_id):
-    rules = SESSION.query(Rules).get(str(chat_id))
-    ret = ""
-    if rules:
-        ret = rules.rules
+def unblacklist_user(user_id):
+    with BLACKLIST_LOCK:
+        user = SESSION.query(BlacklistUsers).get(str(user_id))
+        if user:
+            SESSION.delete(user)
+
+        SESSION.commit()
+        __load_blacklist_userid_list()
+
+
+def get_reason(user_id):
+    user = SESSION.query(BlacklistUsers).get(str(user_id))
+    rep = ""
+    if user:
+        rep = user.reason
 
     SESSION.close()
-    return ret
+    return rep
 
 
-def num_chats():
+def is_user_blacklisted(user_id):
+    return user_id in BLACKLIST_USERS
+
+
+def __load_blacklist_userid_list():
+    global BLACKLIST_USERS
     try:
-        return SESSION.query(func.count(distinct(Rules.chat_id))).scalar()
+        BLACKLIST_USERS = {int(x.user_id) for x in SESSION.query(BlacklistUsers).all()}
     finally:
         SESSION.close()
 
 
-def migrate_chat(old_chat_id, new_chat_id):
-    with INSERTION_LOCK:
-        chat = SESSION.query(Rules).get(str(old_chat_id))
-        if chat:
-            chat.chat_id = str(new_chat_id)
-        SESSION.commit()
+__load_blacklist_userid_list()

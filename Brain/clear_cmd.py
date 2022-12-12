@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Speech import *
-import ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql as sql
+import Sqlbase.clear_cmd_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher
 from Function.chat_status import user_admin, connection_status
 

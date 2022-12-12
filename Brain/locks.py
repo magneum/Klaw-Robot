@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from Speech import *
-import ᴋʟᴀx_ʙᴀꜱᴇ.locks_sql as sql
+import Sqlbase.locks_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher, KLAW_LINGS, LOGS
 from Brain.disable import DisableAbleCommandHandler
 from Function.chat_status import (
@@ -21,7 +21,7 @@ from Function.chat_status import (
 )
 from Brain.log_channel import loggable
 from Brain.connection import connected
-from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
+from Sqlbase.approve_sql import is_approved
 from Function.alternate import send_message, typing_action
 
 __mod_name__ = "🔐 ʟᴏᴄᴋꜱ"

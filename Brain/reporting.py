@@ -12,7 +12,7 @@ from Speech import *
 from ӄʟǟաʀօɮօȶ import LOGS, KLAW_LINGS, dispatcher
 from Function.chat_status import user_admin, user_not_admin
 from Brain.log_channel import loggable
-from ᴋʟᴀx_ʙᴀꜱᴇ import reporting_sql as sql
+from Sqlbase import reporting_sql as sql
 
 __mod_name__ = "⚔️ ʀᴇᴘᴏʀᴛꜱ"
 
