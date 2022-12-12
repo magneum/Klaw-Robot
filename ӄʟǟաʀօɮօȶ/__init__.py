@@ -14,7 +14,7 @@ from ᴍᴇᴍᴏɪʀᴇ.ᴍᴇᴍᴏɪʀᴇ import *
 basicConfig(format="%(levelname)s - %(message)s", level=INFO)
 LOGS = getLogger(__name__)
 ENV = bool(os.environ.get("ENV", False))
-from ᴋᴏɴꜰɪɢ.ᴋᴏɴꜰɪɢ import Faigo as ӄօռʟӼ
+from Configures.Configures import Faigo as ӄօռʟӼ
 
 TOKEN = ӄօռʟӼ.TOKEN
 try:

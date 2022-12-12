@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from ᴍᴇᴍᴏɪʀᴇ import *
-from ꜱᴀʏᴏɴᴀʀᴀ import *
+from Speech import *
 from ӄʟǟաʀօɮօȶ import LOGS, dispatcher, StartTime, updater
 from ꜰᴜɴᴄᴘᴏᴅ.chat_status import is_user_admin
 from ꜰᴜɴᴄᴘᴏᴅ.misc import paginate_modules

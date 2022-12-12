@@ -11,7 +11,7 @@ from Import import *
 from ꜰᴜɴᴄᴘᴏᴅ.msg_types import Types
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
 from ᴍᴇᴍᴏɪʀᴇ import *
-from ꜱᴀʏᴏɴᴀʀᴀ import *
+from Speech import *
 
 
 class Welcome(BASE):
