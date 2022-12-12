@@ -10,6 +10,7 @@
 from Import import *
 from ꜰᴜɴᴄᴘᴏᴅ.string_handling import button_markdown_parser
 
+
 @unique
 class Types(IntEnum):
     TEXT = 0
