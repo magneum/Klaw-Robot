@@ -9,7 +9,7 @@
 # •=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=••=•
 from Import import *
 from ӄʟǟաʀօɮօȶ import LOGS
-from ᴋʟᴀx.users import get_user_id
+from Brain.users import get_user_id
 
 
 def id_from_reply(message):

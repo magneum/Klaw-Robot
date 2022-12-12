@@ -10,7 +10,7 @@
 from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import KLAW_LINGS, dispatcher
-from ᴋʟᴀx.disable import DisableAbleCommandHandler
+from Brain.disable import DisableAbleCommandHandler
 from Function.chat_status import (
     bot_admin,
     can_pin,
@@ -24,7 +24,7 @@ from Function.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from ᴋʟᴀx.log_channel import loggable
+from Brain.log_channel import loggable
 from Function.alternate import send_message
 
 

@@ -16,10 +16,10 @@ from Function.chat_status import (
     user_admin,
     user_admin_no_reply,
 )
-from ᴋʟᴀx.log_channel import loggable
+from Brain.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ import antiflood_sql as sql
 from Function.string_handling import extract_time
-from ᴋʟᴀx.connection import connected
+from Brain.connection import connected
 from Function.alternate import send_message
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
 

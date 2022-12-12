@@ -15,7 +15,7 @@ from Function.chat_status import is_user_ban_protected, user_admin
 from Function.misc import build_keyboard, revert_buttons
 from Function.msg_types import get_welcome_type
 from Function.string_handling import escape_invalid_curly_brackets, markdown_parser
-from ᴋʟᴀx.log_channel import loggable
+from Brain.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ.global_bans_sql import is_user_gbanned
 
 __mod_name__ = "📟 ᴡᴇʟᴄᴏᴍᴇ"

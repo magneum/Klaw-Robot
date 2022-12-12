@@ -12,7 +12,7 @@ from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.notes_sql as sql
 from ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql import get_clearcmd
 from ӄʟǟաʀօɮօȶ import LOGS, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, KLAW_LINGS
-from ᴋʟᴀx.disable import DisableAbleCommandHandler
+from Brain.disable import DisableAbleCommandHandler
 from Function.handlers import MessageHandlerChecker
 from Function.chat_status import user_admin, connection_status
 from Function.misc import build_keyboard, revert_buttons, delete
@@ -20,7 +20,7 @@ from Function.msg_types import get_note_type
 from Function.string_handling import (
     escape_invalid_curly_brackets,
 )
-from ᴋʟᴀx.private_notes import getprivatenotes
+from Brain.private_notes import getprivatenotes
 
 
 __mod_name__ = "📜 ɴᴏᴛᴇꜱ"

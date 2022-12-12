@@ -10,10 +10,10 @@
 from Import import *
 from TMemory import *
 from ӄʟǟաʀօɮօȶ import LOGS, updater
-from ᴋʟᴀx import ALL_MODULES
+from Brain import ALL_MODULES
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("ᴋʟᴀx." + module_name)
+    imported_module = importlib.import_module("Brain." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
     if imported_module.__mod_name__.lower() not in IMPORTED:

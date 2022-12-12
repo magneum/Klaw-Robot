@@ -16,7 +16,7 @@ from ӄʟǟաʀօɮօȶ import (
     KLAW_LINGS,
     dispatcher,
 )
-from ᴋʟᴀx.disable import DisableAbleCommandHandler
+from Brain.disable import DisableAbleCommandHandler
 from Function.chat_status import (
     bot_admin,
     can_restrict,
@@ -30,7 +30,7 @@ from Function.chat_status import (
 )
 from Function.extraction import extract_user_and_text
 from Function.string_handling import extract_time
-from ᴋʟᴀx.log_channel import gloggable, loggable
+from Brain.log_channel import gloggable, loggable
 
 
 __mod_name__ = "🚩 ʙᴀɴꜱ"

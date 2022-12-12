@@ -10,7 +10,7 @@
 from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import dispatcher, LOGS, KLAW_LINGS
-from ᴋʟᴀx.disable import DisableAbleCommandHandler
+from Brain.disable import DisableAbleCommandHandler
 from Function.handlers import MessageHandlerChecker
 from Function.chat_status import user_admin
 from Function.extraction import extract_text
@@ -25,7 +25,7 @@ from Function.string_handling import (
 )
 from ᴋʟᴀx_ʙᴀꜱᴇ.clear_cmd_sql import get_clearcmd
 from ᴋʟᴀx_ʙᴀꜱᴇ import cust_filters_sql as sql
-from ᴋʟᴀx.connection import connected
+from Brain.connection import connected
 from Function.alternate import send_message, typing_action
 
 

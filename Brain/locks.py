@@ -11,7 +11,7 @@ from Import import *
 from Speech import *
 import ᴋʟᴀx_ʙᴀꜱᴇ.locks_sql as sql
 from ӄʟǟաʀօɮօȶ import dispatcher, KLAW_LINGS, LOGS
-from ᴋʟᴀx.disable import DisableAbleCommandHandler
+from Brain.disable import DisableAbleCommandHandler
 from Function.chat_status import (
     can_delete,
     is_user_admin,
@@ -19,8 +19,8 @@ from Function.chat_status import (
     is_bot_admin,
     user_admin,
 )
-from ᴋʟᴀx.log_channel import loggable
-from ᴋʟᴀx.connection import connected
+from Brain.log_channel import loggable
+from Brain.connection import connected
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
 from Function.alternate import send_message, typing_action
 

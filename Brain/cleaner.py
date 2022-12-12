@@ -10,7 +10,7 @@
 from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from ᴋʟᴀx.disable import DisableAbleCommandHandler
+from Brain.disable import DisableAbleCommandHandler
 from Function.chat_status import (
     bot_can_delete,
     connection_status,

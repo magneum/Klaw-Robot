@@ -426,6 +426,6 @@ def connection_status(func):
 
 
 # Workaround for circular import with connection.py
-from ᴋʟᴀx import connection
+from Brain import connection
 
 connected = connection.connected

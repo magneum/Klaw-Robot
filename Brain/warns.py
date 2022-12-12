@@ -10,7 +10,7 @@
 from Import import *
 from Speech import *
 from ӄʟǟաʀօɮօȶ import dispatcher
-from ᴋʟᴀx.disable import DisableAbleCommandHandler
+from Brain.disable import DisableAbleCommandHandler
 from Function.chat_status import (
     bot_admin,
     can_restrict,
@@ -27,7 +27,7 @@ from Function.extraction import (
 from Function.filters import CustomFilters
 from Function.misc import split_message
 from Function.string_handling import split_quotes
-from ᴋʟᴀx.log_channel import loggable
+from Brain.log_channel import loggable
 from ᴋʟᴀx_ʙᴀꜱᴇ import warns_sql as sql
 from ᴋʟᴀx_ʙᴀꜱᴇ.approve_sql import is_approved
 
