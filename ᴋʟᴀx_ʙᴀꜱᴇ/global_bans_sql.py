@@ -46,6 +46,7 @@ class GbanSettings(BASE):
 GloballyBannedUsers.__table__.create(checkfirst=True)
 GbanSettings.__table__.create(checkfirst=True)
 
+
 def gban_user(user_id, name, reason=None):
     with GBANNED_USERS_LOCK:
         user = SESSION.query(GloballyBannedUsers).get(user_id)

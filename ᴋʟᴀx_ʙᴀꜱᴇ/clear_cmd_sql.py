@@ -83,11 +83,8 @@ def del_allclearcmd(chat_id):
 def migrate_chat(old_chat_id, new_chat_id):
     with CLEAR_CMD_LOCK:
         chat_filters = (
-            SESSION.query(ClearCmd)
-            .filter(ClearCmd.chat_id == str(old_chat_id))
-            .all()
+            SESSION.query(ClearCmd).filter(ClearCmd.chat_id == str(old_chat_id)).all()
         )
         for filt in chat_filters:
             filt.chat_id = str(new_chat_id)
         SESSION.commit()
-

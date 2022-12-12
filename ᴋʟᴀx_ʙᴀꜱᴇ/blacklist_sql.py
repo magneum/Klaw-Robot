@@ -11,6 +11,7 @@ from Import import *
 from ᴋʟᴀx_ʙᴀꜱᴇ import SESSION, BASE
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+
 class BlackListFilters(BASE):
     __tablename__ = "blacklist"
     chat_id = Column(String(14), primary_key=True)
@@ -50,8 +51,6 @@ class BlacklistSettings(BASE):
 
 BlackListFilters.__table__.create(checkfirst=True)
 BlacklistSettings.__table__.create(checkfirst=True)
-
-
 
 
 def add_to_blacklist(chat_id, trigger):

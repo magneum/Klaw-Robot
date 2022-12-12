@@ -11,6 +11,7 @@ from Import import *
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+
 class Approvals(BASE):
     __tablename__ = "approval"
     chat_id = Column(String(14), primary_key=True)
@@ -25,7 +26,6 @@ class Approvals(BASE):
 
 
 Approvals.__table__.create(checkfirst=True)
-
 
 
 def approve(chat_id, user_id):

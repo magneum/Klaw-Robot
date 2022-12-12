@@ -74,7 +74,6 @@ WarnFilters.__table__.create(checkfirst=True)
 WarnSettings.__table__.create(checkfirst=True)
 
 
-
 def warn_user(user_id, chat_id, reason=None):
     with WARN_INSERTION_LOCK:
         warned_user = SESSION.query(Warns).get((user_id, str(chat_id)))

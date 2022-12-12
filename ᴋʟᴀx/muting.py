@@ -26,6 +26,7 @@ from ᴋʟᴀx.log_channel import loggable
 
 __mod_name__ = "🔇 ᴍᴜᴛɪɴɢ"
 
+
 def check_user(user_id: int, bot: Bot, chat: Chat) -> Optional[str]:
     if not user_id:
         reply = f"{ALKL}You don't seem to be referring to a user or the ID specified is incorrect.."
@@ -222,7 +223,9 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
                 f"<code> </code><b>•  Time: {time_val}</b>"
             )
             if reason:
-                reply += f"{ALKL}\n<code> </code><b>•  Reason:</b> {html.escape(reason)}"
+                reply += (
+                    f"{ALKL}\n<code> </code><b>•  Reason:</b> {html.escape(reason)}"
+                )
             bot.sendMessage(chat.id, reply, parse_mode=ParseMode.HTML)
             return log
         else:

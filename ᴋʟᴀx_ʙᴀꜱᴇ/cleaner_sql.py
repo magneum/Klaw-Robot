@@ -48,8 +48,6 @@ CleanerBlueTextChat.__table__.create(checkfirst=True)
 CleanerBlueTextGlobal.__table__.create(checkfirst=True)
 
 
-
-
 def set_cleanbt(chat_id, is_enable):
     with CLEANER_CHAT_SETTINGS:
         curr = SESSION.query(CleanerBlueTextChatSettings).get(str(chat_id))
@@ -57,7 +55,7 @@ def set_cleanbt(chat_id, is_enable):
             SESSION.delete(curr)
 
         newcurr = CleanerBlueTextChatSettings(str(chat_id), is_enable)
-        
+
         SESSION.add(newcurr)
         SESSION.commit()
 
@@ -156,10 +154,10 @@ def is_enabled(chat_id):
         resultcurr = SESSION.query(CleanerBlueTextChatSettings).get(str(chat_id))
         if resultcurr:
             return resultcurr.is_enable
-        return False #default
+        return False  # default
     finally:
         SESSION.close()
-        
+
 
 def get_all_ignored(chat_id):
     if str(chat_id) in CLEANER_CHATS:

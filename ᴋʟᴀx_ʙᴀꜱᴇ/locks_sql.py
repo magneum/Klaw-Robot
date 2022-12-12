@@ -11,6 +11,7 @@ from Import import *
 from ᴋʟᴀx_ʙᴀꜱᴇ import SESSION, BASE
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+
 class Permissions(BASE):
     __tablename__ = "permissions"
     chat_id = Column(String(14), primary_key=True)
@@ -83,7 +84,6 @@ class Restrictions(BASE):
 Permissions.__table__.create(checkfirst=True)
 # Permissions.__table__.drop()
 Restrictions.__table__.create(checkfirst=True)
-
 
 
 def init_permissions(chat_id, reset=False):

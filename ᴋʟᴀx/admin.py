@@ -30,6 +30,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message
 
 __mod_name__ = "🛡 ᴀᴅᴍɪɴꜱ"
 
+
 @connection_status
 @bot_admin
 @can_promote
@@ -66,11 +67,15 @@ def promote(update: Update, context: CallbackContext) -> str:
         return
 
     if user_member.status == "administrator" or user_member.status == "creator":
-        message.reply_text(f"{ALKL}How am I meant to promote someone that's already an admin?")
+        message.reply_text(
+            f"{ALKL}How am I meant to promote someone that's already an admin?"
+        )
         return
 
     if user_id == bot.id:
-        message.reply_text(f"{ALKL}I can't promote myself! Get an admin to do it for me.")
+        message.reply_text(
+            f"{ALKL}I can't promote myself! Get an admin to do it for me."
+        )
         return
 
     # set same perms as bot - bot can't assign higher perms than itself!
@@ -147,7 +152,9 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
     if user_member.status == "creator":
-        message.reply_text(f"{ALKL}This person CREATED the chat, how would I demote them?")
+        message.reply_text(
+            f"{ALKL}This person CREATED the chat, how would I demote them?"
+        )
         return
 
     if not user_member.status == "administrator":
@@ -155,7 +162,9 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
     if user_id == bot.id:
-        message.reply_text(f"{ALKL}I can't demote myself! Get an admin to do it for me.")
+        message.reply_text(
+            f"{ALKL}I can't demote myself! Get an admin to do it for me."
+        )
         return
 
     try:
@@ -257,7 +266,9 @@ def set_title(update: Update, context: CallbackContext):
     try:
         bot.setChatAdministratorCustomTitle(chat.id, user_id, title)
     except BadRequest:
-        message.reply_text(f"{ALKL}Either they aren't promoted by me or you set a title text that is impossible to set.")
+        message.reply_text(
+            f"{ALKL}Either they aren't promoted by me or you set a title text that is impossible to set."
+        )
         return
 
     bot.sendMessage(
@@ -367,7 +378,9 @@ def adminlist(update: Update, context: CallbackContext):
     bot = context.bot
 
     if update.effective_message.chat.type == "private":
-        send_message(update.effective_message, f"{ALKL}This command only works in Groups.")
+        send_message(
+            update.effective_message, f"{ALKL}This command only works in Groups."
+        )
         return
 
     chat = update.effective_chat
@@ -384,7 +397,9 @@ def adminlist(update: Update, context: CallbackContext):
         )
 
     administrators = bot.getChatAdministrators(chat_id)
-    text = "{}Admins in <b>{}</b>:".format(html.escape(update.effective_chat.title), ALKL)
+    text = "{}Admins in <b>{}</b>:".format(
+        html.escape(update.effective_chat.title), ALKL
+    )
 
     bot_admin_list = []
 
@@ -489,10 +504,16 @@ __help__ = f"""{ALKL}
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
 
-PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.chat_type.groups, run_async=True)
-UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
+PIN_HANDLER = CommandHandler(
+    "pin", pin, filters=Filters.chat_type.groups, run_async=True
+)
+UNPIN_HANDLER = CommandHandler(
+    "unpin", unpin, filters=Filters.chat_type.groups, run_async=True
+)
 
-INVITE_HANDLER = DisableAbleCommandHandler(["invitelink", "link"], invite, run_async=True)
+INVITE_HANDLER = DisableAbleCommandHandler(
+    ["invitelink", "link"], invite, run_async=True
+)
 
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote, run_async=True)
 DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote, run_async=True)

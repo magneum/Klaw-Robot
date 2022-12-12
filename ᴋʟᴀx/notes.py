@@ -45,7 +45,11 @@ ENUM_FUNC_MAP = {
     sql.Types.VOICE.value: dispatcher.bot.send_voice,
     sql.Types.VIDEO.value: dispatcher.bot.send_video,
 }
-def get(update: Update, context: CallbackContext, notename, show_none=True, no_format=False):
+
+
+def get(
+    update: Update, context: CallbackContext, notename, show_none=True, no_format=False
+):
     bot = context.bot
     user = update.effective_user
     chat_id = update.effective_message.chat.id
@@ -342,7 +346,9 @@ def clear(update: Update, context: CallbackContext):
         if sql.rm_note(chat_id, notename):
             update.effective_message.reply_text(f"{ALKL}Successfully removed note.")
         else:
-            update.effective_message.reply_text(f"{ALKL}That's not a note in my database!")
+            update.effective_message.reply_text(
+                f"{ALKL}That's not a note in my database!"
+            )
 
 
 def clearall(update: Update, context: CallbackContext):
@@ -427,14 +433,18 @@ def list_notes(update: Update, context: CallbackContext):
         try:
             update.effective_message.reply_text(f"{ALKL}No notes in this chat!")
         except BadRequest:
-            update.effective_message.reply_text(f"{ALKL}No notes in this chat!", quote=False)
+            update.effective_message.reply_text(
+                f"{ALKL}No notes in this chat!", quote=False
+            )
 
     elif len(msg) != 0:
         setting = getprivatenotes(chat_id)
         if setting == True:
             bot.send_message(user.id, msg_pm, parse_mode=ParseMode.MARKDOWN)
         else:
-            delmsg = update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
+            delmsg = update.effective_message.reply_text(
+                msg, parse_mode=ParseMode.MARKDOWN
+            )
 
             cleartime = get_clearcmd(chat_id, "notes")
 
@@ -590,14 +600,15 @@ A button can be added to a note by using standard markdown link syntax - the lin
 """
 
 
-
 GET_HANDLER = CommandHandler("get", cmd_get, run_async=True)
 HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get, run_async=True)
 SLASH_GET_HANDLER = MessageHandler(Filters.regex(r"^/\d+$"), slash_get, run_async=True)
 SAVE_HANDLER = CommandHandler("save", save, run_async=True)
 DELETE_HANDLER = CommandHandler("clear", clear, run_async=True)
 
-LIST_HANDLER = DisableAbleCommandHandler(["notes", "saved"], list_notes, admin_ok=True, run_async=True)
+LIST_HANDLER = DisableAbleCommandHandler(
+    ["notes", "saved"], list_notes, admin_ok=True, run_async=True
+)
 
 CLEARALL = DisableAbleCommandHandler("removeallnotes", clearall, run_async=True)
 CLEARALL_BTN = CallbackQueryHandler(clearall_btn, pattern=r"notes_.*", run_async=True)

@@ -11,12 +11,11 @@ from Import import *
 from logging import INFO, basicConfig, getLogger
 from ᴍᴇᴍᴏɪʀᴇ.ᴍᴇᴍᴏɪʀᴇ import *
 
-basicConfig(
-format="%(levelname)s - %(message)s",
-level=INFO)
+basicConfig(format="%(levelname)s - %(message)s", level=INFO)
 LOGS = getLogger(__name__)
 ENV = bool(os.environ.get("ENV", False))
 from ᴋᴏɴꜰɪɢ.ᴋᴏɴꜰɪɢ import Faigo as ӄօռʟӼ
+
 TOKEN = ӄօռʟӼ.TOKEN
 try:
     OWNER_ID = int(ӄօռʟӼ.OWNER_ID)
@@ -63,14 +62,15 @@ else:
 KLAW_LINGS = list(KLAW_LINGS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
 
-updater = tg.Updater(
-TOKEN,
-workers=WORKERS,
-use_context=True)
+updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 dispatcher = updater.dispatcher
 
 
-from ꜰᴜɴᴄᴘᴏᴅ.handlers import (CustomCommandHandler,CustomMessageHandler,CustomRegexHandler)
+from ꜰᴜɴᴄᴘᴏᴅ.handlers import (
+    CustomCommandHandler,
+    CustomMessageHandler,
+    CustomRegexHandler,
+)
 
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler

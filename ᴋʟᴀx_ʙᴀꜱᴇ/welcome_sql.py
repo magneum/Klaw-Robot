@@ -11,8 +11,7 @@ from Import import *
 from ꜰᴜɴᴄᴘᴏᴅ.msg_types import Types
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
 from ᴍᴇᴍᴏɪʀᴇ import *
-from ꜱᴀʏᴏɴᴀʀᴀ import * 
-
+from ꜱᴀʏᴏɴᴀʀᴀ import *
 
 
 class Welcome(BASE):
@@ -113,8 +112,6 @@ GoodbyeButtons.__table__.create(checkfirst=True)
 WelcomeMute.__table__.create(checkfirst=True)
 WelcomeMuteUsers.__table__.create(checkfirst=True)
 CleanServiceSetting.__table__.create(checkfirst=True)
-
-
 
 
 def welcome_mutes(chat_id):

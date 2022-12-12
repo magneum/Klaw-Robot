@@ -11,6 +11,7 @@ from Import import *
 from ᴋʟᴀx_ʙᴀꜱᴇ import SESSION, BASE
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+
 class ChatAccessConnectionSettings(BASE):
     __tablename__ = "access_connection"
     chat_id = Column(String(14), primary_key=True)
@@ -56,8 +57,6 @@ class ConnectionHistory(BASE):
 ChatAccessConnectionSettings.__table__.create(checkfirst=True)
 Connection.__table__.create(checkfirst=True)
 ConnectionHistory.__table__.create(checkfirst=True)
-
-
 
 
 def allow_connect_to_chat(chat_id: Union[str, int]) -> bool:

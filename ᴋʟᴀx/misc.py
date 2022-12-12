@@ -36,6 +36,8 @@ This will create two buttons on a single line, instead of one button per line.
 Keep in mind that your message <b>MUST</b> contain some text other than just a button!
 """
 run_async
+
+
 def get_id(update: Update, context: CallbackContext):
     args = context.args
     message = update.effective_message
@@ -50,39 +52,49 @@ def get_id(update: Update, context: CallbackContext):
             user1 = message.reply_to_message.from_user
             user2 = message.reply_to_message.forward_from
 
-            msg.reply_text(f"{ALKL}The original sender, {html.escape(user2.first_name)},"
-                           f" has an ID of <code>{user2.id}</code>.\n"
-                           f"The forwarder, {html.escape(user1.first_name)},"
-                           f" has an ID of <code>{user1.id}</code>.",
-                           parse_mode=ParseMode.HTML)
+            msg.reply_text(
+                f"{ALKL}The original sender, {html.escape(user2.first_name)},"
+                f" has an ID of <code>{user2.id}</code>.\n"
+                f"The forwarder, {html.escape(user1.first_name)},"
+                f" has an ID of <code>{user1.id}</code>.",
+                parse_mode=ParseMode.HTML,
+            )
 
         else:
 
             user = update.get_chat(user_id)
-            msg.reply_text(f"{html.escape(user.first_name)}'s id is <code>{user.id}</code>.",
-                           parse_mode=ParseMode.HTML)
+            msg.reply_text(
+                f"{html.escape(user.first_name)}'s id is <code>{user.id}</code>.",
+                parse_mode=ParseMode.HTML,
+            )
 
     else:
 
         if chat.type == "private":
-            msg.reply_text(f"{ALKL}Your id is <code>{chat.id}</code>.",
-                           parse_mode=ParseMode.HTML)
+            msg.reply_text(
+                f"{ALKL}Your id is <code>{chat.id}</code>.", parse_mode=ParseMode.HTML
+            )
 
         else:
-            msg.reply_text(f"{ALKL}This group's id is <code>{chat.id}</code>.",
-                           parse_mode=ParseMode.HTML)
+            msg.reply_text(
+                f"{ALKL}This group's id is <code>{chat.id}</code>.",
+                parse_mode=ParseMode.HTML,
+            )
+
 
 run_async
+
+
 def markdown_help(bot: Bot, update: Update):
     update.effective_message.reply_text(MARKDOWN_HELP, parse_mode=ParseMode.HTML)
-    update.effective_message.reply_text(f"{ALKL}Try forwarding the following message to me, and you'll see!")
-    update.effective_message.reply_text("/save test This is a markdown test. _italics_, *bold*, `code`, "
-                                        "[URL](example.com) [button](buttonurl:github.com) "
-                                        "[button2](buttonurl://google.com:same)")
-
-
-
-
+    update.effective_message.reply_text(
+        f"{ALKL}Try forwarding the following message to me, and you'll see!"
+    )
+    update.effective_message.reply_text(
+        "/save test This is a markdown test. _italics_, *bold*, `code`, "
+        "[URL](example.com) [button](buttonurl:github.com) "
+        "[button2](buttonurl://google.com:same)"
+    )
 
 
 __help__ = f"""{ALKL}
@@ -98,6 +110,5 @@ dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(MD_HELP_HANDLER)
 
 
-
 __command_list__ = ["id", "markdownhelp"]
-__handlers__ = [ID_HANDLER,  MD_HELP_HANDLER]
+__handlers__ = [ID_HANDLER, MD_HELP_HANDLER]

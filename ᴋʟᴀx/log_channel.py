@@ -94,7 +94,8 @@ if is_module_loaded(FILENAME):
         except BadRequest as excp:
             if excp.message == "Chat not found":
                 bot.send_message(
-                    orig_chat_id, f"{ALKL}This log channel has been deleted - unsetting."
+                    orig_chat_id,
+                    f"{ALKL}This log channel has been deleted - unsetting.",
                 )
                 sql.stop_chat_logging(orig_chat_id)
             else:
@@ -209,8 +210,6 @@ Setting the log channel is done by:
 🦀 •sending `/setlog` in the channel
 🦀 •forwarding the `/setlog` to the group
 """
-
-    
 
     LOG_HANDLER = CommandHandler("logchannel", logging, run_async=True)
     SET_LOG_HANDLER = CommandHandler("setlog", setlog, run_async=True)

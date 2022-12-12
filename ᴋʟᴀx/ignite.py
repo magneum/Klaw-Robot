@@ -10,9 +10,10 @@
 from Import import *
 from ᴍᴇᴍᴏɪʀᴇ import *
 from ꜱᴀʏᴏɴᴀʀᴀ import *
-from ӄʟǟաʀօɮօȶ import LOGS,dispatcher,StartTime,updater
+from ӄʟǟաʀօɮօȶ import LOGS, dispatcher, StartTime, updater
 from ꜰᴜɴᴄᴘᴏᴅ.chat_status import is_user_admin
 from ꜰᴜɴᴄᴘᴏᴅ.misc import paginate_modules
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -36,6 +37,7 @@ def get_readable_time(seconds: int) -> str:
     time_list.reverse()
     ping_time += ":".join(time_list)
     return ping_time
+
 
 def start(update: Update, context: CallbackContext):
     args = context.args
@@ -75,29 +77,48 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
             update.effective_message.reply_text(KLAWNESS.format(first_name, PSYCO))
             update.effective_message.reply_animation(
-                ӄʟǟաʀօɮօȶ_IMG,                
+                ӄʟǟաʀօɮօȶ_IMG,
                 parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup([[
-        InlineKeyboardButton(
-                    text="ɢɛȶ ӄʟǟա🦀ʀօɮօȶ քօաɛʀֆ ռօա",
-                    url="t.me/{}?startgroup=true".format(context.bot.username),)],[
-        InlineKeyboardButton(
-                    text="🔥 DΣV GЯӨЦP",
-                    url=f"https://t.me/hypevoids",),
-        InlineKeyboardButton(
-                    text="💻 ΉYPΣ VӨID LΛB",
-                    url=f"https://t.me/hypevoidlab",),]]))
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="ɢɛȶ ӄʟǟա🦀ʀօɮօȶ քօաɛʀֆ ռօա",
+                                url="t.me/{}?startgroup=true".format(
+                                    context.bot.username
+                                ),
+                            )
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="🔥 DΣV GЯӨЦP",
+                                url=f"https://t.me/hypevoids",
+                            ),
+                            InlineKeyboardButton(
+                                text="💻 ΉYPΣ VӨID LΛB",
+                                url=f"https://t.me/hypevoidlab",
+                            ),
+                        ],
+                    ]
+                ),
+            )
     else:
         update.effective_message.reply_animation(ӄʟǟաʀօɮօȶ_IMG)
-        update.effective_message.reply_text(IGNIT_KLAW.format(uptime),
-        parse_mode=ParseMode.HTML)
-        
+        update.effective_message.reply_text(
+            IGNIT_KLAW.format(uptime), parse_mode=ParseMode.HTML
+        )
+
+
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
-    dispatcher.bot.send_message(chat_id=chat_id,text=text,parse_mode=ParseMode.MARKDOWN,
-        disable_web_page_preview=True,reply_markup=keyboard,)
-
+    dispatcher.bot.send_message(
+        chat_id=chat_id,
+        text=text,
+        parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=True,
+        reply_markup=keyboard,
+    )
 
 
 def help_button(update: Update, context: CallbackContext):
@@ -161,7 +182,7 @@ def help_button(update: Update, context: CallbackContext):
 
 
 def get_help(update: Update, context: CallbackContext):
-    chat = update.effective_chat  
+    chat = update.effective_chat
     args = update.effective_message.text.split(None, 1)
     if chat.type != chat.PRIVATE:
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
@@ -213,6 +234,7 @@ def get_help(update: Update, context: CallbackContext):
         )
     else:
         send_help(chat.id, KLAW_MORE)
+
 
 def send_settings(chat_id, user_id, user=False):
     if user:
@@ -366,14 +388,19 @@ def get_settings(update: Update, context: CallbackContext):
 
     else:
         send_settings(chat.id, user.id, True)
-        
+
+
 start_handler = CommandHandler("start", start, run_async=True)
 help_handler = CommandHandler("help", get_help, run_async=True)
-help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*", run_async=True)
+help_callback_handler = CallbackQueryHandler(
+    help_button, pattern=r"help_.*", run_async=True
+)
 settings_handler = CommandHandler("settings", get_settings, run_async=True)
-settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_", run_async=True)
-    
-    
+settings_callback_handler = CallbackQueryHandler(
+    settings_button, pattern=r"stngs_", run_async=True
+)
+
+
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(settings_handler)

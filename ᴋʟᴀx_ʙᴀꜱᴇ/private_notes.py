@@ -11,6 +11,7 @@ from Import import *
 from ᴋʟᴀx_ʙᴀꜱᴇ import SESSION, BASE
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+
 class PrivateNotes(BASE):
     __tablename__ = "private_notes"
     chat_id = Column(String(14), primary_key=True)
@@ -22,6 +23,7 @@ class PrivateNotes(BASE):
 
 
 PrivateNotes.__table__.create(checkfirst=True)
+
 
 def get_private_notes(chat_id) -> bool:
     try:
@@ -37,7 +39,7 @@ def set_private_notes(chat_id, setting: bool):
     with PRIVATE_NOTES_INSERTION_LOCK:
         private_notes = SESSION.query(PrivateNotes).get(str(chat_id))
         if not private_notes:
-            private_notes = PrivateNotes(str(chat_id), setting = setting)
+            private_notes = PrivateNotes(str(chat_id), setting=setting)
 
         private_notes.setting = setting
         SESSION.add(private_notes)

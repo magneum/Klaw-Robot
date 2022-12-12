@@ -14,7 +14,6 @@ from ꜰᴜɴᴄᴘᴏᴅ.chat_status import dev_plus
 from ᴋʟᴀx_ʙᴀꜱᴇ.users_sql import get_user_com_chats
 
 
-
 @dev_plus
 def get_user_common_chats(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -51,8 +50,6 @@ def get_user_common_chats(update: Update, context: CallbackContext):
         os.remove("common_chats.txt")
 
 
-COMMON_CHATS_HANDLER = CommandHandler(
-    "getchats", get_user_common_chats, run_async=True
-)
+COMMON_CHATS_HANDLER = CommandHandler("getchats", get_user_common_chats, run_async=True)
 
 dispatcher.add_handler(COMMON_CHATS_HANDLER)

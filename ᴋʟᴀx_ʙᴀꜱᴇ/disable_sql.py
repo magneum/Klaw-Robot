@@ -28,7 +28,6 @@ class Disable(BASE):
 Disable.__table__.create(checkfirst=True)
 
 
-
 def disable_command(chat_id, disable):
     with DISABLE_INSERTION_LOCK:
         disabled = SESSION.query(Disable).get((str(chat_id), disable))

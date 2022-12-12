@@ -25,6 +25,8 @@ from ꜰᴜɴᴄᴘᴏᴅ.alternate import send_message, typing_action
 __mod_name__ = "🏴‍☠️ ʙʟᴀᴄᴋʟɪꜱᴛꜱ"
 
 BLACKLIST_GROUP = 11
+
+
 @user_admin
 def blacklist(update: Update, context: CallbackContext):
     chat = update.effective_chat
@@ -41,7 +43,7 @@ def blacklist(update: Update, context: CallbackContext):
         chat_id = update.effective_chat.id
         chat_name = chat.title
 
-    filter_list = "{}Current blacklisted words in <b>{}</b>:\n".format(ALKL,chat_name)
+    filter_list = "{}Current blacklisted words in <b>{}</b>:\n".format(ALKL, chat_name)
 
     all_blacklisted = sql.get_chat_blacklist(chat_id)
 
@@ -57,12 +59,14 @@ def blacklist(update: Update, context: CallbackContext):
 
     split_text = split_message(filter_list)
     for text in split_text:
-        if filter_list == "{}Current blacklisted words in <b>{}</b>:\n".format(ALKL,
-            html.escape(chat_name)
+        if filter_list == "{}Current blacklisted words in <b>{}</b>:\n".format(
+            ALKL, html.escape(chat_name)
         ):
             send_message(
                 update.effective_message,
-                "{}No blacklisted words in <b>{}</b>!".format(ALKL,html.escape(chat_name)),
+                "{}No blacklisted words in <b>{}</b>!".format(
+                    ALKL, html.escape(chat_name)
+                ),
                 parse_mode=ParseMode.HTML,
             )
             return
@@ -98,8 +102,8 @@ def add_blacklist(update: Update, context: CallbackContext):
         if len(to_blacklist) == 1:
             send_message(
                 update.effective_message,
-                "{}Added blacklist <code>{}</code> in chat: <b>{}</b>!".format(ALKL,
-                    html.escape(to_blacklist[0]), html.escape(chat_name)
+                "{}Added blacklist <code>{}</code> in chat: <b>{}</b>!".format(
+                    ALKL, html.escape(to_blacklist[0]), html.escape(chat_name)
                 ),
                 parse_mode=ParseMode.HTML,
             )
@@ -107,8 +111,8 @@ def add_blacklist(update: Update, context: CallbackContext):
         else:
             send_message(
                 update.effective_message,
-                "{}Added blacklist trigger: <code>{}</code> in <b>{}</b>!".format(ALKL,
-                    len(to_blacklist), html.escape(chat_name)
+                "{}Added blacklist trigger: <code>{}</code> in <b>{}</b>!".format(
+                    ALKL, len(to_blacklist), html.escape(chat_name)
                 ),
                 parse_mode=ParseMode.HTML,
             )
@@ -153,8 +157,8 @@ def unblacklist(update: Update, context: CallbackContext):
             if successful:
                 send_message(
                     update.effective_message,
-                    "{}Removed <code>{}</code> from blacklist in <b>{}</b>!".format(ALKL,
-                        html.escape(to_unblacklist[0]), html.escape(chat_name)
+                    "{}Removed <code>{}</code> from blacklist in <b>{}</b>!".format(
+                        ALKL, html.escape(to_unblacklist[0]), html.escape(chat_name)
                     ),
                     parse_mode=ParseMode.HTML,
                 )
@@ -166,8 +170,8 @@ def unblacklist(update: Update, context: CallbackContext):
         elif successful == len(to_unblacklist):
             send_message(
                 update.effective_message,
-                "{}Removed <code>{}</code> from blacklist in <b>{}</b>!".format(ALKL,
-                    successful, html.escape(chat_name)
+                "{}Removed <code>{}</code> from blacklist in <b>{}</b>!".format(
+                    ALKL, successful, html.escape(chat_name)
                 ),
                 parse_mode=ParseMode.HTML,
             )
@@ -183,8 +187,8 @@ def unblacklist(update: Update, context: CallbackContext):
             send_message(
                 update.effective_message,
                 "{}Removed <code>{}</code> from blacklist. {} did not exist, "
-                "so were not removed.".format(ALKL,
-                    successful, len(to_unblacklist) - successful
+                "so were not removed.".format(
+                    ALKL, successful, len(to_unblacklist) - successful
                 ),
                 parse_mode=ParseMode.HTML,
             )
@@ -251,7 +255,7 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
 Example of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return ""
-            settypeblacklist = "{}temporarily ban for {}".format(ALKL,args[1])
+            settypeblacklist = "{}temporarily ban for {}".format(ALKL, args[1])
             sql.set_blacklist_strength(chat_id, 6, str(args[1]))
         elif args[0].lower() == "tmute":
             if len(args) == 1:
@@ -266,7 +270,7 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
 Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks."""
                 send_message(update.effective_message, teks, parse_mode="markdown")
                 return ""
-            settypeblacklist = "{}temporarily mute for {}".format(ALKL,args[1])
+            settypeblacklist = "{}temporarily mute for {}".format(ALKL, args[1])
             sql.set_blacklist_strength(chat_id, 7, str(args[1]))
         else:
             send_message(
@@ -275,11 +279,11 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
             )
             return ""
         if conn:
-            text = "{}Changed blacklist mode: `{}` in *{}*!".format(ALKL,
-                settypeblacklist, chat_name
+            text = "{}Changed blacklist mode: `{}` in *{}*!".format(
+                ALKL, settypeblacklist, chat_name
             )
         else:
-            text = "{}Changed blacklist mode: `{}`!".format(ALKL,settypeblacklist)
+            text = "{}Changed blacklist mode: `{}`!".format(ALKL, settypeblacklist)
         send_message(update.effective_message, text, parse_mode="markdown")
         return (
             "<b>{}:</b>\n"
@@ -310,11 +314,11 @@ Examples of time value: 4m = 4 minutes, 3h = 3 hours, 6d = 6 days, 5w = 5 weeks.
         elif getmode == 7:
             settypeblacklist = "temporarily mute for {}".format(getvalue)
         if conn:
-            text = "{}Current blacklistmode: *{}* in *{}*.".format(ALKL,
-                settypeblacklist, chat_name
+            text = "{}Current blacklistmode: *{}* in *{}*.".format(
+                ALKL, settypeblacklist, chat_name
             )
         else:
-            text = "{}Current blacklistmode: *{}*.".format(ALKL,settypeblacklist)
+            text = "{}Current blacklistmode: *{}*.".format(ALKL, settypeblacklist)
         send_message(update.effective_message, text, parse_mode=ParseMode.MARKDOWN)
     return ""
 
@@ -359,7 +363,7 @@ def del_blacklist(update: Update, context: CallbackContext):
                     warn(
                         update.effective_user,
                         chat,
-                        ("{}Using blacklisted trigger: {}".format(ALKL,trigger)),
+                        ("{}Using blacklisted trigger: {}".format(ALKL, trigger)),
                         message,
                         update.effective_user,
                     )
@@ -435,15 +439,13 @@ def __migrate__(old_chat_id, new_chat_id):
 
 def __chat_settings__(chat_id, user_id):
     blacklisted = sql.num_blacklist_chat_filters(chat_id)
-    return "{}There are {} blacklisted words.".format(ALKL,blacklisted)
+    return "{}There are {} blacklisted words.".format(ALKL, blacklisted)
 
 
 def __stats__():
     return "• {} blacklist triggers, across {} chats.".format(
         sql.num_blacklist_filters(), sql.num_blacklist_filter_chats()
     )
-
-
 
 
 __help__ = f"""{ALKL}
@@ -473,7 +475,8 @@ ADD_BLACKLIST_HANDLER = CommandHandler("addblacklist", add_blacklist, run_async=
 UNBLACKLIST_HANDLER = CommandHandler("unblacklist", unblacklist, run_async=True)
 BLACKLISTMODE_HANDLER = CommandHandler("blacklistmode", blacklist_mode, run_async=True)
 BLACKLIST_DEL_HANDLER = MessageHandler(
-    (Filters.text | Filters.command | Filters.sticker | Filters.photo) & Filters.chat_type.groups,
+    (Filters.text | Filters.command | Filters.sticker | Filters.photo)
+    & Filters.chat_type.groups,
     del_blacklist,
     run_async=True,
 )

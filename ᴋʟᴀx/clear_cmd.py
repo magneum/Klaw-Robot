@@ -23,10 +23,10 @@ def clearcmd(update: Update, context: CallbackContext):
     msg = ""
 
     commands = [
-    "filters",
-    "notes",    
-    "purge",
-    "welcome",
+        "filters",
+        "notes",
+        "purge",
+        "welcome",
     ]
 
     if len(args) == 0:
@@ -34,9 +34,11 @@ def clearcmd(update: Update, context: CallbackContext):
         if commands:
             msg += "*Command - Time*\n"
             for cmd in commands:
-                msg += f"`{cmd.cmd} - {cmd.time} secs`\n"  
+                msg += f"`{cmd.cmd} - {cmd.time} secs`\n"
         else:
-            msg = f"{ALKL}No deletion time has been set for any command in *{chat.title}*"
+            msg = (
+                f"{ALKL}No deletion time has been set for any command in *{chat.title}*"
+            )
 
     elif len(args) == 1:
         cmd = args[0].lower()
@@ -64,21 +66,18 @@ def clearcmd(update: Update, context: CallbackContext):
             if time == "restore":
                 sql.del_clearcmd(chat.id, cmd)
                 msg = f"{ALKL}Removed `{cmd}` from list"
-            elif (5 <= int(time) <= 300):
+            elif 5 <= int(time) <= 300:
                 sql.set_clearcmd(chat.id, cmd, time)
                 msg = f"{ALKL}`{cmd}` output will be deleted after *{time}* seconds in *{chat.title}*"
             else:
-               msg = f"{ALKL}Time must be between 5 and 300 seconds"
+                msg = f"{ALKL}Time must be between 5 and 300 seconds"
         else:
             msg = f"{ALKL}Specify a valid command. Use `/clearcmd list` to see available commands"
-                
+
     else:
         msg = f"{ALKL}I don't understand what are you trying to do. Check module help for more details"
 
-    message.reply_text(
-        text = msg,
-        parse_mode = ParseMode.MARKDOWN
-    )
+    message.reply_text(text=msg, parse_mode=ParseMode.MARKDOWN)
 
 
 def __migrate__(old_chat_id, new_chat_id):

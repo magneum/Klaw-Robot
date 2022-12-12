@@ -12,6 +12,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.msg_types import Types
 from ᴋʟᴀx_ʙᴀꜱᴇ import BASE, SESSION
 from ᴍᴇᴍᴏɪʀᴇ import *
 
+
 class Notes(BASE):
     __tablename__ = "notes"
     chat_id = Column(String(14), primary_key=True)
@@ -52,8 +53,6 @@ class Buttons(BASE):
 
 Notes.__table__.create(checkfirst=True)
 Buttons.__table__.create(checkfirst=True)
-
-
 
 
 def add_note_to_db(chat_id, note_name, note_data, msgtype, buttons=None, file=None):

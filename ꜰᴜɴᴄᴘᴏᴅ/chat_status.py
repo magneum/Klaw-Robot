@@ -18,8 +18,6 @@ from ӄʟǟաʀօɮօȶ import (
 )
 
 
-
-
 ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10, timer=perf_counter)
 THREAD_LOCK = RLock()
 
@@ -84,7 +82,7 @@ def is_user_ban_protected(chat: Chat, user_id: int, member: ChatMember = None) -
         or user_id in DEV_USERS
         or chat.all_members_are_administrators
         or user_id in [777000, 1087968824]
-    ):  
+    ):
         return True
 
     if not member:

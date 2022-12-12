@@ -19,6 +19,8 @@ __mod_name__ = "👨‍👨‍👦 ᴜꜱᴇʀꜱ"
 USERS_GROUP = 4
 CHAT_GROUP = 5
 DEV_AND_MORE = DEV_USERS.append(int(OWNER_ID))
+
+
 def get_user_id(username):
     # ensure valid userid
     if len(username) <= 5:
@@ -176,8 +178,12 @@ __help__ = ""  # no help string
 BROADCAST_HANDLER = CommandHandler(
     ["broadcastall", "broadcastusers", "broadcastgroups"], broadcast, run_async=True
 )
-USER_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, log_user, run_async=True)
-CHAT_CHECKER_HANDLER = MessageHandler(Filters.all & Filters.chat_type.groups, chat_checker, run_async=True)
+USER_HANDLER = MessageHandler(
+    Filters.all & Filters.chat_type.groups, log_user, run_async=True
+)
+CHAT_CHECKER_HANDLER = MessageHandler(
+    Filters.all & Filters.chat_type.groups, chat_checker, run_async=True
+)
 CHATLIST_HANDLER = CommandHandler(["groups", "chatlist"], chats, run_async=True)
 
 dispatcher.add_handler(USER_HANDLER, USERS_GROUP)

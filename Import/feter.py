@@ -20,7 +20,7 @@ from typing import List, Optional
 import json
 from logging import INFO, basicConfig, getLogger
 import pprint
-from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest 
+from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 from sqlalchemy import func, distinct, Column, String, UnicodeText, Integer
 import logging
 from time import perf_counter
@@ -203,8 +203,8 @@ import ast
 from datetime import datetime
 from functools import wraps
 from telegram.ext import CallbackContext
-ad = AlphabetDetector()
 
+ad = AlphabetDetector()
 
 
 from datetime import datetime
@@ -243,7 +243,6 @@ from telegram.ext import (
 from telegram.utils.helpers import mention_html, mention_markdown
 
 
-
 import uuid
 from io import BytesIO
 from typing import Union
@@ -256,6 +255,7 @@ import pretty_errors
 import io
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext, CommandHandler
+
 pretty_errors.mono()
 from telegram import ParseMode, Update
 from telegram.ext import (
@@ -267,7 +267,13 @@ from telegram.ext import (
 )
 from html import escape
 import telegram
-from telegram import ParseMode, InlineKeyboardMarkup, Message, InlineKeyboardButton, Update
+from telegram import (
+    ParseMode,
+    InlineKeyboardMarkup,
+    Message,
+    InlineKeyboardButton,
+    Update,
+)
 from telegram.error import BadRequest
 from telegram.ext import (
     CallbackContext,
@@ -281,7 +287,12 @@ from telegram.ext import (
 from telegram.utils.helpers import mention_html, escape_markdown
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update, Bot
 from telegram.error import BadRequest, Unauthorized
-from telegram.ext import CommandHandler, CallbackQueryHandler, CallbackContext, run_async
+from telegram.ext import (
+    CommandHandler,
+    CallbackQueryHandler,
+    CallbackContext,
+    run_async,
+)
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
@@ -299,11 +310,18 @@ from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 from telegram import ParseMode, ChatPermissions, Update
 from telegram.error import BadRequest
-from telegram.ext import CommandHandler, MessageHandler, CallbackContext, Filters, run_async
+from telegram.ext import (
+    CommandHandler,
+    MessageHandler,
+    CallbackContext,
+    Filters,
+    run_async,
+)
 from telegram.utils.helpers import mention_html
 import spamwatch
 import telegram.ext as tg
 from telethon import TelegramClient
+
 StartTime = time.time()
 import importlib
 from sys import argv
@@ -528,8 +546,8 @@ import ast
 from datetime import datetime
 from functools import wraps
 from telegram.ext import CallbackContext
-ad = AlphabetDetector()
 
+ad = AlphabetDetector()
 
 
 from datetime import datetime
@@ -568,7 +586,6 @@ from telegram.ext import (
 from telegram.utils.helpers import mention_html, mention_markdown
 
 
-
 import uuid
 from io import BytesIO
 from typing import Union
@@ -581,6 +598,7 @@ import pretty_errors
 import io
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext, CommandHandler
+
 pretty_errors.mono()
 from telegram import ParseMode, Update
 from telegram.ext import (
@@ -592,7 +610,13 @@ from telegram.ext import (
 )
 from html import escape
 import telegram
-from telegram import ParseMode, InlineKeyboardMarkup, Message, InlineKeyboardButton, Update
+from telegram import (
+    ParseMode,
+    InlineKeyboardMarkup,
+    Message,
+    InlineKeyboardButton,
+    Update,
+)
 from telegram.error import BadRequest
 from telegram.ext import (
     CallbackContext,
@@ -606,7 +630,12 @@ from telegram.ext import (
 from telegram.utils.helpers import mention_html, escape_markdown
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update, Bot
 from telegram.error import BadRequest, Unauthorized
-from telegram.ext import CommandHandler, CallbackQueryHandler, CallbackContext, run_async
+from telegram.ext import (
+    CommandHandler,
+    CallbackQueryHandler,
+    CallbackContext,
+    run_async,
+)
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
@@ -624,11 +653,18 @@ from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 from telegram import ParseMode, ChatPermissions, Update
 from telegram.error import BadRequest
-from telegram.ext import CommandHandler, MessageHandler, CallbackContext, Filters, run_async
+from telegram.ext import (
+    CommandHandler,
+    MessageHandler,
+    CallbackContext,
+    Filters,
+    run_async,
+)
 from telegram.utils.helpers import mention_html
 import spamwatch
 import telegram.ext as tg
 from telethon import TelegramClient
+
 StartTime = time.time()
 import importlib
 from sys import argv
@@ -853,8 +889,8 @@ import ast
 from datetime import datetime
 from functools import wraps
 from telegram.ext import CallbackContext
-ad = AlphabetDetector()
 
+ad = AlphabetDetector()
 
 
 from datetime import datetime
@@ -893,7 +929,6 @@ from telegram.ext import (
 from telegram.utils.helpers import mention_html, mention_markdown
 
 
-
 import uuid
 from io import BytesIO
 from typing import Union
@@ -908,6 +943,7 @@ import pretty_errors
 import io
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext, CommandHandler
+
 pretty_errors.mono()
 from telegram import ParseMode, Update
 from telegram.ext import (
@@ -919,7 +955,13 @@ from telegram.ext import (
 )
 from html import escape
 import telegram
-from telegram import ParseMode, InlineKeyboardMarkup, Message, InlineKeyboardButton, Update
+from telegram import (
+    ParseMode,
+    InlineKeyboardMarkup,
+    Message,
+    InlineKeyboardButton,
+    Update,
+)
 from telegram.error import BadRequest
 from telegram.ext import (
     CallbackContext,
@@ -933,7 +975,12 @@ from telegram.ext import (
 from telegram.utils.helpers import mention_html, escape_markdown
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update, Bot
 from telegram.error import BadRequest, Unauthorized
-from telegram.ext import CommandHandler, CallbackQueryHandler, CallbackContext, run_async
+from telegram.ext import (
+    CommandHandler,
+    CallbackQueryHandler,
+    CallbackContext,
+    run_async,
+)
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
@@ -951,11 +998,18 @@ from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 from telegram import ParseMode, ChatPermissions, Update
 from telegram.error import BadRequest
-from telegram.ext import CommandHandler, MessageHandler, CallbackContext, Filters, run_async
+from telegram.ext import (
+    CommandHandler,
+    MessageHandler,
+    CallbackContext,
+    Filters,
+    run_async,
+)
 from telegram.utils.helpers import mention_html
 import spamwatch
 import telegram.ext as tg
 from telethon import TelegramClient
+
 StartTime = time.time()
 import importlib
 from sys import argv

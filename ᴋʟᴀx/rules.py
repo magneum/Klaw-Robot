@@ -17,6 +17,7 @@ from ꜰᴜɴᴄᴘᴏᴅ.string_handling import markdown_parser
 
 __mod_name__ = "📠 ʀᴜʟᴇꜱ"
 
+
 def get_rules(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     send_rules(update, chat_id)
@@ -100,7 +101,9 @@ def set_rules(update: Update, context: CallbackContext):
         )
 
         sql.set_rules(chat_id, markdown_rules)
-        update.effective_message.reply_text(f"{ALKL}Successfully set rules for this group.")
+        update.effective_message.reply_text(
+            f"{ALKL}Successfully set rules for this group."
+        )
 
 
 @user_admin
@@ -137,10 +140,15 @@ __help__ = f"""{ALKL}
 """
 
 
-
-GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.chat_type.groups, run_async=True)
-SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.chat_type.groups, run_async=True)
-RESET_RULES_HANDLER = CommandHandler("clearrules", clear_rules, filters=Filters.chat_type.groups, run_async=True)
+GET_RULES_HANDLER = CommandHandler(
+    "rules", get_rules, filters=Filters.chat_type.groups, run_async=True
+)
+SET_RULES_HANDLER = CommandHandler(
+    "setrules", set_rules, filters=Filters.chat_type.groups, run_async=True
+)
+RESET_RULES_HANDLER = CommandHandler(
+    "clearrules", clear_rules, filters=Filters.chat_type.groups, run_async=True
+)
 
 dispatcher.add_handler(GET_RULES_HANDLER)
 dispatcher.add_handler(SET_RULES_HANDLER)
